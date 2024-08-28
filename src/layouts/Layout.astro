@@ -1,40 +1,44 @@
 ---
 interface Props {
-	title: string
+    title: string
 }
 
 const { title } = Astro.props
 
 import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
+import { ViewTransitions } from 'astro:transitions'
 ---
 
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		
-		<link rel="stylesheet" href="/src/styles/styles.css"/>
-		<script type="module" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        
+        <link rel="stylesheet" href="/src/styles/styles.css"/>
+        <!-- <script type="module" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+        <script type="module" src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-		<title>{title}</title>
-	</head>
+        <title>Camposanto Santa Rosa | {title}</title>
+        <ViewTransitions/>
+    </head>
 
-	<body>
-		<Header/>
-		<main>
-			<slot />
-		</main>
-		<Footer/>
-	</body>
-
+    <body>
+        <Header/>
+        <main>
+            <slot />
+        </main>
+        <Footer/>
+    </body>
+    
 </html>
 
 <!-- <style is:global>
-	
-	/* estilos globales aqui */
+    
+    /* estilos globales aqui */
 
 </style> -->
