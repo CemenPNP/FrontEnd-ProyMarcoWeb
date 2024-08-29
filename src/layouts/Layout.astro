@@ -8,6 +8,7 @@ const { title } = Astro.props
 import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
 import { ViewTransitions } from 'astro:transitions'
+import Navbar from '@/components/Navbar.astro'
 ---
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@ import { ViewTransitions } from 'astro:transitions'
         <meta charset="UTF-8" />
         <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         
         <link rel="stylesheet" href="/src/styles/styles.css"/>
         <!-- <script type="module" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
@@ -28,17 +29,28 @@ import { ViewTransitions } from 'astro:transitions'
     </head>
 
     <body>
-        <Header/>
+        <Navbar/>
+        <!-- <Header/> -->
         <main>
             <slot />
         </main>
-        <Footer/>
+        <!-- <Footer/> -->
     </body>
     
 </html>
 
-<!-- <style is:global>
-    
-    /* estilos globales aqui */
+<style is:global>
 
-</style> -->
+    body, html{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    *, **{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+</style>
