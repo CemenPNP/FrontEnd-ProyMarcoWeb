@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg fixed-top border border-top-0">
+    <div class="container-fluid">
+      <a class="navbar-brand me-auto d-flex" href="/"><img src="/favicon.png" alt="icono principal"/>Santa Rosa</a>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Camposanto Santa Rosa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2 active" aria-current="page" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="/nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="/servicios">Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="/galeria">Galeria</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="/contactanos">Contactanos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a href="/login" class="login-button">Iniciar sesion</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <style>
+    .navbar{
+        background-color: #fff;
+        border-radius: 15px;
+        margin: 10px 20px;
+        img{
+            width: 50px;
+            aspect-ratio: 1/1;
+        }
+    }
+    .navbar-brand{
+        align-items: center;
+        gap: 5px;
+        font-weight: 500;
+        color: #009970;
+        font-size: 24px;
+        transition: 0.3s color;
+        &:hover{
+            color: #000;
+        }
+    }
+    .login-button{
+        color: #fff;
+        background-color: #009970;
+        font-size: 14px;
+        padding: 8px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: 0.3s background-color;
+
+        &:hover{
+            background-color: #00b383;
+        }
+    }
+    .navbar-toggler{
+        border: none;
+        font-size: 1.25rem;
+    }
+    .navbar-toggler:focus, .btn-close:focus{
+        box-shadow: none;
+        outline: none;
+    }
+    .nav-link{
+        color: #666777;
+        font-weight: 500;
+        position: relative;
+    }
+    .nav-link:hover, .nav-link.active{
+        color: #000;
+    }
+    @media (min-width: 991px) {
+        .nav-link::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #009970;
+            visibility: hidden;
+            transition: 0.3s ease-in-out;
+        }
+        .nav-link:hover::before, .nav-link.active::before{
+            width: 100%;
+            visibility: visible;
+        }
+    }
+  </style>
