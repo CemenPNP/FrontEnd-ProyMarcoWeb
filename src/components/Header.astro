@@ -1,64 +1,39 @@
 ---
+import Navbar from './Navbar.astro';
+
 interface Props {
 
 }
 const {  } = Astro.props;
 ---
 
-<header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom text-bg-dark" >
-    <div class="col-md-3 mb-2 mb-md-0">
-        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-            <img src="/favicon.svg" width="50px" alt="qwer">
-        </a>
-    </div>
-
-    <!-- <nav>
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="#" class="nav-link px-2">Features</a></li>
-            <li><a href="#" class="nav-link px-2">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2">About</a></li>
-        </ul>
-    </nav> -->
-
-    <nav class="navbar navbar-expand-lg navbar-dark" aria-label="Tenth navbar example">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-    
-          <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Centered nav only</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-            <div class="col-md-3 text-end d-lg-none d-block">
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" class="btn btn-primary">Sign-up</button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-
-    <div class="col-md-3 text-end d-none d-lg-block">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
-    </div>
+<header class="hero">
+  <h2>Parque Ecológico Camposanto <br> Santa Rosa de Lima</h2>
 </header>
+
+<style>
+  .hero {
+    background: url('https://live.staticflickr.com/4075/4785056808_ba20d17fc5_k.jpg') no-repeat center;
+    background-size: cover;
+    height: 100dvh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+
+  .hero::before {
+    background-color: rgba(0, 0, 0, 0.5);
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  h2 {
+    position: relative;
+    z-index: 2;
+  }
+</style>
