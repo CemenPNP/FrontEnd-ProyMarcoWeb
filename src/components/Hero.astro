@@ -1,17 +1,10 @@
----
-interface Props {
-
-}
-const {  } = Astro.props;
----
-
 <header class="hero d-flex justify-content-center align-items-center text-center text-white">
-  <h2 class="z-2">Parque Ecológico Camposanto <br> Santa Rosa de Lima</h2>
+   <slot/>
 </header>
 
 <style>
   .hero {
-    background: url('https://live.staticflickr.com/4075/4785056808_ba20d17fc5_k.jpg') no-repeat center;
+    background: url('/hero.webp') no-repeat center;
     background-size: cover;
     height: 100dvh;
   }

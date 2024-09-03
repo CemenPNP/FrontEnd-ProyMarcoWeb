@@ -1,0 +1,12 @@
+---
+interface Props {
+  image: string,
+  alt: string
+}
+const { image, alt } = Astro.props
+---
+
+<a class="lg-item"
+    data-src={image}>
+    <img src={image} class="w-100 shadow-1-strong mb-4 rounded" alt={alt} />
+</a>

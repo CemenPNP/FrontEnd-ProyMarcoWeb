@@ -1,3 +1,10 @@
+---
+interface Props {
+  page: string
+}
+const { page } = Astro.props
+---
+
 <nav class="navbar navbar-expand-lg fixed-top border border-top-0 bg-light rounded-4 my-2 mx-4">
     <div class="container-fluid text-light">
       <a class="navbar-brand me-auto d-flex align-items-center gap-2 fw-semibold fs-3" href="/">
@@ -12,19 +19,19 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link position-relative fw-semibold mx-lg-2 active" aria-current="page" href="/">Inicio</a>
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/' ? 'active' : ''}`} aria-current="page" href="/">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link position-relative fw-semibold mx-lg-2" href="/nosotros">Nosotros</a>
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/nosotros' ? 'active' : ''}`} href="/nosotros">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link position-relative fw-semibold mx-lg-2" href="/servicios">Servicios</a>
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/servicios' ? 'active' : ''}`} href="/servicios">Servicios</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link position-relative fw-semibold mx-lg-2" href="/galeria">Galeria</a>
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/galeria' ? 'active' : ''}`} href="/galeria">Galeria</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link position-relative fw-semibold mx-lg-2" href="/contactanos">Contactanos</a>
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/contactanos' ? 'active' : ''}`} href="/contactanos">Contactanos</a>
             </li>
           </ul>
         </div>

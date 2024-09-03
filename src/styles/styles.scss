@@ -19,7 +19,16 @@ $custom-colors: (
   "custom": #900
 );
 
+$custom-spacers: (
+  6: $spacer * 6,
+  7: $spacer * 7,
+  8: $spacer * 8,
+  9: $spacer * 9,
+  10: $spacer * 10
+);
+
 $theme-colors: map-merge($theme-colors, $custom-colors);
+$spacers: map-merge($spacers, $custom-spacers);
 
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

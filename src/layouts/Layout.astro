@@ -5,10 +5,11 @@ interface Props {
 
 const { title } = Astro.props
 
-import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
 import { ViewTransitions } from 'astro:transitions'
 import Navbar from '@/components/Navbar.astro'
+const page = Astro.url.pathname
+const isIndex = page === '/' || page === '/login';
 ---
 
 <!DOCTYPE html>
@@ -21,7 +22,6 @@ import Navbar from '@/components/Navbar.astro'
         <link rel="icon" type="image/png" href="/favicon.png" />
         
         <link rel="stylesheet" href="/src/styles/styles.css"/>
-        <!-- <script type="module" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
         <script type="module" src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
         <title>Camposanto Santa Rosa | {title}</title>
@@ -29,28 +29,15 @@ import Navbar from '@/components/Navbar.astro'
     </head>
 
     <body>
-        <Navbar/>
-        <!-- <Header/> -->
-        <main>
+        <Navbar page={page}/>
+        <main class={isIndex ? "" : "container mt-6"}>
             <slot />
         </main>
-        <!-- <Footer/> -->
+        <Footer/>
     </body>
     
 </html>
 
-<style is:global>
+<!-- <style is:global>
 
-    body, html{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    *, **{
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-</style>
+</style> -->

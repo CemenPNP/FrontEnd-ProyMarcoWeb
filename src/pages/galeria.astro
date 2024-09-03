@@ -1,7 +1,50 @@
 ---
 import Layout from "@/layouts/Layout.astro"
+import ImageGallery from "@/components/ImageGallery.astro"
+import '/node_modules/lightgallery/css/lightgallery-bundle.min.css'
 ---
 
 <Layout title="Galeria">
+
+    <div class="row" id="lightGallery">
+        <div class="col-lg-4 col-md-12">
+          <ImageGallery
+            image="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+            alt="Qwer"
+          />
+          <ImageGallery
+            image="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
+            alt="Myr"
+          />
+        </div>
     
+        <div class="col-lg-4">
+          <ImageGallery
+            image="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp"
+            alt="tbrd"
+          />
+          <ImageGallery
+            image="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+            alt="kjsr"
+          />
+        </div>
+    
+        <div class="col-lg-4">
+          <ImageGallery
+            image="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
+            alt="vytu"
+          />
+          <ImageGallery
+            image="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp"
+            alt="kegrjsr"
+          />
+        </div>
+    </div>
+    <script type="module" src="/node_modules/lightgallery/lightgallery.min.js"></script>
+    <script type="module">
+        const container = document.querySelector('#lightGallery')
+        window.lightGallery(container, {
+            selector: '.lg-item',
+        })
+    </script>
 </Layout>
