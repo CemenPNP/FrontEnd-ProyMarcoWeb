@@ -1,6 +1,5 @@
 ---
 import Hero from '@/components/Hero.astro'
-import MapaInteractivo from '@/components/MapaInteractivo'
 import Layout from '@/layouts/Layout.astro'
 ---
 
@@ -9,8 +8,145 @@ import Layout from '@/layouts/Layout.astro'
         <h2 class="z-2">Parque Ecológico Camposanto <br> Santa Rosa de Lima</h2>
     </Hero>
     <h1 hidden>Cementerio Santa Rosa de Lima,Parque Ecologico Camposanto Santa Rosa de Lima, Cementerio PNP, Cementerio policia nacional del Peru</h1>
-    <div class="container my-5">
-        <MapaInteractivo client:visible/>
-    </div>
-
+    <main class="container my-5">
+        <h2>Quienes somos</h2>
+        <div class="row">
+            <div class="col-lg-6 d-flex justify-content-center align-items-center mb-4 mb-lg-0">
+                <img src="/quienes-somos.jpeg" class="w-100 rounded" alt="">
+            </div>
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h5>Quienes Somos</h5>
+                <p>
+                    El Cementerio Santa Rosa de Lima es un lugar de paz y tranquilidad, dedicado a ofrecer un servicio 
+                    de calidad a todas las familias que buscan un lugar digno para el descanso eterno de sus seres queridos.
+                    Con años de experiencia, nos comprometemos a brindar un entorno respetuoso y bien cuidado.
+                </p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Servicios más pedidos</h2>
+            <a href="servicios.html" class="text-decoration-none">Ver más</a>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Reserva de Misa">
+                    <div class="card-body">
+                        <h5 class="card-title">Reserva de Misa</h5>
+                        <p class="card-text">Servicio de reserva para misas en conmemoración de sus seres queridos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Venta de Nicho">
+                    <div class="card-body">
+                        <h5 class="card-title">Venta de Nicho</h5>
+                        <p class="card-text">Ofrecemos nichos para la sepultura de sus seres queridos en un entorno seguro y digno.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Funerarias">
+                    <div class="card-body">
+                        <h5 class="card-title">Funerarias</h5>
+                        <p class="card-text">Servicios funerarios completos con la mayor profesionalidad y respeto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>Ubicación</h2>
+        <div class="row bg-light rounded border p-0 mx-5">
+            <div class="col-lg-4 d-flex flex-column justify-content-center my-4 text-center">
+                <i class="bi bi-geo-alt-fill"></i>
+                <div class="text-center mb-4">
+                    Av. Alipio Ponce Vasquez <br> Chorrillos, Lima 15058
+                </div>
+                <span class="text-center">Para mas informacion</span>
+                <a href="/contactanos" class="btn btn btn-success mx-5 d-block">Contactanos</a>
+            </div>
+            <div class="col-lg-8 d-flex justify-content-center align-items-center mb-4 p-0 mb-lg-0">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15600.407177519312!2d-76.9832755!3d-12.1734725!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9b5050e9f11%3A0x4447ca64566d5452!2sParque%20Ecologico%20Camposanto%20Santa%20Rosa%20de%20Lima!5e0!3m2!1ses!2spe!4v1725410183365!5m2!1ses!2spe" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <!-- <div class="row bg-primary rounded border my-3">
+            <div class="col-lg-4 d-flex flex-column justify-content-center text-center">
+                <i class="bi bi-geo-alt-fill"></i>
+                <div class="text-center mb-4">
+                    Av. Alipio Ponce Vasquez <br> Chorrillos, Lima 15058
+                </div>
+                <span class="text-center d-block mb-2">Para más información</span>
+                <a href="/contactanos" class="btn btn-success d-block mx-auto">Contáctanos</a>
+            </div>
+            <div class="col-lg-8 d-flex justify-content-center align-items-center p-0">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15600.407177519312!2d-76.9832755!3d-12.1734725!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9b5050e9f11%3A0x4447ca64566d5452!2sParque%20Ecologico%20Camposanto%20Santa%20Rosa%20de%20Lima!5e0!3m2!1ses!2spe!4v1725410183365!5m2!1ses!2spe" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div> -->
+        <h2>Reseñas</h2>
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 p-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-person-circle me-2" style="font-size: 1.5rem;"></i>
+                        <span>Juan Pérez</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <div class="text-warning">
+                            <!-- Puntuación en estrellas -->
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                        <span>12/08/2024</span>
+                    </div>
+                    <p class="card-text">Excelente servicio y atención en todo momento. Recomiendo mucho este lugar.</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 p-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-person-circle me-2" style="font-size: 1.5rem;"></i>
+                        <span>Ana Gómez</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <div class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <span>08/07/2024</span>
+                    </div>
+                    <p class="card-text">Todo fue muy respetuoso y profesional. El lugar es hermoso y tranquilo.</p>
+                </div>
+            </div>
+    
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 p-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="bi bi-person-circle me-2" style="font-size: 1.5rem;"></i>
+                        <span>Carlos López</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <div class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <span>01/06/2024</span>
+                    </div>
+                    <p class="card-text">Un lugar muy bien cuidado. Me sentí muy apoyado en un momento difícil.</p>
+                </div>
+            </div>
+    
+            <!-- Agrega más reseñas si es necesario -->
+        </div>
+    </main>
 </Layout>

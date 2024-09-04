@@ -1,7 +1,10 @@
 ---
+import MapaInteractivo from "@/components/MapaInteractivo"
 import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Servicos">
-    
+    <div class="container my-5">
+        <MapaInteractivo client:visible/>
+    </div>
 </Layout>
