@@ -27,6 +27,8 @@ $custom-spacers: (
   10: $spacer * 10
 );
 
+$enable-negative-margins: true;
+
 $theme-colors: map-merge($theme-colors, $custom-colors);
 $spacers: map-merge($spacers, $custom-spacers);
 

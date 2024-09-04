@@ -1,0 +1,25 @@
+---
+interface Props {
+  page: string
+  image: string
+  titulo: string
+  texto: string
+}
+const { page, image, texto, titulo } = Astro.props
+---
+
+<a class="col-md-4 text-decoration-none mb-4 mb-lg-0" href={page}>
+    <div class="card h-100">
+        <img src={image} class="card-img-top" alt={titulo}>
+        <div class="card-body">
+            <h5 class="card-title">{titulo}</h5>
+            <p class="card-text">{texto}</p>
+        </div>
+    </div>
+</a>
+<style>
+    a:hover{
+        transition: 300ms transform;
+        transform: translateY(3px)
+    }
+</style>
