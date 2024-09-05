@@ -1,10 +1,18 @@
-<header class="hero d-flex justify-content-center align-items-center text-center text-white">
+---
+interface Props {
+  image: string
+}
+const { image } = Astro.props
+---
+
+<header class="hero d-flex justify-content-center align-items-center text-center text-white" style={`background-image: url(${image});`}>
    <slot/>
 </header>
 
 <style>
   .hero {
-    background: url('/hero.webp') no-repeat center;
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     height: 100dvh;
   }

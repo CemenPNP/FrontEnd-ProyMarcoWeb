@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100vw" height="100vh" viewBox="0 0 100 100">
+  <!-- Fondo pastel -->
+  <rect width="100%" height="100%" fill="#F5F5F5"/>
+
+  <!-- Fondo blanco pastel -->
+  <rect x="10%" y="10%" width="80%" height="80%" fill="#FFFFFF" rx="15" ry="15"/>
+
+  <!-- Líneas decorativas en color #009970 -->
+  <line x1="10%" y1="10%" x2="90%" y2="90%" stroke="#009970" stroke-width="2"/>
+  <line x1="10%" y1="90%" x2="90%" y2="10%" stroke="#009970" stroke-width="2"/>
+  
+  <!-- Líneas adicionales decorativas -->
+  <line x1="50%" y1="10%" x2="50%" y2="90%" stroke="#009970" stroke-width="2"/>
+  <line x1="10%" y1="50%" x2="90%" y2="50%" stroke="#009970" stroke-width="2"/>
+</svg>

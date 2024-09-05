@@ -1,7 +1,102 @@
 ---
+import Hero from "@/components/Hero.astro"
 import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Nosotros">
-    
+    <Hero image="/nosotros/img1-Presentación.jpg">
+        <h2 class="z-2 text-white fs-1 fw-bold text-uppercase">Sobre nosotros</h2>
+    </Hero>
+    <main class="container my-5 p-0">
+        <div class="container-flex">
+            <div class="row p-0 m-0">
+                <div class="col-12 col-md-6 carousel slide carousel-fade p-0" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/nosotros/imagen1-Nosotros.jpeg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/nosotros/imagen2-Nosotros.jpeg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-mision text-center col-12 col-md-6 d-flex flex-column justify-content-center py-2 px-lg-5 px-md-1 px-4 bg-light border py-5 py-md-0">
+                    <h2 class="mb-0 mb-lg-4 text-success">Misión</h2>
+                    <p class="m-0">Brindar a las familias una herramienta digital accesible y eficiente que les permita localizar de manera rápida y precisa las tumbas de sus seres queridos en el Cementerio Santa Rosa de Chorrillos, facilitando el proceso de búsqueda y honrando la memoria de los fallecidos.</p>
+                </div>
+            </div>
+
+            <div class="row p-0 m-0">
+                <div class="txt-vision text-center col-12 col-md-6 order-2 order-md-1 d-flex flex-column justify-content-center py-2 px-lg-5 px-md-1 px-4 bg-light border py-5 py-md-0">
+                    <h2 class="mb-0 mb-lg-4 text-success">Visión</h2>
+                    <p class="m-0">Ser reconocido como el cementerio de referencia para la Policía Nacional del Perú, ofreciendo servicios de calidad y manteniendo un entorno de paz y tranquilidad que honre a los difuntos y ofrezca consuelo a sus familias.</p>
+                </div>
+                <div class="col-12 col-md-6 carousel slide carousel-fade order-1 p-0" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/nosotros/imagen3-Nosotros.jpeg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/nosotros/imagen4-Nosotros.jpeg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section class="bg-success d-flex align-items-center justify-content-center py-5 px-3" style="min-height: 700px;">
+        <div class="d-flex justify-content-center flex-wrap gap-5">
+            <div class="col-12">
+                <h2 class="text-center text-white fs-1 fw-bold text-uppercase">Nuestros compromisos</h2>
+            </div>
+            <div class="card p-4">
+                <div class="d-flex flex-column justify-content-center h-100">
+                    <h5 class="text-center text-success fw-bold">Con la familia</h5>
+                    <p class="card-text text-center">En FONAFUN, comprendemos el dolor de perder a un ser querido, especialmente un héroe como un policía. Honraremos su memoria y brindarte todo nuestro apoyo en este momento difícil. Nuestro cementerio es un lugar sagrado donde podrás despedirte de tu familiar en paz.</p>
+                </div>
+            </div>
+            <div class="card p-4">
+                <div class="d-flex flex-column justify-content-center h-100">
+                    <h5 class="text-center text-success fw-bold">Con los beneficiarios</h5>
+                    <p class="card-text text-center">Entendemos que este es un momento difícil y queremos acompañarte en cada paso. Ofrecemos servicios funerarios personalizados, adaptándonos a tus necesidades y respetando tus creencias. Nuestro equipo estará contigo para ayudarte en todo lo que necesites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </Layout>
+
+<style>
+    .txt-mision{
+        border-radius: 0 32px 0 0;
+        line-height: 2rem;
+    }
+    .txt-vision{
+        border-radius: 0 0 0 32px;
+        line-height: 2rem;
+    }
+    @media (max-width: 767.98px) {
+        .txt-mision{
+            border-radius: 0;
+        }
+        .txt-vision{
+            border-radius: 0;
+        }
+    }
+    @media (max-width: 991.98px) {
+        .txt-mision{
+            line-height: 1.2rem;
+        }
+        .txt-vision{
+            line-height: 1.2rem;
+        }
+    }
+    .card {
+        width: 30rem;
+        height: 20rem;
+    }
+    @media (max-width: 535px){
+        .card{
+            width: 100%;
+        }
+    }
+</style>

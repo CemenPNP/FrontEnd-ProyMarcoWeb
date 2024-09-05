@@ -1,4 +1,10 @@
-<footer class="p-3 bg-light border border-top">
+---
+interface Props {
+  page: string
+}
+const { page } = Astro.props
+---
+<footer class={`p-3 bg-light border border-top ${page === '/administrador' ? 'd-none' : ''}`}>
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="/nosotros" class="nav-link px-2 text-body-secondary">Nosotros</a></li>
         <li class="nav-item"><a href="/servicios" class="nav-link px-2 text-body-secondary">Servicios</a></li>

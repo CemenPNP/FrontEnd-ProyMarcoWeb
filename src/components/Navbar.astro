@@ -5,7 +5,7 @@ interface Props {
 const { page } = Astro.props
 ---
 
-<nav class="navbar navbar-expand-lg fixed-top border border-top-0 bg-light rounded-4 my-2 mx-4">
+<nav class={`navbar navbar-expand-lg fixed-top border border-top-0 bg-light rounded-4 my-2 mx-4 ${page === '/administrador' ? 'd-none' : ''}`}>
     <div class="container-fluid text-light">
       <a class="navbar-brand me-auto d-flex align-items-center gap-2 fw-semibold fs-3" href="/">
         <img class="ratio ratio-1x1" height="50px" src="/favicon.png" alt="icono principal"/>

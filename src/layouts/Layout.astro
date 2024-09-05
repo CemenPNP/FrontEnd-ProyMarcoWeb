@@ -9,7 +9,9 @@ import Footer from '@/components/Footer.astro'
 import { ViewTransitions } from 'astro:transitions'
 import Navbar from '@/components/Navbar.astro'
 const page = Astro.url.pathname
-const isIndex = page === '/' || page === '/login';
+const isIndex = page === '/' || page === '/login' || page === '/nosotros'
+const isAdmin = page === '/administrador'
+console.log(isAdmin)
 ---
 
 <!DOCTYPE html>
@@ -31,10 +33,10 @@ const isIndex = page === '/' || page === '/login';
 
     <body>
         <Navbar page={page}/>
-        <main class={isIndex ? "" : "container mt-6"}>
+        <main class={isIndex ? "" : (isAdmin ? "d-flex" : "container mt-6")}>
             <slot />
         </main>
-        <Footer/>
+        <Footer page={page} />
     </body>
     
 </html>
