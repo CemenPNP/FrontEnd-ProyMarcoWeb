@@ -1,10 +1,61 @@
 ---
 import MapaInteractivo from "@/components/MapaInteractivo"
 import Layout from "@/layouts/Layout.astro"
+import ServiceCard from '@/components/CardServicio.astro';
+import Separacion from "@/components/Separacion.astro";
+
+const services = [
+    {
+        page: '/servicios/reserva-nichos',
+        image: '/servicios/nichos.png',
+        titulo: 'Reserva de Nichos',
+        texto: 'Ofrecemos servicios de reserva de nichos para asegurar un lugar digno para el descanso eterno de sus seres queridos.',
+    },
+    {
+        page: '/servicios/reserva-misa',
+        image: '/servicios/misa.png',
+        titulo: 'Reserva de Misas',
+        texto: 'Ofrecemos servicios de reserva de misas privadas y publicas para la commemoracion de sus seres mas queridos.',
+    },
+    {
+        page: '/servicios/cremacion',
+        image: '/servicios/cremacion.png',
+        titulo: 'Servicios de Cremación',
+        texto: 'Proporcionamos servicios completos de cremación con respeto y profesionalismo.',
+    },
+    {
+        page: '/servicios/funerarias',
+        image: '/servicios/funerarias.png',
+        titulo: 'Servicios Funerarios',
+        texto: 'Contamos con una variedad de servicios funerarios para apoyar a las familias durante momentos difíciles.',
+    },
+    {
+        page: '/servicios/mantenimiento-nichos',
+        image: '/servicios/mantenimiento-nichos.png',
+        titulo: 'Mantenimiento de Nichos',
+        texto: 'Ofrecemos programas de mantenimiento para asegurar que los nichos se mantengan en óptimas condiciones.',
+    },
+    {
+        page: '/servicios/apoyo-duelo',
+        image: '/servicios/apoyo-duelo.png',
+        titulo: 'Apoyo en Duelo',
+        texto: 'Brindamos apoyo emocional y asesoramiento a las familias en duelo para ayudarles a superar el proceso.',
+    }
+];
 ---
 
 <Layout title="Servicos">
-    <div class="container my-5">
-        <MapaInteractivo client:visible/>
+    <Separacion texto="Nuestros Servicios Generales"/>
+    <div class="row">
+        {services.map(service => (
+            <ServiceCard
+                page={service.page}
+                image={service.image}
+                titulo={service.titulo}
+                texto={service.texto}
+            />
+        ))}
     </div>
+    <Separacion texto="Servicios extras"/>
+    <MapaInteractivo client:visible/>
 </Layout>
