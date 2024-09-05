@@ -66,9 +66,11 @@ import '/node_modules/lightgallery/css/lightgallery-bundle.min.css'
     </div>
     <script type="module" src="/node_modules/lightgallery/lightgallery.min.js"></script>
     <script type="module">
-        const container = document.querySelector('#lightGallery')
-        window.lightGallery(container, {
-            selector: '.lg-item',
-        })
+        document.addEventListener('astro:page-load', () => {
+            const container = document.querySelector('#lightGallery')
+            window.lightGallery(container, {
+                selector: '.lg-item',
+            })
+        });
     </script>
 </Layout>
