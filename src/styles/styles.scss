@@ -7,7 +7,7 @@
 // $body-bg: #ffffff;
 // $body-color: #000000;
 
-// $primary: #0074d9;
+$primary: #009970;
 // $danger: #ff4136;
 
 // $theme-colors: (
@@ -16,7 +16,7 @@
 // );
 
 $custom-colors: (
-  "custom": #900
+  "primary": $primary,
 );
 
 $custom-spacers: (
@@ -24,14 +24,13 @@ $custom-spacers: (
   7: $spacer * 7,
   8: $spacer * 8,
   9: $spacer * 9,
-  10: $spacer * 10
+  10: $spacer * 10,
 );
 
 $enable-negative-margins: true;
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
 $spacers: map-merge($spacers, $custom-spacers);
-
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
