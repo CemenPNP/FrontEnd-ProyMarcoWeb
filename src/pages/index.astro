@@ -36,9 +36,9 @@ import CardServicio from '@/components/CardServicio.astro'
             <a href="/servicios" class="text-success">Ver todos los servicios</a>
         </div>
         <div class="row">
-            <CardServicio image='/servicios/misa.png' page='/servicios' texto='Servicio de reserva para misas en conmemoración de sus seres queridos.' titulo='Reserva de Misa'/>
-            <CardServicio image='/servicios/nichos.png' page='/servicios' texto='Ofrecemos nichos para la sepultura de sus seres queridos en un entorno seguro y digno.' titulo='Venta de Nichos'/>
-            <CardServicio image='/servicios/funerarias.png' page='/servicios' texto='Servicios funerarios completos con la mayor profesionalidad y respeto.' titulo='Santos Funerarios'/>
+            <CardServicio image='/servicios/misa.png' page='/servicios/reserva-misa' texto='Ofrecemos servicios de reserva de misas privadas y publicas para la commemoracion de sus seres mas queridos.' titulo='Reserva de Misa'/>
+            <CardServicio image='/servicios/nichos.png' page='/servicios/reserva-nichos' texto='Ofrecemos servicios de reserva de nichos para asegurar un lugar digno para el descanso eterno de sus seres queridos.' titulo='Reserva de Nichos'/>
+            <CardServicio image='/servicios/funerarias.png' page='/servicios/funerarias' texto='Contamos con una variedad de servicios funerarios para apoyar a las familias durante momentos difíciles.' titulo='Servicios Funerarios'/>
         </div>
 
         <Separacion texto='Ubicanos'/>
@@ -55,20 +55,55 @@ import CardServicio from '@/components/CardServicio.astro'
                 <a href="/contactanos" class="btn btn btn-success mx-5 d-block">Contactanos</a>
             </div>
             <div class="col-lg-8 d-flex justify-content-center align-items-center mb-4 p-0 mb-lg-0">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15600.407177519312!2d-76.9832755!3d-12.1734725!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9b5050e9f11%3A0x4447ca64566d5452!2sParque%20Ecologico%20Camposanto%20Santa%20Rosa%20de%20Lima!5e0!3m2!1ses!2spe!4v1725410183365!5m2!1ses!2spe" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15600.407177519312!2d-76.9832755!3d-12.1734725!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9b5050e9f11%3A0x4447ca64566d5452!2sParque%20Ecologico%20Camposanto%20Santa%20Rosa%20de%20Lima!5e0!3m2!1ses!2spe!4v1725410183365!5m2!1ses!2spe" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
             </div>
         </div>
 
         <Separacion texto='Reseñas'/>
 
-        <div class="row">
-            <ResenaCard usuario='María López' fecha='14/08/2024' estrellas={5} comentario='El lugar es muy tranquilo y respetuoso. La atención del personal fue impecable en todo momento. Definitivamente lo recomiendo.'/>
-            <ResenaCard usuario='Carlos Ramírez' fecha='10/08/2024' estrellas={4} comentario='El servicio fue muy bueno, aunque en horas pico puede haber algo de demora. Sin embargo, el lugar es muy limpio y ordenado.'/>
-            <ResenaCard usuario='Ana Torres' fecha='09/08/2024' estrellas={4.5} comentario='El ambiente es muy sereno y bien cuidado. El personal fue muy amable y atento. La capilla es un lugar muy bonito para despedir a un ser querido.'/>
-            <ResenaCard usuario='Luis Fernández' fecha='05/08/2024' estrellas={3.5} comentario='El cementerio está bien cuidado, pero el acceso en carro puede ser complicado en horas punta. Deberían mejorar la señalización.'/>
-            <ResenaCard usuario='Sofía Pérez' fecha='03/08/2024' estrellas={4.5} comentario='Muy buen lugar, limpio y ordenado. El personal es respetuoso y muy atento a nuestras necesidades. Lo recomiendo sin duda.'/>
-            <ResenaCard usuario='José Martínez' fecha='01/08/2024' estrellas={5} comentario='Un lugar de paz y tranquilidad. La misa fue muy emotiva y el personal se aseguró de que todo saliera perfecto.'/>
-        </div>
+        <section class="splide">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <li class="splide__slide">
+                    <ResenaCard usuario='María López' fecha='14/08/2024' estrellas={5} comentario='El lugar es muy tranquilo y respetuoso. La atención del personal fue impecable en todo momento. Definitivamente lo recomiendo.'/>
+                </li>
+                <li class="splide__slide">
+                    <ResenaCard usuario='Carlos Ramírez' fecha='10/08/2024' estrellas={4} comentario='El servicio fue muy bueno, aunque en horas pico puede haber algo de demora. Sin embargo, el lugar es muy limpio y ordenado.'/>
+                </li>
+                <li class="splide__slide">
+                    <ResenaCard usuario='Ana Torres' fecha='09/08/2024' estrellas={4.5} comentario='El ambiente es muy sereno y bien cuidado. El personal fue muy amable y atento. La capilla es un lugar muy bonito para despedir a un ser querido.'/>
+                </li>
+                <li class="splide__slide">
+                    <ResenaCard usuario='Luis Fernández' fecha='05/08/2024' estrellas={3.5} comentario='El cementerio está bien cuidado, pero el acceso en carro puede ser complicado en horas punta. Deberían mejorar la señalización.'/>
+                </li>
+                <li class="splide__slide">
+                    <ResenaCard usuario='José Martínez' fecha='01/08/2024' estrellas={5} comentario='Un lugar de paz y tranquilidad. La misa fue muy emotiva y el personal se aseguró de que todo saliera perfecto.'/>
+                </li>
+                <li class="splide__slide">
+                    <ResenaCard usuario='Sofía Pérez' fecha='03/08/2024' estrellas={4.5} comentario='Muy buen lugar, limpio y ordenado. El personal es respetuoso y muy atento a nuestras necesidades. Lo recomiendo sin duda.'/>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <script type="module">
+            new Splide(".splide", {
+                type: "loop",
+                perPage: 3,
+                arrows: false,
+                pagination: false,
+                focus: "center",
+                gap: "1em",
+                autoScroll: {
+                    speed: 1,
+                },
+                breakpoints: {
+                    640: {
+                        perPage: 2,
+                    },
+                }
+            }).mount(window.splide.Extensions);
+          </script>
     </main>
 </Layout>
 
