@@ -9,14 +9,14 @@ import Footer from '@/components/Footer.astro'
 import { ViewTransitions } from 'astro:transitions'
 import Navbar from '@/components/Navbar.astro'
 const page = Astro.url.pathname
-const isIndex = page === '/' || page === '/login' || page === '/nosotros'
+
+const serviciosRegex = /^\/servicios\/.+$/
+const noMargin = page === '/' || page === '/login' || page === '/nosotros' || serviciosRegex.test(page)
 const isAdmin = page === '/administrador'
-console.log(isAdmin)
 ---
 
 <!DOCTYPE html>
 <html lang="es">
-    
     <head>
         <meta charset="UTF-8" />
         <meta name="description" content="Astro description" />
@@ -27,13 +27,18 @@ console.log(isAdmin)
         <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
         <script type="module" src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
+        <link rel="stylesheet" href="/node_modules/@splidejs/splide/dist/css/splide.min.css">
+        <script type="module" src="/node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+        <script type="module" src="/node_modules/@splidejs/splide-extension-auto-scroll/dist/js/splide-extension-auto-scroll.min.js"></script>
+
+
         <title>Camposanto Santa Rosa | {title}</title>
         <ViewTransitions/>
     </head>
 
     <body>
         <Navbar page={page}/>
-        <main class={isIndex ? "" : (isAdmin ? "d-flex" : "container mt-6")}>
+        <main class={noMargin ? "" : (isAdmin ? "d-flex" : "container mt-6")}>
             <slot />
         </main>
         <Footer page={page} />
@@ -41,6 +46,37 @@ console.log(isAdmin)
     
 </html>
 
-<!-- <style is:global>
-
-</style> -->
+<style is:global>
+    /* @font-face{
+        font-family: 'Fredoka';
+        src: url('/fonts/Fredoka-VariableFont.ttf') format('truetype');
+        font-weight: 100 900;
+        font-stretch: 75% 100%;
+        font-style: normal;
+        font-display: swap;
+    } */
+    @font-face {
+        font-family: 'Rubik';
+        src: url('/fonts/Rubik-VariableFont.ttf') format('truetype');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+    }
+    /* @font-face {
+        font-family: 'Rubik-Italic';
+        src: url('/fonts/Rubik-Italic-VariableFont.ttf');
+        font-weight: 100 900;
+        font-style: italic;
+        font-display: swap;
+    } */
+    @font-face {
+        font-family: 'Quicksand';
+        src: url('/fonts/Quicksand-VariableFont.ttf') format('truetype');
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+    }
+    body{
+        font-family: 'Quicksand', system-ui;
+    }
+</style>
