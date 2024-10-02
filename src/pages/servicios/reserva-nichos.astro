@@ -5,7 +5,7 @@ import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Reserva de nichos">
-    <div class="bg-success uwu text-light" style="clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);">
+    <div class="bg-success uwu text-light">
         <div class="container xd">
             <div class="waza">
                 <a href="/servicios" class="text-decoration-none">
@@ -13,7 +13,7 @@ import Layout from "@/layouts/Layout.astro"
                     Regregar
                 </a>
                 <h1>Reserva de nichos</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium corporis sint blanditiis molestias quibusdam nesciunt quisquam, sed debitis laborum doloremque.</p>
+                <p>El servicio de reserva de nichos te permite asegurar un espacio en nuestro cementerio, brindando tranquilidad y un lugar digno para el descanso eterno de tus seres queridos.</p>
                 <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">Reservar</button>
             </div>
             <div class="ppp">
@@ -26,32 +26,30 @@ import Layout from "@/layouts/Layout.astro"
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="formModalLabel">Solicitud de misa</h1>
+                    <h2 class="modal-title fs-5" id="formModalLabel">Solicitud de misa</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form>
                     <div class="modal-body">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingName" placeholder="Name Lastname">
-                            <label for="floatingName">Nombre</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
-                            <label for="floatingEmail">Correo</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" aria-label="select asunto" id="floatingAsunto">
-                                <option selected>waza</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                                <option value="otro">Otro</option>
+                            <select class="form-select" aria-label="selector de tipo de nicho" id="floatingTipoNicho">
+                                <option value="individual" selected>Nicho individual</option>
+                                <option value="familiar">Nicho Familiar</option>
+                                <option value="conmemorativo">Nicho Conmemorativo</option>
+                                <option value="premium">Nicho Premium</option>
+                                <option value="temporal">Nicho Temporal</option>
                             </select>
-                            <label for="floatingAsunto">Asunto</label>
+                            <label for="floatingTipoNicho">Tipo de nicho</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingAsuntoEspecifico" placeholder="Asunto especifico">
-                            <label for="floatingAsuntoEspecifico">Asunto especifico</label>
+                            <select class="form-select" aria-label="selector de ubicacion de nicho" id="floatingUbicacionNicho">
+                                <option value="seccion-01" selected>SECCION-01</option>
+                                <option value="seccion-02">SECCION-02</option>
+                                <option value="seccion-03">SECCION-03</option>
+                                <option value="seccion-04">SECCION-04</option>
+                                <option value="seccion-05">SECCION-05</option>
+                            </select>
+                            <label for="floatingUbicacionNicho">Ubicacion del nicho</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="date" class="form-control" id="floatingDate" placeholder="Date">
@@ -169,19 +167,20 @@ import Layout from "@/layouts/Layout.astro"
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
     }
     .xd{
         display: flex;
         justify-content: space-between;
         padding: 8rem 0 0 0;
     }
-    img{
-        width: 100%;
-        height: auto;
-        border-radius: 6px;
-    }
     .ppp{
         flex-shrink: 1;
+        & img{
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
     }
     .waza{
         position: relative;
@@ -254,7 +253,7 @@ import Layout from "@/layouts/Layout.astro"
             }
         }
         .uwu{
-            padding-bottom: 2rem;
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
         }
     }
 </style>

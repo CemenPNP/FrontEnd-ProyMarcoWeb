@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Funerarias">
-  <div class="bg-success uwu text-light" style="clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);">
+  <div class="bg-success uwu text-light">
     <div class="container xd">
         <div class="waza">
             <a href="/servicios" class="text-decoration-none">
@@ -11,47 +11,44 @@ import Layout from "@/layouts/Layout.astro"
                 Regregar
             </a>
                 <h1>Servicios funerarios</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium corporis sint blanditiis molestias quibusdam nesciunt quisquam, sed debitis laborum doloremque.</p>
-                <!-- <button>Reservar</button> -->
+                <p>Ofrecemos servicios funerarios completos, acompañándote en cada paso del proceso con respeto y profesionalismo, brindando apoyo en estos momentos difíciles para ti y tu familia.</p>
+                <!-- <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">Reservar</button> -->
         </div>
-        <img src="/servicios/funerarias.png" alt="">
+        <div class="ppp">
+            <img src="/servicios/funerarias.png" alt="">
+        </div>
     </div>
-    <i class="bi bi-arrow-down-circle-fill"></i>
+    <!-- <i class="bi bi-arrow-down-circle-fill"></i> -->
 </div>
-<br><br><br><br><br><br><br><br><br><br>
 </Layout>
 <style>
-      .bi-arrow-down-circle-fill{
-        font-size: xx-large;
-        margin: 1rem auto;
-    }
-    .popo{
-        text-align: center;
-        z-index: 10;
-    }
     .uwu{
-        height: 35rem;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding-bottom: 3.5rem;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
     }
     .xd{
         display: flex;
         justify-content: space-between;
-    }
-    img{
-        height: 20rem;
-        border-radius: 6px;
-    }
-    .container{
         padding: 8rem 0 0 0;
+    }
+    .ppp{
+        flex-shrink: 1;
+        & img{
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
     }
     .waza{
         position: relative;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        max-width: 35rem;
+        width: 35rem;
         & a{
             position: absolute;
             top: 0;
@@ -66,35 +63,29 @@ import Layout from "@/layouts/Layout.astro"
             font-weight:600;
         }
     }
-    button {
-        color: white;
-        width: 10rem;
-        padding: .5rem 1rem;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 1px solid white;
-        border-radius: 8px;
-        backdrop-filter: blur(4px);
-        overflow: hidden;
-        transition: transform 200ms ease, background-color 200ms ease;
-        position: relative;
-        z-index: 1;
-        &::before{
-            content: "";
-            position: absolute;
-            top: 0;
-            transition: left 300ms ease;
-            z-index: -1;
-            background-color: rgba(255, 255, 255, 0.4);
-            left: -85%;
-            width: 100%;
-            height: 150%;
-            transform: rotate(45deg);
-        }
-        &:hover{
-            transform: translateY(.3rem);
-            &::before{
-                left: 100%;
+
+    @media (max-width: 991.98px) {
+        .xd{
+            flex-direction: column;
+            text-align: center;
+            & .waza{
+                width: 100%;
+                & a{
+                    left: .5rem;
+                }
+                & h1{
+                    margin: 1.5rem 0 0 0;
+                }
+                & #reserva{
+                    margin: 0 auto 1rem auto;
+                }
             }
+            & .ppp{
+                padding: 1rem;
+            }
+        }
+        .uwu{
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
         }
     }
 </style>

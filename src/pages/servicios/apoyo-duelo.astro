@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro"
 ---
 
-<Layout title="Apoyo de duelo">
+<!-- <Layout title="Apoyo de duelo">
   <div class="bg-success uwu text-light" style="clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);">
     <div class="container xd">
         <div class="waza">
@@ -12,47 +12,63 @@ import Layout from "@/layouts/Layout.astro"
             </a>
                 <h1>Apoyo de duelo</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium corporis sint blanditiis molestias quibusdam nesciunt quisquam, sed debitis laborum doloremque.</p>
-                <!-- <button>Reservar</button> -->
         </div>
         <img src="/servicios/apoyo-duelo.png" alt="">
     </div>
     <i class="bi bi-arrow-down-circle-fill"></i>
 </div>
 <br><br><br><br><br><br><br><br><br><br>
+</Layout> -->
+<Layout title="Apoyo de duelo">
+    <div class="bg-success uwu text-light">
+      <div class="container xd">
+          <div class="waza">
+              <a href="/servicios" class="text-decoration-none">
+                  <i class="bi bi-arrow-left"></i>
+                  Regregar
+              </a>
+                  <h1>Apoyo de duelo</h1>
+                  <p>Brindamos apoyo en duelo con servicios especializados que te acompañan emocionalmente en la pérdida de un ser querido, ayudando en el proceso de sanación y aceptación.</p>
+                  <!-- <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">Reservar</button> -->
+          </div>
+          <div class="ppp">
+              <img src="/servicios/apoyo-duelo.png" alt="">
+          </div>
+      </div>
+      <!-- <i class="bi bi-arrow-down-circle-fill"></i> -->
+  </div>
 </Layout>
 
 <style>
-      .bi-arrow-down-circle-fill{
-        font-size: xx-large;
-        margin: 1rem auto;
-    }
-    .popo{
-        text-align: center;
-        z-index: 10;
-    }
     .uwu{
-        height: 35rem;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding-bottom: 3.5rem;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
     }
     .xd{
         display: flex;
         justify-content: space-between;
-    }
-    img{
-        height: 20rem;
-        border-radius: 6px;
-    }
-    .container{
         padding: 8rem 0 0 0;
+        /* gap: 1rem; */
+    }
+    .ppp{
+        flex-shrink: 1;
+        width: 50%;
+        & img{
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
     }
     .waza{
         position: relative;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        max-width: 35rem;
+        width: 35rem;
         & a{
             position: absolute;
             top: 0;
@@ -67,35 +83,30 @@ import Layout from "@/layouts/Layout.astro"
             font-weight:600;
         }
     }
-    button {
-        color: white;
-        width: 10rem;
-        padding: .5rem 1rem;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 1px solid white;
-        border-radius: 8px;
-        backdrop-filter: blur(4px);
-        overflow: hidden;
-        transition: transform 200ms ease, background-color 200ms ease;
-        position: relative;
-        z-index: 1;
-        &::before{
-            content: "";
-            position: absolute;
-            top: 0;
-            transition: left 300ms ease;
-            z-index: -1;
-            background-color: rgba(255, 255, 255, 0.4);
-            left: -85%;
-            width: 100%;
-            height: 150%;
-            transform: rotate(45deg);
-        }
-        &:hover{
-            transform: translateY(.3rem);
-            &::before{
-                left: 100%;
+
+    @media (max-width: 991.98px) {
+        .xd{
+            flex-direction: column;
+            text-align: center;
+            & .waza{
+                width: 100%;
+                & a{
+                    left: .5rem;
+                }
+                & h1{
+                    margin: 1.5rem 0 0 0;
+                }
+                & #reserva{
+                    margin: 0 auto 1rem auto;
+                }
             }
+            & .ppp{
+                padding: 1rem;
+                width: 100%;
+            }
+        }
+        .uwu{
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
         }
     }
 </style>
