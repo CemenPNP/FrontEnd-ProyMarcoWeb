@@ -5,7 +5,7 @@ import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Reserva de nichos">
-    <div class="bg-success uwu text-light" style="clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);">
+    <div class="bg-success uwu text-light" style="clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);">
         <div class="container xd">
             <div class="waza">
                 <a href="/servicios" class="text-decoration-none">
@@ -16,7 +16,9 @@ import Layout from "@/layouts/Layout.astro"
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium corporis sint blanditiis molestias quibusdam nesciunt quisquam, sed debitis laborum doloremque.</p>
                 <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">Reservar</button>
             </div>
-            <img src="/servicios/nichos.png" alt="">
+            <div class="ppp">
+                <img src="/servicios/nichos.png" alt="">
+            </div>
         </div>
         <i class="bi bi-arrow-down-circle-fill"></i>
     </div>
@@ -163,7 +165,7 @@ import Layout from "@/layouts/Layout.astro"
         }
     }
     .uwu{
-        height: 37rem;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -174,15 +176,19 @@ import Layout from "@/layouts/Layout.astro"
         padding: 8rem 0 0 0;
     }
     img{
-        height: 23rem;
+        width: 100%;
+        height: auto;
         border-radius: 6px;
+    }
+    .ppp{
+        flex-shrink: 1;
     }
     .waza{
         position: relative;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        max-width: 35rem;
+        width: 35rem;
         & a{
             position: absolute;
             top: 0;
@@ -225,6 +231,30 @@ import Layout from "@/layouts/Layout.astro"
             &::before{
                 left: 100%;
             }
+        }
+    }
+    @media (max-width: 991.98px) {
+        .xd{
+            flex-direction: column;
+            text-align: center;
+            & .waza{
+                width: 100%;
+                & a{
+                    left: .5rem;
+                }
+                & h1{
+                    margin: 1.5rem 0 0 0;
+                }
+                & #reserva{
+                    margin: 0 auto 1rem auto;
+                }
+            }
+            & .ppp{
+                padding: 1rem;
+            }
+        }
+        .uwu{
+            padding-bottom: 2rem;
         }
     }
 </style>
