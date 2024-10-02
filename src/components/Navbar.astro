@@ -16,6 +16,98 @@ const { page } = Astro.props
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Camposanto Santa Rosa</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <div class="offcanvas-body d-flex flex-column">
+          <ul class="navbar-nav justify-content-lg-center flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/' ? 'active' : ''}`} aria-current="page" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/nosotros' ? 'active' : ''}`} href="/nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/servicios' ? 'active' : ''}`} href="/servicios">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/galeria' ? 'active' : ''}`} href="/galeria">Galeria</a>
+            </li>
+            <li class="nav-item">
+              <a class={`nav-link position-relative fw-semibold mx-lg-2 ${page === '/contactanos' ? 'active' : ''}`} href="/contactanos">Contactanos</a>
+            </li>
+          </ul>
+          <!-- Botón de inicio de sesión agregado al final del offcanvas -->
+          <div class="d-lg-none mt-auto text-center pb-3">
+            <a href="/login" class="login-button text-decoration-none text-white rounded-4 px-3 py-2">Iniciar sesión</a>
+          </div>
+        </div>
+      </div>
+      <a href="/login" class="login-button text-decoration-none text-reset rounded-4 px-3 py-2 d-none d-lg-block">Iniciar sesión</a>
+      <button class="navbar-toggler border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <style>
+    .navbar-brand{
+        color: #009970;
+        transition: 0.3s color;
+        &:hover{
+            color: #000;
+        }
+    }
+    .login-button{
+        background-color: #009970;
+        transition: 0.3s background-color;
+        &:hover{
+            background-color: #00b383;
+        }
+    }
+    .navbar-toggler:focus, .btn-close:focus{
+        box-shadow: none;
+        outline: none;
+    }
+    .nav-link:hover, .nav-link.active{
+        color: #000;
+    }
+    @media (min-width: 991px) {
+        .nav-link::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #009970;
+            visibility: hidden;
+            transition: 0.3s ease-in-out;
+        }
+        .nav-link:hover::before, .nav-link.active::before{
+            width: 100%;
+            visibility: visible;
+        }
+    }
+  </style>
+
+
+<!-- ---
+interface Props {
+  page: string
+}
+const { page } = Astro.props
+---
+
+<nav class={`navbar navbar-expand-lg fixed-top border border-top-0 bg-light rounded-4 my-2 mx-4 ${page === '/administrador' ? 'd-none' : ''}`}>
+    <div class="container-fluid text-light">
+      <a class="navbar-brand me-auto d-flex align-items-center gap-2 fw-semibold fs-3" href="/">
+        <img class="ratio ratio-1x1" height="50px" width="50px" src="/favicon.png" alt="icono principal"/>
+        Santa Rosa
+      </a>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Camposanto Santa Rosa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
             <li class="nav-item">
@@ -84,4 +176,4 @@ const { page } = Astro.props
             visibility: visible;
         }
     }
-  </style>
+  </style> -->
