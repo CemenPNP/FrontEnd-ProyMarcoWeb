@@ -1,0 +1,77 @@
+/* Contenedor del formulario */
+.new-employee-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  font-family: "Quicksand", sans-serif;
+  /* max-width: 600px; */
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Cada campo ocupa una celda en la grid */
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Etiquetas */
+.new-employee-form label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* Inputs y Select */
+.new-employee-form input[type="text"],
+.new-employee-form input[type="number"],
+.new-employee-form select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.new-employee-form input:focus,
+.new-employee-form select:focus {
+  border-color: #009970;
+  outline: none;
+}
+
+.new-employee-form select {
+  appearance: none;
+  background-color: #f9f9f9;
+}
+
+/* Botón */
+.submit-button {
+  grid-column: span 2;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #009970;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  max-width: 400px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #007c5b;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .new-employee-form {
+    grid-template-columns: 1fr;
+  }
+}

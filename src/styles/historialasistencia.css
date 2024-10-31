@@ -1,0 +1,28 @@
+/* Estilos del contenedor principal */
+.historial-container {
+  padding: 20px;
+  font-family: "Quicksand", sans-serif;
+  color: #333;
+}
+
+.historial-container h1 {
+  font-size: 2rem;
+  color: #009970;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.historial-container h2 {
+  font-size: 1.5rem;
+  color: #005b40;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.fecha-container {
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}

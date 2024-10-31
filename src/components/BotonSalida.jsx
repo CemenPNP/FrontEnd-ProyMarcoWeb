@@ -1,7 +1,7 @@
 const BotonSalida = ({ dni }) => {
   const handleRegistrarSalida = async () => {
     const fechaActual = new Date().toISOString().split('T')[0];
-    const horaActual = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }).replace(':', '.');
+    const horaActual = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
 
     const data = {
       dni: dni,

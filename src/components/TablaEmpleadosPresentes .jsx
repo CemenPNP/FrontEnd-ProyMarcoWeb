@@ -1,5 +1,25 @@
 import { useEffect, useState } from "react";
 import BotonSalida from "./BotonSalida";
+import "@/styles/tablaempleadospresentes.css";
+
+const getColorBasedOnTime = (horaIngreso, horaEntrada) => {
+  if (!horaIngreso || !horaEntrada) return { color: "gray", text: "Sin registro" };
+
+  const [ingresoH, ingresoM] = horaIngreso.split(":").map(Number);
+  const [entradaH, entradaM] = horaEntrada.split(":").map(Number);
+
+  const dateIngreso = new Date();
+  dateIngreso.setHours(ingresoH, ingresoM);
+
+  const dateEntrada = new Date();
+  dateEntrada.setHours(entradaH, entradaM);
+
+  const differenceInMinutes = (dateIngreso - dateEntrada) / (1000 * 60);
+
+  if (differenceInMinutes < 0) return { color: "green", text: "Llegó a tiempo" };
+  if (differenceInMinutes <= 10) return { color: "orange", text: "Retraso menor a 10 min" };
+  return { color: "red", text: "Retraso mayor a 10 min" };
+};
 
 const TablaEmpleadosPresentes = () => {
   const [empleados, setEmpleados] = useState([]);
@@ -10,19 +30,14 @@ const TablaEmpleadosPresentes = () => {
     const obtenerEmpleados = async () => {
       try {
         const response = await fetch("http://localhost:8080/asistencia/empleados");
-        if (!response.ok) {
-          throw new Error("Error al obtener los empleados");
-        }
+        if (!response.ok) throw new Error("Error al obtener los empleados");
 
         const empleadosData = await response.json();
         const fechaActual = new Date().toISOString().split("T")[0];
 
-        const empleadosPresentes = empleadosData.filter((empleado) => {
-          const registroHoy = empleado.registroHorarios.find(
-            (registro) => registro.fecha === fechaActual
-          );
-          return registroHoy && registroHoy.horaIngreso;
-        });
+        const empleadosPresentes = empleadosData.filter((empleado) =>
+          empleado.registroHorarios.some((registro) => registro.fecha === fechaActual && registro.horaIngreso)
+        );
 
         setEmpleados(empleadosPresentes);
         setEmpleadosFiltrados(empleadosPresentes);
@@ -38,69 +53,71 @@ const TablaEmpleadosPresentes = () => {
     const valor = e.target.value.toLowerCase();
     setBusqueda(valor);
 
-    const filtrados = empleados.filter((empleado) => {
-      return (
-        empleado.nombre.toLowerCase().includes(valor) ||
-        empleado.apellido.toLowerCase().includes(valor) ||
-        empleado.dni.toString().includes(valor)
-      );
-    });
+    const filtrados = empleados.filter((empleado) =>
+      [empleado.nombre, empleado.apellido, empleado.dni.toString()].some((dato) =>
+        dato.toLowerCase().includes(valor)
+      )
+    );
 
     setEmpleadosFiltrados(filtrados);
   };
 
   return (
-    <div>
-      <h2>Empleados Presentes</h2>
+    <div className="tabla-empleados-container">
       <input
         type="text"
+        className="tabla-empleados-busqueda"
         placeholder="Buscar por nombre, apellido o DNI"
         value={busqueda}
         onChange={handleBusqueda}
-        style={{ padding: "10px", marginBottom: "20px", width: "95%", marginLeft: "auto", marginRight: "auto" }}
       />
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th style={{ border: "1px solid #ccc", padding: "10px" }}>Nombre</th>
-            <th style={{ border: "1px solid #ccc", padding: "10px" }}>Apellido</th>
-            <th style={{ border: "1px solid #ccc", padding: "10px" }}>DNI</th>
-            <th style={{ border: "1px solid #ccc", padding: "10px" }}>Hora de Ingreso</th>
-            <th style={{ border: "1px solid #ccc", padding: "10px" }}>Hora de Salida</th>
-          </tr>
-        </thead>
-        <tbody>
-          {empleadosFiltrados.length > 0 ? (
-            empleadosFiltrados.map((empleado) => {
-              const registroHoy = empleado.registroHorarios.find(
-                (registro) => registro.fecha === new Date().toISOString().split("T")[0]
-              );
-
-              return (
-                <tr key={empleado.id}>
-                  <td style={{ border: "1px solid #ccc", padding: "10px" }}>{empleado.nombre}</td>
-                  <td style={{ border: "1px solid #ccc", padding: "10px" }}>{empleado.apellido}</td>
-                  <td style={{ border: "1px solid #ccc", padding: "10px" }}>{empleado.dni}</td>
-                  <td style={{ border: "1px solid #ccc", padding: "10px" }}>{registroHoy.horaIngreso}</td>
-                  <td style={{ border: "1px solid #ccc", padding: "10px" }}>
-                    {registroHoy.horaSalida ? (
-                      registroHoy.horaSalida
-                    ) : (
-                      <BotonSalida key={empleado.id} dni={empleado.dni} client:load/>
-                    )}
-                  </td>
-                </tr>
-              );
-            })
-          ) : (
+      <div className="tabla-empleados-wrapper">
+        <table className="tabla-empleados">
+          <thead>
             <tr>
-              <td colSpan="5" style={{ padding: "10px", textAlign: "center" }}>
-                No hay empleados presentes
-              </td>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>DNI</th>
+              <th>Hora de Ingreso</th>
+              <th>Hora de Salida</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {empleadosFiltrados.length > 0 ? (
+              empleadosFiltrados.map((empleado) => {
+                const registroHoy = empleado.registroHorarios.find(
+                  (registro) => registro.fecha === new Date().toISOString().split("T")[0]
+                );
+                const horaEntrada = empleado.cargo.horaEntrada;
+                const { color, text } = getColorBasedOnTime(registroHoy.horaIngreso, horaEntrada);
+
+                return (
+                  <tr key={empleado.id}>
+                    <td>{empleado.nombre}</td>
+                    <td>{empleado.apellido}</td>
+                    <td>{empleado.dni}</td>
+                    <td>
+                      <span className={`tooltip tooltip-${color}`} data-tooltip={text}></span>
+                      {registroHoy.horaIngreso}
+                    </td>
+                    <td>
+                      {registroHoy.horaSalida ? (
+                        registroHoy.horaSalida
+                      ) : (
+                        <BotonSalida key={empleado.id} dni={empleado.dni} client:load />
+                      )}
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td colSpan="5">No hay empleados presentes</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

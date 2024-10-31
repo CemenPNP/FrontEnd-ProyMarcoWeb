@@ -1,0 +1,107 @@
+---
+import Admin from "@/layouts/Admin.astro"
+import FechaActual from "@/components/FechaActual"
+import { fetchEmpleados } from "@/lib/fetchEmpleados"
+import TablaEmpleadosPresentes from "@/components/TablaEmpleadosPresentes "
+import RegistroAsistencia from "@/components/RegistroAsistencia"
+
+const { totalEmpleados, presentes, ausentes, jornadaCompletada } =
+  await fetchEmpleados()
+
+console.log(totalEmpleados)
+---
+
+<Admin title="Admin">
+  <header>
+    <h1>Resumen del dia</h1>
+    <FechaActual client:load />
+  </header>
+  <section class="cards-container">
+    <div class="card">
+      <h2>Empleados Totales</h2>
+      <span class="number">{totalEmpleados}</span>
+    </div>
+    <div class="card">
+      <h2>Presentes</h2>
+      <span class="number">{presentes}</span>
+    </div>
+    <div class="card">
+      <h2>Ausentes</h2>
+      <span class="number">{ausentes}</span>
+    </div>
+    <RegistroAsistencia client:load />
+    <div class="card">
+      <h2>Jornada Terminada</h2>
+      <span class="number">{jornadaCompletada}</span>
+    </div>
+    <a href="/administrador/personal" class="card">
+      <h2>Registrar Nuevo Personal</h2>
+      <span class="number">→</span>
+    </a>
+  </section>
+
+  <section>
+    <TablaEmpleadosPresentes client:load />
+  </section>
+</Admin>
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #009970;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    & h1 {
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      font-family: "Quicksand", sans-serif;
+    }
+  }
+
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 1000px) {
+    .cards-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .cards-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s;
+    text-decoration: none;
+  }
+
+  .card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #009970;
+  }
+</style>

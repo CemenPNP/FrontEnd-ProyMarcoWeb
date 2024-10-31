@@ -1,0 +1,28 @@
+---
+import Admin from "@/layouts/Admin.astro"
+import TablaCargos from "@/components/TablaCargos"
+---
+
+<Admin title="Administrar Cargos">
+  <header>
+    <h1>Administrar Cargos</h1>
+  </header>
+  <section class="new-position-section">
+    <h2>Registrar Nuevo Cargo</h2>
+    <form class="new-position-form">
+      <label for="nombre">Nombre del Cargo:</label>
+      <input type="text" id="nombre" name="nombre" />
+
+      <label for="horaIngreso">Hora de Ingreso:</label>
+      <input type="time" id="horaIngreso" name="horaIngreso" />
+
+      <label for="horaSalida">Hora de Salida:</label>
+      <input type="time" id="horaSalida" name="horaSalida" />
+
+      <button type="submit">Registrar Nuevo Cargo</button>
+    </form>
+  </section>
+  <section>
+    <TablaCargos client:load />
+  </section>
+</Admin>

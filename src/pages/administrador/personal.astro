@@ -1,0 +1,38 @@
+---
+import Admin from "@/layouts/Admin.astro"
+import TablaEmpleados from "@/components/TablaEmpleados"
+import FormNewPersonal from "@/components/FormNewPersonal"
+---
+
+<Admin title="">
+  <header>
+    <h1>Administrar Personal</h1>
+  </header>
+  <section>
+    <h2>Registrar Nuevo Personal</h2>
+    <FormNewPersonal client:load />
+  </section>
+  <section>
+    <TablaEmpleados client:load />
+  </section>
+</Admin>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #009970;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    & h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      font-family: "Quicksand", sans-serif;
+    }
+  }
+</style>

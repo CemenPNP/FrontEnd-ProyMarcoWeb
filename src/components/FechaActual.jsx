@@ -7,7 +7,7 @@ const FechaActual = () => {
   const fechaFormateada = `${dia}/${mes}/${año}`;
 
   return (
-      <span>{fechaFormateada}</span>
+      <span style={{fontSize: "1.3rem"}}>{fechaFormateada}</span>
   );
 };
 

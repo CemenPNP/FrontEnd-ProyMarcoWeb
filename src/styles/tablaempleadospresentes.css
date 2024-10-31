@@ -1,0 +1,105 @@
+/* Contenedor principal */
+.tabla-empleados-container {
+  margin-top: 25px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+}
+
+/* Input de búsqueda */
+.tabla-empleados-busqueda {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  border: 2px solid #009970;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.tabla-empleados-busqueda:focus {
+  border-color: #006e51;
+}
+
+/* Wrapper de la tabla con scroll */
+.tabla-empleados-wrapper {
+  overflow-x: auto;
+}
+
+/* Tabla de empleados */
+.tabla-empleados {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-empleados th,
+.tabla-empleados td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tabla-empleados thead {
+  background-color: #009970;
+  color: white;
+}
+
+.tabla-empleados tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Estilos para las filas pares en el cuerpo de la tabla */
+.tabla-empleados tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Tooltip en forma de círculo */
+.tooltip {
+  display: inline-block;
+  margin-right: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip-green {
+  background-color: green;
+}
+
+.tooltip-orange {
+  background-color: orange;
+}
+
+.tooltip-red {
+  background-color: red;
+}
+
+.tooltip-gray {
+  background-color: gray;
+}
+
+/* Estilo del texto en el tooltip que aparece al hacer clic */
+.tooltip[data-tooltip]:hover::after,
+.tooltip[data-tooltip]:focus::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50px;
+  top: -40px;
+  white-space: nowrap;
+  padding: 8px;
+  font-size: 0.85rem;
+  color: white;
+  background-color: black;
+  border-radius: 4px;
+  opacity: 0.9;
+  transform: translateX(-50%);
+  z-index: 10;
+}

@@ -1,0 +1,742 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "dni": 12345678,
+    "cargo": {
+      "id": 1,
+      "nombre": "Barrendero",
+      "horaEntrada": "7:00",
+      "horaSalida": "17:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 1,
+        "fecha": "2024-10-01",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 2,
+        "fecha": "2024-10-02",
+        "horaIngreso": "07:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 3,
+        "fecha": "2024-10-03",
+        "horaIngreso": "07:02",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 4,
+        "fecha": "2024-10-04",
+        "horaIngreso": "07:01",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 5,
+        "fecha": "2024-10-05",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 6,
+        "fecha": "2024-10-06",
+        "horaIngreso": "07:03",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 7,
+        "fecha": "2024-10-07",
+        "horaIngreso": "07:04",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 8,
+        "fecha": "2024-10-08",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 9,
+        "fecha": "2024-10-09",
+        "horaIngreso": "07:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 10,
+        "fecha": "2024-10-10",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Ana",
+    "apellido": "García",
+    "dni": 87654321,
+    "cargo": {
+      "id": 2,
+      "nombre": "Contador",
+      "horaEntrada": "8:00",
+      "horaSalida": "18:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 11,
+        "fecha": "2024-10-01",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 12,
+        "fecha": "2024-10-02",
+        "horaIngreso": "08:05",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 13,
+        "fecha": "2024-10-03",
+        "horaIngreso": "08:01",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 14,
+        "fecha": "2024-10-04",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 15,
+        "fecha": "2024-10-05",
+        "horaIngreso": "08:10",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 16,
+        "fecha": "2024-10-06",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 17,
+        "fecha": "2024-10-07",
+        "horaIngreso": "08:05",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 18,
+        "fecha": "2024-10-08",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 19,
+        "fecha": "2024-10-09",
+        "horaIngreso": "08:10",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 20,
+        "fecha": "2024-10-10",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Luis",
+    "apellido": "Martínez",
+    "dni": 11223344,
+    "cargo": {
+      "id": 3,
+      "nombre": "Asistente",
+      "horaEntrada": "9:00",
+      "horaSalida": "17:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 21,
+        "fecha": "2024-10-01",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 22,
+        "fecha": "2024-10-02",
+        "horaIngreso": "09:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 23,
+        "fecha": "2024-10-03",
+        "horaIngreso": "09:01",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 24,
+        "fecha": "2024-10-04",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 25,
+        "fecha": "2024-10-05",
+        "horaIngreso": "09:10",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 26,
+        "fecha": "2024-10-06",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 27,
+        "fecha": "2024-10-07",
+        "horaIngreso": "09:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 28,
+        "fecha": "2024-10-08",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 29,
+        "fecha": "2024-10-09",
+        "horaIngreso": "09:10",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 30,
+        "fecha": "2024-10-10",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "María",
+    "apellido": "López",
+    "dni": 44332211,
+    "cargo": {
+      "id": 4,
+      "nombre": "Gerente",
+      "horaEntrada": "8:00",
+      "horaSalida": "17:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 31,
+        "fecha": "2024-10-01",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 32,
+        "fecha": "2024-10-02",
+        "horaIngreso": "08:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 33,
+        "fecha": "2024-10-03",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 34,
+        "fecha": "2024-10-04",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 35,
+        "fecha": "2024-10-05",
+        "horaIngreso": "08:10",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 36,
+        "fecha": "2024-10-06",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 37,
+        "fecha": "2024-10-07",
+        "horaIngreso": "08:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 38,
+        "fecha": "2024-10-08",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 39,
+        "fecha": "2024-10-09",
+        "horaIngreso": "08:10",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 40,
+        "fecha": "2024-10-10",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "nombre": "Pedro",
+    "apellido": "Sánchez",
+    "dni": 55667788,
+    "cargo": {
+      "id": 1,
+      "nombre": "Barrendero",
+      "horaEntrada": "7:00",
+      "horaSalida": "17:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 41,
+        "fecha": "2024-10-01",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 42,
+        "fecha": "2024-10-02",
+        "horaIngreso": "07:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 43,
+        "fecha": "2024-10-03",
+        "horaIngreso": "07:02",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 44,
+        "fecha": "2024-10-04",
+        "horaIngreso": "07:01",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 45,
+        "fecha": "2024-10-05",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 46,
+        "fecha": "2024-10-06",
+        "horaIngreso": "07:03",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 47,
+        "fecha": "2024-10-07",
+        "horaIngreso": "07:04",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 48,
+        "fecha": "2024-10-08",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 49,
+        "fecha": "2024-10-09",
+        "horaIngreso": "07:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 50,
+        "fecha": "2024-10-10",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "nombre": "Sofía",
+    "apellido": "Torres",
+    "dni": 98765432,
+    "cargo": {
+      "id": 2,
+      "nombre": "Contador",
+      "horaEntrada": "8:00",
+      "horaSalida": "18:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 51,
+        "fecha": "2024-10-01",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 52,
+        "fecha": "2024-10-02",
+        "horaIngreso": "08:05",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 53,
+        "fecha": "2024-10-03",
+        "horaIngreso": "08:01",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 54,
+        "fecha": "2024-10-04",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 55,
+        "fecha": "2024-10-05",
+        "horaIngreso": "08:10",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 56,
+        "fecha": "2024-10-06",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 57,
+        "fecha": "2024-10-07",
+        "horaIngreso": "08:05",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 58,
+        "fecha": "2024-10-08",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 59,
+        "fecha": "2024-10-09",
+        "horaIngreso": "08:10",
+        "horaSalida": "18:00"
+      },
+      {
+        "id": 60,
+        "fecha": "2024-10-10",
+        "horaIngreso": "08:00",
+        "horaSalida": "18:00"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Carlos",
+    "apellido": "Hernández",
+    "dni": 33445566,
+    "cargo": {
+      "id": 3,
+      "nombre": "Asistente",
+      "horaEntrada": "9:00",
+      "horaSalida": "17:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 61,
+        "fecha": "2024-10-01",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 62,
+        "fecha": "2024-10-02",
+        "horaIngreso": "09:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 63,
+        "fecha": "2024-10-03",
+        "horaIngreso": "09:01",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 64,
+        "fecha": "2024-10-04",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 65,
+        "fecha": "2024-10-05",
+        "horaIngreso": "09:10",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 66,
+        "fecha": "2024-10-06",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 67,
+        "fecha": "2024-10-07",
+        "horaIngreso": "09:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 68,
+        "fecha": "2024-10-08",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 69,
+        "fecha": "2024-10-09",
+        "horaIngreso": "09:10",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 70,
+        "fecha": "2024-10-10",
+        "horaIngreso": "09:00",
+        "horaSalida": "17:00"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "nombre": "Laura",
+    "apellido": "Gómez",
+    "dni": 77889900,
+    "cargo": {
+      "id": 4,
+      "nombre": "Gerente",
+      "horaEntrada": "8:00",
+      "horaSalida": "17:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 71,
+        "fecha": "2024-10-01",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 72,
+        "fecha": "2024-10-02",
+        "horaIngreso": "08:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 73,
+        "fecha": "2024-10-03",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 74,
+        "fecha": "2024-10-04",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 75,
+        "fecha": "2024-10-05",
+        "horaIngreso": "08:10",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 76,
+        "fecha": "2024-10-06",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 77,
+        "fecha": "2024-10-07",
+        "horaIngreso": "08:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 78,
+        "fecha": "2024-10-08",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 79,
+        "fecha": "2024-10-09",
+        "horaIngreso": "08:10",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 80,
+        "fecha": "2024-10-10",
+        "horaIngreso": "08:00",
+        "horaSalida": "17:00"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "nombre": "Fernando",
+    "apellido": "Ramírez",
+    "dni": 22334455,
+    "cargo": {
+      "id": 1,
+      "nombre": "Barrendero",
+      "horaEntrada": "7:00",
+      "horaSalida": "17:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 81,
+        "fecha": "2024-10-01",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 82,
+        "fecha": "2024-10-02",
+        "horaIngreso": "07:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 83,
+        "fecha": "2024-10-03",
+        "horaIngreso": "07:02",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 84,
+        "fecha": "2024-10-04",
+        "horaIngreso": "07:01",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 85,
+        "fecha": "2024-10-05",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 86,
+        "fecha": "2024-10-06",
+        "horaIngreso": "07:03",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 87,
+        "fecha": "2024-10-07",
+        "horaIngreso": "07:04",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 88,
+        "fecha": "2024-10-08",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 89,
+        "fecha": "2024-10-09",
+        "horaIngreso": "07:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 90,
+        "fecha": "2024-10-10",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "nombre": "Marta",
+    "apellido": "Sánchez",
+    "dni": 11223344,
+    "cargo": {
+      "id": 1,
+      "nombre": "Barrendero",
+      "horaEntrada": "7:00",
+      "horaSalida": "17:00"
+    },
+    "registroHorarios": [
+      {
+        "id": 91,
+        "fecha": "2024-10-01",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 92,
+        "fecha": "2024-10-02",
+        "horaIngreso": "07:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 93,
+        "fecha": "2024-10-03",
+        "horaIngreso": "07:02",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 94,
+        "fecha": "2024-10-04",
+        "horaIngreso": "07:01",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 95,
+        "fecha": "2024-10-05",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 96,
+        "fecha": "2024-10-06",
+        "horaIngreso": "07:03",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 97,
+        "fecha": "2024-10-07",
+        "horaIngreso": "07:04",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 98,
+        "fecha": "2024-10-08",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 99,
+        "fecha": "2024-10-09",
+        "horaIngreso": "07:05",
+        "horaSalida": "17:00"
+      },
+      {
+        "id": 100,
+        "fecha": "2024-10-10",
+        "horaIngreso": "07:00",
+        "horaSalida": "17:00"
+      }
+    ]
+  }
+]

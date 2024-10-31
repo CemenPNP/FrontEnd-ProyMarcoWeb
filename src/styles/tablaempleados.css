@@ -1,0 +1,88 @@
+/* Contenedor general */
+.table-container {
+  width: 100%;
+  margin-top: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Scroll horizontal */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Input de búsqueda */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #009970;
+  outline: none;
+}
+
+/* Tabla */
+.table-empleados {
+  width: 100%;
+  min-width: 600px; /* Asegura que la tabla tenga un ancho mínimo para el scroll */
+  border-collapse: collapse;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table-empleados th,
+.table-empleados td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table-empleados thead th {
+  background-color: #009970;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.table-empleados tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-empleados tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table-empleados tbody td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Botones de acción */
+.action-btn {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Quicksand", sans-serif;
+}
+
+.action-btn.eliminar {
+  background-color: #f44336;
+}
+
+.action-btn.eliminar:hover {
+  background-color: #d32f2f;
+}
+
+/* Mensaje cuando no hay empleados */
+.no-employees-message {
+  text-align: center;
+  font-size: 1rem;
+  color: #777;
+  padding: 15px 0;
+}
