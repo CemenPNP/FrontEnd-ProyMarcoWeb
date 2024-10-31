@@ -55,6 +55,7 @@ const FormNewPersonal = () => {
       }
 
       console.log("Empleado creado exitosamente");
+      window.location.reload()
     } catch (error) {
       console.error("Error:", error.message);
     }

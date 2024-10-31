@@ -33,6 +33,7 @@ const RegistroAsistencia = () => {
       setDni('');
       alert('Asistencia registrada con éxito');
       setIsModalOpen(false);
+      window.location.reload()
     } catch (error) {
       console.error('Error:', error.message);
       alert('No se pudo registrar la asistencia: ' + error.message);
@@ -71,3 +72,4 @@ const RegistroAsistencia = () => {
 };
 
 export default RegistroAsistencia;
+RegistroAsistencia.jsx

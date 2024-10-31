@@ -1,10 +1,8 @@
-/* Contenedor del formulario */
 .new-employee-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   font-family: "Quicksand", sans-serif;
-  /* max-width: 600px; */
   margin: 20px 0;
   padding: 20px;
   background-color: #ffffff;
@@ -13,20 +11,17 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Cada campo ocupa una celda en la grid */
 .form-field {
   display: flex;
   flex-direction: column;
 }
 
-/* Etiquetas */
 .new-employee-form label {
   font-weight: bold;
   margin-bottom: 6px;
   color: #333;
 }
 
-/* Inputs y Select */
 .new-employee-form input[type="text"],
 .new-employee-form input[type="number"],
 .new-employee-form select {
@@ -48,9 +43,9 @@
   background-color: #f9f9f9;
 }
 
-/* Botón */
 .submit-button {
   grid-column: span 2;
+  display: block;
   padding: 12px;
   margin-top: 10px;
   background-color: #009970;
@@ -69,9 +64,11 @@
   background-color: #007c5b;
 }
 
-/* Responsivo */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .new-employee-form {
-    grid-template-columns: 1fr;
+    display: block;
+  }
+  .form-field {
+    margin-bottom: 20px;
   }
 }

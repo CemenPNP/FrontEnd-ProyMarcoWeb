@@ -1,6 +1,6 @@
 /* Estilos del contenedor principal */
 .historial-container {
-  padding: 20px;
+  /* padding: 20px; */
   font-family: "Quicksand", sans-serif;
   color: #333;
 }
@@ -21,8 +21,8 @@
 
 .fecha-container {
   margin-bottom: 30px;
-  padding: 10px;
-  border: 1px solid #ddd;
+  /* padding: 10px; */
+  /* border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; */
 }

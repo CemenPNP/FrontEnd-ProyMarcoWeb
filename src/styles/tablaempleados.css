@@ -79,6 +79,15 @@
   background-color: #d32f2f;
 }
 
+.action-btn.editar {
+  margin-left: 10px;
+  background-color: #40deb6;
+}
+
+.action-btn.editar:hover {
+  background-color: #2fd39c;
+}
+
 /* Mensaje cuando no hay empleados */
 .no-employees-message {
   text-align: center;

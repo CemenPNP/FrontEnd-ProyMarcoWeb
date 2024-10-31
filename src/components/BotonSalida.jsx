@@ -1,3 +1,5 @@
+import "@/styles/btnsalida.css"
+
 const BotonSalida = ({ dni }) => {
   const handleRegistrarSalida = async () => {
     const fechaActual = new Date().toISOString().split('T')[0];
@@ -23,13 +25,14 @@ const BotonSalida = ({ dni }) => {
       }
 
       console.log("Salida registrada exitosamente");
+      window.location.reload()
     } catch (error) {
       console.error("Error:", error.message);
     }
   };
 
   return (
-    <button onClick={handleRegistrarSalida}>
+    <button className="btn-salida" onClick={handleRegistrarSalida}>
       Registrar Salida
     </button>
   );
