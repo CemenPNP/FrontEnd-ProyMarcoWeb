@@ -1,69 +1,68 @@
 ---
 interface Props {
-    title: string
+  title: string
 }
 
 const { title } = Astro.props
 
 import Footer from "@/components/Footer.astro"
-// import { ViewTransitions } from 'astro:transitions'
+import { ViewTransitions } from "astro:transitions"
 import Navbar from "@/components/Navbar.astro"
 const page = Astro.url.pathname
 
 const serviciosRegex = /^\/servicios\/.+$/
 const noMargin =
-    page === "/" ||
-    page === "/login" ||
-    page === "/nosotros" ||
-    serviciosRegex.test(page)
+  page === "/" ||
+  page === "/login" ||
+  page === "/nosotros" ||
+  serviciosRegex.test(page)
 const isAdmin = page === "/administrador"
 ---
 
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
 
-        <link rel="stylesheet" href="/src/styles/styles.css" />
-        <!-- <link
-            rel="stylesheet"
-            href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
-        />
-        <script
-            type="module"
-            src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-        ></script>
+    <link rel="stylesheet" href="/src/styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <script
+      type="module"
+      src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-        <link
-            rel="stylesheet"
-            href="/node_modules/@splidejs/splide/dist/css/splide.min.css"
-        />
-        <script
-            type="module"
-            src="/node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
-        <script
-            type="module"
-            src="/node_modules/@splidejs/splide-extension-auto-scroll/dist/js/splide-extension-auto-scroll.min.js"
-        ></script> -->
+    <link
+      rel="stylesheet"
+      href="/node_modules/@splidejs/splide/dist/css/splide.min.css"
+    />
+    <script
+      type="module"
+      src="/node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+    <script
+      type="module"
+      src="/node_modules/@splidejs/splide-extension-auto-scroll/dist/js/splide-extension-auto-scroll.min.js"
+    ></script>
 
-        <title>Camposanto Santa Rosa | {title}</title>
-        <!-- <ViewTransitions /> -->
-    </head>
+    <title>Camposanto Santa Rosa | {title}</title>
+    <ViewTransitions />
+  </head>
 
-    <body>
-        <Navbar page={page} />
-        <main class={noMargin ? "" : isAdmin ? "d-flex" : "container mt-6"}>
-            <slot />
-        </main>
-        <Footer page={page} />
-    </body>
+  <body>
+    <Navbar page={page} />
+    <main class={noMargin ? "" : isAdmin ? "d-flex" : "container mt-6"}>
+      <slot />
+    </main>
+    <Footer page={page} />
+  </body>
 </html>
 
 <style is:global>
-    /* @font-face{
+  /* @font-face{
         font-family: 'Fredoka';
         src: url('/fonts/Fredoka-VariableFont.ttf') format('truetype');
         font-weight: 100 900;
@@ -71,28 +70,28 @@ const isAdmin = page === "/administrador"
         font-style: normal;
         font-display: swap;
     } */
-    @font-face {
-        font-family: "Rubik";
-        src: url("/fonts/Rubik-VariableFont.ttf") format("truetype");
-        font-weight: 100 900;
-        font-style: normal;
-        font-display: swap;
-    }
-    /* @font-face {
+  @font-face {
+    font-family: "Rubik";
+    src: url("/fonts/Rubik-VariableFont.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* @font-face {
         font-family: 'Rubik-Italic';
         src: url('/fonts/Rubik-Italic-VariableFont.ttf');
         font-weight: 100 900;
         font-style: italic;
         font-display: swap;
     } */
-    @font-face {
-        font-family: "Quicksand";
-        src: url("/fonts/Quicksand-VariableFont.ttf") format("truetype");
-        font-weight: 100 900;
-        font-style: normal;
-        font-display: swap;
-    }
-    body {
-        font-family: "Quicksand", system-ui;
-    }
+  @font-face {
+    font-family: "Quicksand";
+    src: url("/fonts/Quicksand-VariableFont.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  body {
+    font-family: "Quicksand", system-ui;
+  }
 </style>
