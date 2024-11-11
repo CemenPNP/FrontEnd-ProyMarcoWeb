@@ -1,83 +1,47 @@
 ---
 import Hero from "@/components/Hero.astro"
 import Layout from "@/layouts/Layout.astro"
+import { SignIn } from "auth-astro/components"
+import { getSession } from "auth-astro/server"
+const session = await getSession(Astro.request)
 ---
 
 <Layout title="Inicio de sesion">
+  {session?.user && <script>window.location.href = "/"</script>}
   <Hero image="/hero.webp">
-    <div class="container-fluid z-2">
-      <form class="mx-auto">
-        <h4 class="text-center text-success">Iniciar sesion</h4>
-        <div class="mb-3 mt-5">
-          <label for="exampleInputEmail1" class="form-label text-dark"
-            >Nombre de usuario</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label text-dark"
-            >Contraseña</label
-          >
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-          <div id="emailHelp" class="form-text mt-3">Olvido su contraseña?</div>
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-5 text-white"
+    <form class="mx-auto z-1 bg-white p-3 rounded-4" style="width: 400px;">
+      <h3 class="text-center text-success fw-bold">Iniciar sesion</h3>
+      <hr class="border border-primary mx-3 mt-0" />
+      <div class="mb-3">
+        <label for="inputUser" class="form-label text-dark">
+          Nombre de usuario
+        </label>
+        <input type="email" class="form-control" id="inputUser" />
+      </div>
+      <div class="mb-3">
+        <label for="inputPassword" class="form-label text-dark">
+          Contraseña
+        </label>
+        <input type="password" class="form-control" id="inputPassword" />
+        <div class="form-text mt-0">Olvido su contraseña?</div>
+      </div>
+      <div class="d-flex flex-column align-items-center gap-2">
+        <SignIn
+          class={"p-1 d-flex align-items-center gap-2 btn btn-primary text-white fw-bold"}
+          provider="google"
+        >
+          Con Google
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z"
+            ></path>
+          </svg>
+        </SignIn>
+        <button type="submit" class="btn btn-primary text-white fw-bold"
           >Entrar</button
         >
-      </form>
-    </div>
+      </div>
+    </form>
   </Hero>
 </Layout>
-
-<style>
-  form {
-    border-radius: 20px;
-    margin-top: 100px !important;
-    max-width: 400px;
-    background-color: white !important;
-    padding: 50px;
-  }
-
-  .btn-primary {
-    width: 100%;
-    border: none;
-    border-radius: 50px;
-    background: linear-gradient(
-      90deg,
-      rgb(0, 36, 21) 0%,
-      rgb(14, 154, 68) 35%,
-      rgb(136, 255, 0) 100%
-    );
-  }
-
-  .form-control {
-    color: rgba(0, 0, 0, 0.87);
-    border-bottom-color: rgba(0, 0, 0, 0.42);
-    box-shadow: none !important;
-    border: none;
-    border-bottom: 1px solid;
-    border-radius: 4px 4px 0 0;
-  }
-  h4 {
-    font-size: 2rem !important;
-    font-weight: 700;
-  }
-  .form-label {
-    font-weight: 800 !important;
-  }
-  @media only screen and (max-width: 600px) {
-    form {
-      width: 100% !important;
-    }
-  }
-</style>
