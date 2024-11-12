@@ -1,130 +1,196 @@
 ---
-import Hero from '@/components/Hero.astro'
-import Layout from '@/layouts/Layout.astro'
-import ResenaCard from '@/components/ResenaCard.astro'
-import Separacion from '@/components/Separacion.astro'
-import CardServicio from '@/components/CardServicio.astro'
+import Hero from "@/components/Hero.astro"
+import Layout from "@/layouts/Layout.astro"
+import ResenaCard from "@/components/ResenaCard.astro"
+import Separacion from "@/components/Separacion.astro"
+import CardServicio from "@/components/CardServicio.astro"
 ---
 
 <Layout title="Inicio">
-    <Hero image='/hero.webp'>
-        <h2 class="z-2">Parque Ecológico Camposanto <br> Santa Rosa de Lima</h2>
-    </Hero>
-    <h1 hidden>Cementerio Santa Rosa de Lima,Parque Ecologico Camposanto Santa Rosa de Lima, Cementerio PNP, Cementerio policia nacional del Peru</h1>
-    <main class="container my-5">
-
-        <div class="row m-0">
-            <div class="col-lg-6 d-flex justify-content-center align-items-center p-0 z-2">
-                <img src="/quienes-somos.jpeg" class="w-100 qs" alt="">
-            </div>
-            <div class="col-lg-6 p-0 d-flex">
-                <div class="m-auto ps-3 ps-lg-5 pe-3 py-5 bg-success ms-0 ms-lg-n4 qs-text">
-                    <h2 class="text-light mb-4">Quienes Somos</h2>
-                    <p class="text-white">
-                        El Cementerio Santa Rosa de Lima es un lugar de paz y tranquilidad, dedicado a ofrecer un servicio 
-                        de calidad a todas las familias que buscan un lugar digno para el descanso eterno de sus seres queridos.
-                        Con años de experiencia, nos comprometemos a brindar un entorno respetuoso y bien cuidado.
-                    </p>
-                </div>
-            </div>
+  <Hero image="/hero.webp">
+    <h2 class="z-2">Parque Ecológico Camposanto <br /> Santa Rosa de Lima</h2>
+  </Hero>
+  <h1 hidden>
+    Cementerio Santa Rosa de Lima,Parque Ecologico Camposanto Santa Rosa de
+    Lima, Cementerio PNP, Cementerio policia nacional del Peru
+  </h1>
+  <main class="container my-5">
+    <div class="row m-0">
+      <div
+        class="col-lg-6 d-flex justify-content-center align-items-center p-0 z-2"
+      >
+        <img src="/quienes-somos.jpeg" class="w-100 qs" alt="" />
+      </div>
+      <div class="col-lg-6 p-0 d-flex">
+        <div
+          class="m-auto ps-3 ps-lg-5 pe-3 py-5 bg-success ms-0 ms-lg-n4 qs-text"
+        >
+          <h2 class="text-light mb-4">Quienes Somos</h2>
+          <p class="text-white">
+            El Cementerio Santa Rosa de Lima es un lugar de paz y tranquilidad,
+            dedicado a ofrecer un servicio de calidad a todas las familias que
+            buscan un lugar digno para el descanso eterno de sus seres queridos.
+            Con años de experiencia, nos comprometemos a brindar un entorno
+            respetuoso y bien cuidado.
+          </p>
         </div>
+      </div>
+    </div>
 
-        <Separacion texto='Servicios'/>
+    <Separacion texto="Servicios" />
 
-        <div class="d-flex justify-content-between align-items-center">
-            <h2>Más populares</h2>
-            <a href="/servicios" class="text-success">Ver todos los servicios</a>
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Más populares</h2>
+      <a href="/servicios" class="text-success">Ver todos los servicios</a>
+    </div>
+    <div class="row">
+      <CardServicio
+        image="/servicios/misa.png"
+        page="/servicios/reserva-misa"
+        texto="Ofrecemos servicios de reserva de misas privadas y publicas para la commemoracion de sus seres mas queridos."
+        titulo="Reserva de Misa"
+      />
+      <CardServicio
+        image="/servicios/nichos.png"
+        page="/servicios/reserva-nichos"
+        texto="Ofrecemos servicios de reserva de nichos para asegurar un lugar digno para el descanso eterno de sus seres queridos."
+        titulo="Reserva de Nichos"
+      />
+      <CardServicio
+        image="/servicios/funerarias.png"
+        page="/servicios/funerarias"
+        texto="Contamos con una variedad de servicios funerarios para apoyar a las familias durante momentos difíciles."
+        titulo="Servicios Funerarios"
+      />
+    </div>
+
+    <Separacion texto="Ubicanos" />
+
+    <div class="row bg-light rounded border p-0 mx-0 mx-lg-5">
+      <div
+        class="col-lg-4 d-flex flex-column justify-content-center my-4 text-center"
+      >
+        <i class="bi bi-geo-alt-fill"></i>
+        <div class="text-center mb-4">
+          Av. Alipio Ponce Vasquez <br /> Chorrillos, Lima 15058
         </div>
-        <div class="row">
-            <CardServicio image='/servicios/misa.png' page='/servicios/reserva-misa' texto='Ofrecemos servicios de reserva de misas privadas y publicas para la commemoracion de sus seres mas queridos.' titulo='Reserva de Misa'/>
-            <CardServicio image='/servicios/nichos.png' page='/servicios/reserva-nichos' texto='Ofrecemos servicios de reserva de nichos para asegurar un lugar digno para el descanso eterno de sus seres queridos.' titulo='Reserva de Nichos'/>
-            <CardServicio image='/servicios/funerarias.png' page='/servicios/funerarias' texto='Contamos con una variedad de servicios funerarios para apoyar a las familias durante momentos difíciles.' titulo='Servicios Funerarios'/>
-        </div>
+        <i class="bi bi-calendar-check"></i>
+        <p>Abierto de Martes a Domingos <br />de 8 am hasta 5 pm</p>
+        <span class="text-center">Para mas informacion</span>
+        <a href="/contactanos" class="btn btn btn-success mx-5 d-block">
+          Contactanos
+        </a>
+      </div>
+      <div
+        class="col-lg-8 d-flex justify-content-center align-items-center mb-4 p-0 mb-lg-0"
+      >
+        <!-- <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15600.407177519312!2d-76.9832755!3d-12.1734725!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9b5050e9f11%3A0x4447ca64566d5452!2sParque%20Ecologico%20Camposanto%20Santa%20Rosa%20de%20Lima!5e0!3m2!1ses!2spe!4v1725410183365!5m2!1ses!2spe"
+          width="100%"
+          height="350"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+      </div>
+    </div>
 
-        <Separacion texto='Ubicanos'/>
-        
-        <div class="row bg-light rounded border p-0 mx-0 mx-lg-5">
-            <div class="col-lg-4 d-flex flex-column justify-content-center my-4 text-center">
-                <i class="bi bi-geo-alt-fill"></i>
-                <div class="text-center mb-4">
-                    Av. Alipio Ponce Vasquez <br> Chorrillos, Lima 15058
-                </div>
-                <i class="bi bi-calendar-check"></i>
-                <p>Abierto de Martes a Domingos <br>de 8 am hasta 5 pm</p>
-                <span class="text-center">Para mas informacion</span>
-                <a href="/contactanos" class="btn btn btn-success mx-5 d-block">Contactanos</a>
-            </div>
-            <div class="col-lg-8 d-flex justify-content-center align-items-center mb-4 p-0 mb-lg-0">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15600.407177519312!2d-76.9832755!3d-12.1734725!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9b5050e9f11%3A0x4447ca64566d5452!2sParque%20Ecologico%20Camposanto%20Santa%20Rosa%20de%20Lima!5e0!3m2!1ses!2spe!4v1725410183365!5m2!1ses!2spe" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
+    <Separacion texto="Reseñas" />
 
-        <Separacion texto='Reseñas'/>
+    <section class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <ResenaCard
+              usuario="María López"
+              fecha="14/08/2024"
+              estrellas={5}
+              comentario="El lugar es muy tranquilo y respetuoso. La atención del personal fue impecable en todo momento. Definitivamente lo recomiendo."
+            />
+          </li>
+          <li class="splide__slide">
+            <ResenaCard
+              usuario="Carlos Ramírez"
+              fecha="10/08/2024"
+              estrellas={4}
+              comentario="El servicio fue muy bueno, aunque en horas pico puede haber algo de demora. Sin embargo, el lugar es muy limpio y ordenado."
+            />
+          </li>
+          <li class="splide__slide">
+            <ResenaCard
+              usuario="Ana Torres"
+              fecha="09/08/2024"
+              estrellas={4.5}
+              comentario="El ambiente es muy sereno y bien cuidado. El personal fue muy amable y atento. La capilla es un lugar muy bonito para despedir a un ser querido."
+            />
+          </li>
+          <li class="splide__slide">
+            <ResenaCard
+              usuario="Luis Fernández"
+              fecha="05/08/2024"
+              estrellas={3.5}
+              comentario="El cementerio está bien cuidado, pero el acceso en carro puede ser complicado en horas punta. Deberían mejorar la señalización."
+            />
+          </li>
+          <li class="splide__slide">
+            <ResenaCard
+              usuario="José Martínez"
+              fecha="01/08/2024"
+              estrellas={5}
+              comentario="Un lugar de paz y tranquilidad. La misa fue muy emotiva y el personal se aseguró de que todo saliera perfecto."
+            />
+          </li>
+          <li class="splide__slide">
+            <ResenaCard
+              usuario="Sofía Pérez"
+              fecha="03/08/2024"
+              estrellas={4.5}
+              comentario="Muy buen lugar, limpio y ordenado. El personal es respetuoso y muy atento a nuestras necesidades. Lo recomiendo sin duda."
+            />
+          </li>
+        </ul>
+      </div>
+    </section>
 
-        <section class="splide">
-            <div class="splide__track">
-              <ul class="splide__list">
-                <li class="splide__slide">
-                    <ResenaCard usuario='María López' fecha='14/08/2024' estrellas={5} comentario='El lugar es muy tranquilo y respetuoso. La atención del personal fue impecable en todo momento. Definitivamente lo recomiendo.'/>
-                </li>
-                <li class="splide__slide">
-                    <ResenaCard usuario='Carlos Ramírez' fecha='10/08/2024' estrellas={4} comentario='El servicio fue muy bueno, aunque en horas pico puede haber algo de demora. Sin embargo, el lugar es muy limpio y ordenado.'/>
-                </li>
-                <li class="splide__slide">
-                    <ResenaCard usuario='Ana Torres' fecha='09/08/2024' estrellas={4.5} comentario='El ambiente es muy sereno y bien cuidado. El personal fue muy amable y atento. La capilla es un lugar muy bonito para despedir a un ser querido.'/>
-                </li>
-                <li class="splide__slide">
-                    <ResenaCard usuario='Luis Fernández' fecha='05/08/2024' estrellas={3.5} comentario='El cementerio está bien cuidado, pero el acceso en carro puede ser complicado en horas punta. Deberían mejorar la señalización.'/>
-                </li>
-                <li class="splide__slide">
-                    <ResenaCard usuario='José Martínez' fecha='01/08/2024' estrellas={5} comentario='Un lugar de paz y tranquilidad. La misa fue muy emotiva y el personal se aseguró de que todo saliera perfecto.'/>
-                </li>
-                <li class="splide__slide">
-                    <ResenaCard usuario='Sofía Pérez' fecha='03/08/2024' estrellas={4.5} comentario='Muy buen lugar, limpio y ordenado. El personal es respetuoso y muy atento a nuestras necesidades. Lo recomiendo sin duda.'/>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <script type="module">
-            new Splide(".splide", {
-                type: "loop",
-                perPage: 3,
-                arrows: false,
-                pagination: false,
-                focus: "center",
-                gap: "1em",
-                autoScroll: {
-                    speed: 1,
-                },
-                breakpoints: {
-                    991.98: {
-                        perPage: 2,
-                    },
-                    600: {
-                        perPage: 1,
-                    }
-                }
-            }).mount(window.splide.Extensions);
-          </script>
-    </main>
+    <script type="module">
+      new Splide(".splide", {
+        type: "loop",
+        perPage: 3,
+        arrows: false,
+        pagination: false,
+        focus: "center",
+        gap: "1em",
+        autoScroll: {
+          speed: 1,
+        },
+        breakpoints: {
+          991.98: {
+            perPage: 2,
+          },
+          600: {
+            perPage: 1,
+          },
+        },
+      }).mount(window.splide.Extensions)
+    </script>
+  </main>
 </Layout>
 
 <style>
-    .qs{
-        border-radius: 32px;
+  .qs {
+    border-radius: 32px;
+  }
+  .qs-text {
+    border-radius: 0 32px 32px 0;
+  }
+  @media (max-width: 991.98px) {
+    .qs {
+      border-radius: 0px;
+      border-radius: 32px 32px 0 0;
     }
-    .qs-text{
-        border-radius: 0 32px 32px 0;
+    .qs-text {
+      border-radius: 0px;
+      border-radius: 0 0 32px 32px;
     }
-    @media (max-width: 991.98px) {
-        .qs{
-            border-radius: 0px;
-            border-radius: 32px 32px 0 0;
-        }
-        .qs-text{
-            border-radius: 0px;
-            border-radius: 0 0 32px 32px;
-        }
-    }
+  }
 </style>

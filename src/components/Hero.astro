@@ -5,8 +5,11 @@ interface Props {
 const { image } = Astro.props
 ---
 
-<header class="hero d-flex justify-content-center align-items-center text-center text-white" style={`background-image: url(${image});`}>
-   <slot/>
+<header
+  class="hero d-flex justify-content-center align-items-center text-center text-white"
+  style={`background-image: url(${image});`}
+>
+  <slot />
 </header>
 
 <style>

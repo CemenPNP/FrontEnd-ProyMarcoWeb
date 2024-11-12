@@ -1,72 +1,75 @@
-import { useState, useEffect } from "react";
-import "@/styles/editempl.css";
+import { useState, useEffect } from "react"
+import "@/styles/editempl.css"
 
 const EditarEmpleadoModal = ({ empleado, onClose }) => {
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [dni, setDni] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [horaEntrada, setHoraEntrada] = useState("");
-  const [horaSalida, setHoraSalida] = useState("");
+  const [nombre, setNombre] = useState("")
+  const [apellido, setApellido] = useState("")
+  const [dni, setDni] = useState("")
+  const [cargo, setCargo] = useState("")
+  const [horaEntrada, setHoraEntrada] = useState("")
+  const [horaSalida, setHoraSalida] = useState("")
 
   const CARGOS = [
     { cargo: "Gerente", horaEntrada: "08:00", horaSalida: "17:00" },
     { cargo: "Contador", horaEntrada: "08:00", horaSalida: "16:00" },
     { cargo: "Asistente", horaEntrada: "09:00", horaSalida: "18:00" },
     { cargo: "Limpieza", horaEntrada: "06:00", horaSalida: "14:00" },
-  ];
+  ]
 
   useEffect(() => {
     if (empleado) {
-      setNombre(empleado.nombre);
-      setApellido(empleado.apellido);
-      setDni(empleado.dni);
-      setCargo(empleado.cargo.cargo); // Solo asignamos el nombre del cargo
-      setHoraEntrada(empleado.cargo.horaEntrada);
-      setHoraSalida(empleado.cargo.horaSalida);
+      setNombre(empleado.nombre)
+      setApellido(empleado.apellido)
+      setDni(empleado.dni)
+      setCargo(empleado.cargo.cargo)
+      setHoraEntrada(empleado.cargo.horaEntrada)
+      setHoraSalida(empleado.cargo.horaSalida)
     }
-  }, [empleado]);
+  }, [empleado])
 
   const handleCargoChange = (e) => {
-    const selectedCargo = CARGOS.find((c) => c.cargo === e.target.value);
-    setCargo(selectedCargo.cargo);
-    setHoraEntrada(selectedCargo.horaEntrada);
-    setHoraSalida(selectedCargo.horaSalida);
-  };
+    const selectedCargo = CARGOS.find((c) => c.cargo === e.target.value)
+    setCargo(selectedCargo.cargo)
+    setHoraEntrada(selectedCargo.horaEntrada)
+    setHoraSalida(selectedCargo.horaSalida)
+  }
 
   const handleGuardar = async () => {
     const datosActualizados = {
       nombre,
       apellido,
-      dni, // DNI permanece sin cambios
+      dni,
       cargo: {
-        id: empleado.cargo.id, // Mantiene el ID del cargo actual sin cambios
+        id: empleado.cargo.id,
         cargo,
         horaEntrada,
         horaSalida,
       },
-    };
+    }
 
     try {
-      const response = await fetch(`http://localhost:8080/trabajador/actualizar`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(datosActualizados),
-      });
+      const response = await fetch(
+        `http://localhost:8080/trabajador/actualizar`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(datosActualizados),
+        }
+      )
 
       if (!response.ok) {
-        throw new Error("Error al actualizar el empleado");
+        throw new Error("Error al actualizar el empleado")
       }
 
-      console.log("Empleado actualizado con éxito");
-      onClose();
+      console.log("Empleado actualizado con éxito")
+      onClose()
       window.location.reload()
     } catch (error) {
-      console.error("Error:", error.message);
+      console.error("Error:", error.message)
     }
-  };
+  }
 
   return (
     <div className="modal-overlay">
@@ -95,13 +98,7 @@ const EditarEmpleadoModal = ({ empleado, onClose }) => {
           </div>
           <div className="form-field">
             <label htmlFor="dni">DNI:</label>
-            <input
-              type="number"
-              id="dni"
-              name="dni"
-              value={dni}
-              disabled
-            />
+            <input type="number" id="dni" name="dni" value={dni} disabled />
           </div>
           <div className="form-field">
             <label htmlFor="cargo">Cargo:</label>
@@ -132,7 +129,7 @@ const EditarEmpleadoModal = ({ empleado, onClose }) => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EditarEmpleadoModal;
+export default EditarEmpleadoModal

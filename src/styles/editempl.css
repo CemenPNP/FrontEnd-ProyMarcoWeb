@@ -15,60 +15,60 @@
   background: #fff;
   padding: 20px;
   width: 400px;
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
-  transition: transform 0.3s ease; /* Transición suave al abrir/cerrar el modal */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .modal-content h2 {
-  color: #009970; /* Color del título */
+  color: #009970;
   margin-bottom: 20px;
-  font-family: 'Arial', sans-serif; /* Fuente moderna */
-  font-size: 24px; /* Tamaño del texto */
-  text-align: center; /* Centrar el texto */
+  font-family: "Arial", sans-serif;
+  font-size: 24px;
+  text-align: center;
 }
 
 .form-field {
-  margin-bottom: 15px; /* Espaciado entre campos */
+  margin-bottom: 15px;
 }
 
 .form-field label {
-  display: block; /* Hacer que las etiquetas ocupen toda la línea */
-  margin-bottom: 5px; /* Espaciado debajo de la etiqueta */
-  font-weight: bold; /* Negrita para resaltar */
-  color: #333; /* Color de texto de las etiquetas */
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
 }
 
 .form-field input,
 .form-field select {
-  width: 100%; /* Ancho completo del campo */
-  padding: 10px; /* Relleno interno */
-  border: 1px solid #ccc; /* Borde del campo */
-  border-radius: 8px; /* Bordes redondeados para campos */
-  transition: border 0.3s; /* Transición suave para el borde */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border 0.3s;
 }
 
 .form-field input:focus,
 .form-field select:focus {
-  border-color: #009970; /* Color del borde al enfocar */
-  outline: none; /* Quitar el contorno por defecto */
+  border-color: #009970;
+  outline: none;
 }
 
 .modal-buttons {
   display: flex;
-  justify-content: space-between; /* Espacio entre botones */
+  justify-content: space-between;
 }
 
 .modal-buttons button {
-  background-color: #009970; /* Color de fondo de los botones */
-  color: white; /* Color del texto de los botones */
-  border: none; /* Sin borde */
-  padding: 10px 15px; /* Relleno del botón */
-  border-radius: 8px; /* Bordes redondeados */
-  cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-  transition: background-color 0.3s; /* Transición suave para el fondo */
+  background-color: #009970;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .modal-buttons button:hover {
-  background-color: #007f5a; /* Color de fondo al pasar el cursor */
+  background-color: #007f5a;
 }

@@ -3,87 +3,121 @@ import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Contactanos">
-    <div class="my-5">
-        <div class="row">
-            <div class="col-lg-4 d-flex flex-column mb-4 mb-lg-0 justify-content-between">
-                <div class="bg-light p-4 border rounded">
-                    <h5 class="text-success">Ubicación</h5>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3900.080694914229!2d-76.9856949!3d-12.1749093!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9b5050e9f11%3A0x4447ca64566d5452!2sParque%20Ecologico%20Camposanto%20Santa%20Rosa%20de%20Lima!5e0!3m2!1ses!2spe!4v1725402683873!5m2!1ses!2spe" style="border:0; width: 100%; height: 250px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="bg-light py-2 px-4 border rounded">
-                    <h5 class="text-success">Horario de Atención</h5>
-                    <table class="table table-borderless mb-0 table-sm">
-                        <tbody>
-                            <tr>
-                                <td class="bg-transparent">Martes</td>
-                                <td class="bg-transparent">8 am - 5 pm</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-transparent">Miércoles</td>
-                                <td class="bg-transparent">8 am - 5 pm</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-transparent">Jueves</td>
-                                <td class="bg-transparent">8 am - 5 pm</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-transparent">Viernes</td>
-                                <td class="bg-transparent">8 am - 5 pm</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-transparent">Sábado</td>
-                                <td class="bg-transparent">8 am - 5 pm</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-transparent">Domingo</td>
-                                <td class="bg-transparent">8 am - 5 pm</td>
-                            </tr>
-                            <tr>
-                                <td class="bg-transparent">Lunes</td>
-                                <td class="bg-transparent">Cerrado</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <form class="bg-light p-4 border rounded">
-                    <h5 class="text-center fs-3 text-success">Contáctanos</h5>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre completo</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="correo" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="correo" placeholder="nombre@ejemplo.com" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefono" placeholder="Ingrese su número de teléfono" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="motivo" class="form-label">Motivo del contacto</label>
-                        <select class="form-select" id="motivo" required>
-                            <option selected disabled>Seleccione una opción</option>
-                            <option value="informacion">Solicitud de información</option>
-                            <option value="reserva">Reservación de espacio</option>
-                            <option value="reclamacion">Reclamación o queja</option>
-                            <option value="otros">Otros</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="comentario" class="form-label">Comentarios adicionales</label>
-                        <textarea class="form-control" id="comentario" rows="4" placeholder="Escriba sus comentarios aquí" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success">Enviar</button>
-                </form>
-            </div>
+  <div class="my-5">
+    <div class="row">
+      <div
+        class="col-lg-4 d-flex flex-column mb-4 mb-lg-0 justify-content-between"
+      >
+        <div class="bg-light p-4 border rounded">
+          <h5 class="text-success">Ubicación</h5>
+          <!-- <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3900.080694914229!2d-76.9856949!3d-12.1749093!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9b5050e9f11%3A0x4447ca64566d5452!2sParque%20Ecologico%20Camposanto%20Santa%20Rosa%20de%20Lima!5e0!3m2!1ses!2spe!4v1725402683873!5m2!1ses!2spe"
+            style="border:0; width: 100%; height: 250px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe> -->
         </div>
+        <div class="bg-light py-2 px-4 border rounded">
+          <h5 class="text-success">Horario de Atención</h5>
+          <table class="table table-borderless mb-0 table-sm">
+            <tbody>
+              <tr>
+                <td class="bg-transparent">Martes</td>
+                <td class="bg-transparent">8 am - 5 pm</td>
+              </tr>
+              <tr>
+                <td class="bg-transparent">Miércoles</td>
+                <td class="bg-transparent">8 am - 5 pm</td>
+              </tr>
+              <tr>
+                <td class="bg-transparent">Jueves</td>
+                <td class="bg-transparent">8 am - 5 pm</td>
+              </tr>
+              <tr>
+                <td class="bg-transparent">Viernes</td>
+                <td class="bg-transparent">8 am - 5 pm</td>
+              </tr>
+              <tr>
+                <td class="bg-transparent">Sábado</td>
+                <td class="bg-transparent">8 am - 5 pm</td>
+              </tr>
+              <tr>
+                <td class="bg-transparent">Domingo</td>
+                <td class="bg-transparent">8 am - 5 pm</td>
+              </tr>
+              <tr>
+                <td class="bg-transparent">Lunes</td>
+                <td class="bg-transparent">Cerrado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <form class="bg-light p-4 border rounded">
+          <h5 class="text-center fs-3 text-success">Contáctanos</h5>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              placeholder="Ingrese su nombre"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo electrónico</label>
+            <input
+              type="email"
+              class="form-control"
+              id="correo"
+              placeholder="nombre@ejemplo.com"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="telefono"
+              placeholder="Ingrese su número de teléfono"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="motivo" class="form-label">Motivo del contacto</label>
+            <select class="form-select" id="motivo" required>
+              <option selected disabled>Seleccione una opción</option>
+              <option value="informacion">Solicitud de información</option>
+              <option value="reserva">Reservación de espacio</option>
+              <option value="reclamacion">Reclamación o queja</option>
+              <option value="otros">Otros</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="comentario" class="form-label">
+              Comentarios adicionales
+            </label>
+            <textarea
+              class="form-control"
+              id="comentario"
+              rows="4"
+              placeholder="Escriba sus comentarios aquí"
+              required></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Enviar</button>
+        </form>
+      </div>
     </div>
+  </div>
 </Layout>
 
 <style>
-    input:focus, textarea:focus, select:focus {
-        box-shadow: 0 0 0 0.25rem rgba(61, 253, 13, 0.25);
-    }
+  input:focus,
+  textarea:focus,
+  select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(61, 253, 13, 0.25);
+  }
 </style>

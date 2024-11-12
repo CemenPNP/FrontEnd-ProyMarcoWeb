@@ -26,7 +26,7 @@ const TablaEmpleadosPorDia = ({ empleados }) => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default TablaEmpleadosPorDia;
+export default TablaEmpleadosPorDia

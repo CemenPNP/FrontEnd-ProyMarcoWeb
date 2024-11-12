@@ -4,59 +4,156 @@ interface Props {
 }
 const { page } = Astro.props
 ---
-<footer class={`p-3 bg-light border border-top ${page === '/administrador' ? 'd-none' : ''}`}>
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="/nosotros" class="nav-link px-2 text-body-secondary">Nosotros</a></li>
-        <li class="nav-item"><a href="/servicios" class="nav-link px-2 text-body-secondary">Servicios</a></li>
-        <li class="nav-item"><a href="/contactanos" class="nav-link px-2 text-body-secondary">Contáctanos</a></li>
-        <li class="nav-item">
-             <button class="nav-link px-2 text-body-secondary" data-bs-toggle="modal" data-bs-target="#faqModal">Preguntas frecuentes</button>
-        </li>
-    </ul>
-    <p class="text-center text-body-secondary">© 2024 Camposanto Santa Rosa</p>
+
+<footer
+  class={`p-3 bg-light border border-top ${page === "/administrador" ? "d-none" : ""}`}
+>
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    <li class="nav-item">
+      <a href="/nosotros" class="nav-link px-2 text-body-secondary">Nosotros</a>
+    </li>
+    <li class="nav-item">
+      <a href="/servicios" class="nav-link px-2 text-body-secondary">
+        Servicios
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/contactanos" class="nav-link px-2 text-body-secondary">
+        Contáctanos
+      </a>
+    </li>
+    <li class="nav-item">
+      <button
+        class="nav-link px-2 text-body-secondary"
+        data-bs-toggle="modal"
+        data-bs-target="#faqModal"
+      >
+        Preguntas frecuentes
+      </button>
+    </li>
+  </ul>
+  <p class="text-center text-body-secondary">© 2024 Camposanto Santa Rosa</p>
 </footer>
 
-<div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="faqModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="faqModalLabel">Preguntas Frecuentes</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h5>1. ¿Cuál es el horario de atención del Cementerio Santa Rosa de Lima de la PNP?</h5>
-                <p>Nuestro horario de atención es de lunes a domingo, de 8:00 a.m. a 6:00 p.m. Durante los días festivos, el horario puede variar. Por favor, consulte nuestro sitio web o llame a nuestra oficina para obtener información actualizada.</p>
+<div
+  class="modal fade"
+  id="faqModal"
+  tabindex="-1"
+  aria-labelledby="faqModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="faqModalLabel">Preguntas Frecuentes</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>
+          1. ¿Cuál es el horario de atención del Cementerio Santa Rosa de Lima
+          de la PNP?
+        </h5>
+        <p>
+          Nuestro horario de atención es de lunes a domingo, de 8:00 a.m. a 6:00
+          p.m. Durante los días festivos, el horario puede variar. Por favor,
+          consulte nuestro sitio web o llame a nuestra oficina para obtener
+          información actualizada.
+        </p>
 
-                <h5>2. ¿Cómo puedo reservar un nicho en el cementerio?</h5>
-                <p>Para reservar un nicho, debe comunicarse con nuestra oficina de atención al cliente. Puede hacerlo por teléfono al 01-234-5678 o enviarnos un correo electrónico a reservas@cementeriosantarosa.pe. Le pediremos que proporcione información básica y complete un formulario de reserva.</p>
+        <h5>2. ¿Cómo puedo reservar un nicho en el cementerio?</h5>
+        <p>
+          Para reservar un nicho, debe comunicarse con nuestra oficina de
+          atención al cliente. Puede hacerlo por teléfono al 01-234-5678 o
+          enviarnos un correo electrónico a reservas@cementeriosantarosa.pe. Le
+          pediremos que proporcione información básica y complete un formulario
+          de reserva.
+        </p>
 
-                <h5>3. ¿Qué servicios están incluidos en la reserva de un nicho?</h5>
-                <p>La reserva de un nicho incluye la colocación de una placa conmemorativa básica, la apertura y cierre del nicho en el momento de la sepultura, y el mantenimiento del nicho durante el período de la reserva. Servicios adicionales, como la instalación de placas personalizadas o la jardinería, están disponibles por separado.</p>
+        <h5>3. ¿Qué servicios están incluidos en la reserva de un nicho?</h5>
+        <p>
+          La reserva de un nicho incluye la colocación de una placa
+          conmemorativa básica, la apertura y cierre del nicho en el momento de
+          la sepultura, y el mantenimiento del nicho durante el período de la
+          reserva. Servicios adicionales, como la instalación de placas
+          personalizadas o la jardinería, están disponibles por separado.
+        </p>
 
-                <h5>4. ¿Se ofrecen servicios de cremación en el Cementerio Santa Rosa de Lima de la PNP?</h5>
-                <p>Sí, ofrecemos servicios de cremación. Para obtener más información sobre los paquetes disponibles y los costos asociados, por favor, póngase en contacto con nuestra oficina de atención al cliente.</p>
+        <h5>
+          4. ¿Se ofrecen servicios de cremación en el Cementerio Santa Rosa de
+          Lima de la PNP?
+        </h5>
+        <p>
+          Sí, ofrecemos servicios de cremación. Para obtener más información
+          sobre los paquetes disponibles y los costos asociados, por favor,
+          póngase en contacto con nuestra oficina de atención al cliente.
+        </p>
 
-                <h5>5. ¿Cómo puedo solicitar un servicio funerario?</h5>
-                <p>Para solicitar un servicio funerario, puede comunicarse directamente con nuestra oficina. Nuestro personal está disponible para ayudarle con la planificación y coordinar todos los aspectos del servicio. Puede llamarnos al 01-234-5678 o visitar nuestra oficina en persona.</p>
+        <h5>5. ¿Cómo puedo solicitar un servicio funerario?</h5>
+        <p>
+          Para solicitar un servicio funerario, puede comunicarse directamente
+          con nuestra oficina. Nuestro personal está disponible para ayudarle
+          con la planificación y coordinar todos los aspectos del servicio.
+          Puede llamarnos al 01-234-5678 o visitar nuestra oficina en persona.
+        </p>
 
-                <h5>6. ¿El cementerio ofrece algún tipo de apoyo o asesoramiento para las familias en duelo?</h5>
-                <p>Sí, ofrecemos apoyo y asesoramiento a las familias en duelo. Contamos con un equipo de profesionales capacitados que pueden proporcionar asistencia emocional y orientación durante este difícil momento. Si necesita ayuda, no dude en contactarnos.</p>
+        <h5>
+          6. ¿El cementerio ofrece algún tipo de apoyo o asesoramiento para las
+          familias en duelo?
+        </h5>
+        <p>
+          Sí, ofrecemos apoyo y asesoramiento a las familias en duelo. Contamos
+          con un equipo de profesionales capacitados que pueden proporcionar
+          asistencia emocional y orientación durante este difícil momento. Si
+          necesita ayuda, no dude en contactarnos.
+        </p>
 
-                <h5>7. ¿El Cementerio Santa Rosa de Lima de la PNP tiene algún programa de mantenimiento para los nichos?</h5>
-                <p>Sí, ofrecemos un programa de mantenimiento regular que incluye la limpieza y el cuidado general de los nichos. Los detalles del programa y los costos asociados pueden obtenerse contactando nuestra oficina.</p>
+        <h5>
+          7. ¿El Cementerio Santa Rosa de Lima de la PNP tiene algún programa de
+          mantenimiento para los nichos?
+        </h5>
+        <p>
+          Sí, ofrecemos un programa de mantenimiento regular que incluye la
+          limpieza y el cuidado general de los nichos. Los detalles del programa
+          y los costos asociados pueden obtenerse contactando nuestra oficina.
+        </p>
 
-                <h5>8. ¿Qué debo hacer en caso de emergencia fuera del horario de atención?</h5>
-                <p>En caso de emergencia fuera del horario de atención, por favor, llame a nuestro número de emergencia al 01-987-6543. Nuestro equipo de respuesta está disponible para asistirle en situaciones urgentes.</p>
+        <h5>
+          8. ¿Qué debo hacer en caso de emergencia fuera del horario de
+          atención?
+        </h5>
+        <p>
+          En caso de emergencia fuera del horario de atención, por favor, llame
+          a nuestro número de emergencia al 01-987-6543. Nuestro equipo de
+          respuesta está disponible para asistirle en situaciones urgentes.
+        </p>
 
-                <h5>9. ¿Hay opciones de financiamiento disponibles para la compra de nichos o servicios funerarios?</h5>
-                <p>Sí, ofrecemos opciones de financiamiento para la compra de nichos y servicios funerarios. Puede hablar con uno de nuestros asesores para discutir las opciones de pago y los planes disponibles.</p>
+        <h5>
+          9. ¿Hay opciones de financiamiento disponibles para la compra de
+          nichos o servicios funerarios?
+        </h5>
+        <p>
+          Sí, ofrecemos opciones de financiamiento para la compra de nichos y
+          servicios funerarios. Puede hablar con uno de nuestros asesores para
+          discutir las opciones de pago y los planes disponibles.
+        </p>
 
-                <h5>10. ¿Puedo visitar el cementerio antes de hacer una reserva?</h5>
-                <p>Sí, le invitamos a visitar el cementerio antes de hacer una reserva. Nuestro personal estará encantado de mostrarle las instalaciones y responder a cualquier pregunta que pueda tener. Por favor, programe su visita con anticipación llamando a nuestra oficina.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
+        <h5>10. ¿Puedo visitar el cementerio antes de hacer una reserva?</h5>
+        <p>
+          Sí, le invitamos a visitar el cementerio antes de hacer una reserva.
+          Nuestro personal estará encantado de mostrarle las instalaciones y
+          responder a cualquier pregunta que pueda tener. Por favor, programe su
+          visita con anticipación llamando a nuestra oficina.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
     </div>
+  </div>
 </div>

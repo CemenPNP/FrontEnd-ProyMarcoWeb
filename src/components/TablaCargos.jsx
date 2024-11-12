@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState } from "react"
 
 const TablaCargos = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("")
   const cargos = [
     { nombre: "Gerente", horaIngreso: "08:00", horaSalida: "17:00" },
     { nombre: "Contador", horaIngreso: "09:00", horaSalida: "18:00" },
-  ];
+  ]
 
   const filteredCargos = cargos.filter((cargo) =>
     cargo.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  )
 
   return (
     <div className="table-container">
@@ -44,7 +44,7 @@ const TablaCargos = () => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default TablaCargos;
+export default TablaCargos

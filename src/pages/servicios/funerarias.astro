@@ -5,87 +5,91 @@ import Layout from "@/layouts/Layout.astro"
 <Layout title="Funerarias">
   <div class="bg-success uwu text-light">
     <div class="container xd">
-        <div class="waza">
-            <a href="/servicios" class="text-decoration-none">
-                <i class="bi bi-arrow-left"></i>
-                Regregar
-            </a>
-                <h1>Servicios funerarios</h1>
-                <p>Ofrecemos servicios funerarios completos, acompañándote en cada paso del proceso con respeto y profesionalismo, brindando apoyo en estos momentos difíciles para ti y tu familia.</p>
-                <!-- <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">Reservar</button> -->
-        </div>
-        <div class="ppp">
-            <img src="/servicios/funerarias.png" alt="">
-        </div>
+      <div class="waza">
+        <a href="/servicios" class="text-decoration-none">
+          <i class="bi bi-arrow-left"></i>
+          Regregar
+        </a>
+        <h1>Servicios funerarios</h1>
+        <p>
+          Ofrecemos servicios funerarios completos, acompañándote en cada paso
+          del proceso con respeto y profesionalismo, brindando apoyo en estos
+          momentos difíciles para ti y tu familia.
+        </p>
+        <!-- <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">Reservar</button> -->
+      </div>
+      <div class="ppp">
+        <img src="/servicios/funerarias.png" alt="" />
+      </div>
     </div>
     <!-- <i class="bi bi-arrow-down-circle-fill"></i> -->
-</div>
+  </div>
 </Layout>
 <style>
-    .uwu{
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding-bottom: 3.5rem;
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+  .uwu {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 3.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+  }
+  .xd {
+    display: flex;
+    justify-content: space-between;
+    padding: 8rem 0 0 0;
+  }
+  .ppp {
+    flex-shrink: 1;
+    & img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
     }
-    .xd{
-        display: flex;
-        justify-content: space-between;
-        padding: 8rem 0 0 0;
+  }
+  .waza {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 35rem;
+    & a {
+      position: absolute;
+      top: 0;
+      margin-bottom: auto;
+      width: fit-content;
+      color: #f5f5f5;
     }
-    .ppp{
-        flex-shrink: 1;
-        & img{
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-        }
+    & h1 {
+      font-family: "Rubik", system-ui;
+      text-transform: uppercase;
+      font-size: 3.5rem;
+      font-weight: 600;
     }
-    .waza{
-        position: relative;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 35rem;
-        & a{
-            position: absolute;
-            top: 0;
-            margin-bottom: auto;
-            width: fit-content;
-            color: #f5f5f5;
-        }
-        & h1{
-            font-family: 'Rubik', system-ui;
-            text-transform: uppercase;
-            font-size: 3.5rem;
-            font-weight:600;
-        }
-    }
+  }
 
-    @media (max-width: 991.98px) {
-        .xd{
-            flex-direction: column;
-            text-align: center;
-            & .waza{
-                width: 100%;
-                & a{
-                    left: .5rem;
-                }
-                & h1{
-                    margin: 1.5rem 0 0 0;
-                }
-                & #reserva{
-                    margin: 0 auto 1rem auto;
-                }
-            }
-            & .ppp{
-                padding: 1rem;
-            }
+  @media (max-width: 991.98px) {
+    .xd {
+      flex-direction: column;
+      text-align: center;
+      & .waza {
+        width: 100%;
+        & a {
+          left: 0.5rem;
         }
-        .uwu{
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+        & h1 {
+          margin: 1.5rem 0 0 0;
         }
+        & #reserva {
+          margin: 0 auto 1rem auto;
+        }
+      }
+      & .ppp {
+        padding: 1rem;
+      }
     }
+    .uwu {
+      clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+  }
 </style>

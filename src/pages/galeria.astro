@@ -1,76 +1,43 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import ImageGallery from "@/components/ImageGallery.astro"
-import '/node_modules/lightgallery/css/lightgallery-bundle.min.css'
+import "/node_modules/lightgallery/css/lightgallery-bundle.min.css"
 ---
 
 <Layout title="Galeria">
+  <div class="row" id="lightGallery">
+    <div class="col-lg-4 col-md-12">
+      <ImageGallery image="/gallery/imgGallery-1.png" alt="Imagen 01" />
+      <ImageGallery image="/gallery/imgGallery-2.png" alt="Imagen 02" />
+      <ImageGallery image="/gallery/imgGallery-7.png" alt="Imagen 03" />
+      <ImageGallery image="/gallery/imgGallery-8.png" alt="Imagen 04" />
+    </div>
 
-    <div class="row" id="lightGallery">
-        <div class="col-lg-4 col-md-12">
-          <ImageGallery
-            image="/gallery/imgGallery-1.png"
-            alt="Imagen 01"
-          />
-          <ImageGallery
-            image="/gallery/imgGallery-2.png"
-            alt="Imagen 02"
-          />
-          <ImageGallery
-            image="/gallery/imgGallery-7.png"
-            alt="Imagen 03"
-          />
-          <ImageGallery
-            image="/gallery/imgGallery-8.png"
-            alt="Imagen 04"
-          />
-        </div>
-    
-        <div class="col-lg-4">
-          <ImageGallery
-            image="/gallery/imgGallery-4.png"
-            alt="Imagen 05"
-          />
-          <ImageGallery
-            image="/gallery/imgGallery-3.png"
-            alt="Imagen 06"
-          />
-          <ImageGallery
-            image="/gallery/imgGallery-9.png"
-            alt="Imagen 07"
-          />
-          <!-- <ImageGallery
+    <div class="col-lg-4">
+      <ImageGallery image="/gallery/imgGallery-4.png" alt="Imagen 05" />
+      <ImageGallery image="/gallery/imgGallery-3.png" alt="Imagen 06" />
+      <ImageGallery image="/gallery/imgGallery-9.png" alt="Imagen 07" />
+      <!-- <ImageGallery
             image="/gallery/imgGallery-10.png"
             alt="Imagen 08"
           /> -->
-        </div>
-    
-        <div class="col-lg-4">
-          <ImageGallery
-            image="/gallery/imgGallery-5.png"
-            alt="Imagen 08"
-          />
-          <ImageGallery
-            image="/gallery/imgGallery-6.png"
-            alt="Imagen 09"
-          />
-          <ImageGallery
-            image="/gallery/imgGallery-11.png"
-            alt="Imagen 10"
-          />
-          <ImageGallery
-            image="/gallery/imgGallery-12.png"
-            alt="Imagen 11"
-          />
-        </div>
     </div>
-    <script type="module" src="/node_modules/lightgallery/lightgallery.min.js"></script>
-    <script type="module">
-        document.addEventListener('astro:page-load', () => {
-            const container = document.querySelector('#lightGallery')
-            window.lightGallery(container, {
-                selector: '.lg-item',
-            })
-        });
-    </script>
+
+    <div class="col-lg-4">
+      <ImageGallery image="/gallery/imgGallery-5.png" alt="Imagen 08" />
+      <ImageGallery image="/gallery/imgGallery-6.png" alt="Imagen 09" />
+      <ImageGallery image="/gallery/imgGallery-11.png" alt="Imagen 10" />
+      <ImageGallery image="/gallery/imgGallery-12.png" alt="Imagen 11" />
+    </div>
+  </div>
+  <script type="module" src="/node_modules/lightgallery/lightgallery.min.js"
+  ></script>
+  <script type="module">
+    document.addEventListener("astro:page-load", () => {
+      const container = document.querySelector("#lightGallery")
+      window.lightGallery(container, {
+        selector: ".lg-item",
+      })
+    })
+  </script>
 </Layout>

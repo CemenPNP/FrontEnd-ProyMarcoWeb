@@ -5,255 +5,289 @@ import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Reserva de nichos">
-    <div class="bg-success uwu text-light">
-        <div class="container xd">
-            <div class="waza">
-                <a href="/servicios" class="text-decoration-none">
-                    <i class="bi bi-arrow-left"></i>
-                    Regregar
-                </a>
-                <h1>Reserva de nichos</h1>
-                <p>El servicio de reserva de nichos te permite asegurar un espacio en nuestro cementerio, brindando tranquilidad y un lugar digno para el descanso eterno de tus seres queridos.</p>
-                <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">Reservar</button>
-            </div>
-            <div class="ppp">
-                <img src="/servicios/nichos.png" alt="">
-            </div>
-        </div>
-        <i class="bi bi-arrow-down-circle-fill"></i>
+  <div class="bg-success uwu text-light">
+    <div class="container xd">
+      <div class="waza">
+        <a href="/servicios" class="text-decoration-none">
+          <i class="bi bi-arrow-left"></i>
+          Regregar
+        </a>
+        <h1>Reserva de nichos</h1>
+        <p>
+          El servicio de reserva de nichos te permite asegurar un espacio en
+          nuestro cementerio, brindando tranquilidad y un lugar digno para el
+          descanso eterno de tus seres queridos.
+        </p>
+        <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">
+          Reservar
+        </button>
+      </div>
+      <div class="ppp">
+        <img src="/servicios/nichos.png" alt="" />
+      </div>
     </div>
-    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="formModalLabel">Solicitud de misa</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" aria-label="selector de tipo de nicho" id="floatingTipoNicho">
-                                <option value="individual" selected>Nicho individual</option>
-                                <option value="familiar">Nicho Familiar</option>
-                                <option value="conmemorativo">Nicho Conmemorativo</option>
-                                <option value="premium">Nicho Premium</option>
-                                <option value="temporal">Nicho Temporal</option>
-                            </select>
-                            <label for="floatingTipoNicho">Tipo de nicho</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" aria-label="selector de ubicacion de nicho" id="floatingUbicacionNicho">
-                                <option value="seccion-01" selected>SECCION-01</option>
-                                <option value="seccion-02">SECCION-02</option>
-                                <option value="seccion-03">SECCION-03</option>
-                                <option value="seccion-04">SECCION-04</option>
-                                <option value="seccion-05">SECCION-05</option>
-                            </select>
-                            <label for="floatingUbicacionNicho">Ubicacion del nicho</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="floatingDate" placeholder="Date">
-                            <label for="floatingDate">Fecha</label>
-                        </div>
-                        <div class="form-floating">
-                            <textarea id="floatingComen" class="form-control"></textarea>
-                            <label for="floatingComen">Comentario</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-bs-dismiss="modal">Cerrar</button>
-                        <button class="btn btn-success" type="submit">Solicitar</button>
-                    </div>
-                </form>
-            </div>
+    <i class="bi bi-arrow-down-circle-fill"></i>
+  </div>
+  <div
+    class="modal fade"
+    id="formModal"
+    tabindex="-1"
+    aria-labelledby="formModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="formModalLabel">
+            Solicitud de misa
+          </h2>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
         </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <select
+                class="form-select"
+                aria-label="selector de tipo de nicho"
+                id="floatingTipoNicho"
+              >
+                <option value="individual" selected>Nicho individual</option>
+                <option value="familiar">Nicho Familiar</option>
+                <option value="conmemorativo">Nicho Conmemorativo</option>
+                <option value="premium">Nicho Premium</option>
+                <option value="temporal">Nicho Temporal</option>
+              </select>
+              <label for="floatingTipoNicho">Tipo de nicho</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select
+                class="form-select"
+                aria-label="selector de ubicacion de nicho"
+                id="floatingUbicacionNicho"
+              >
+                <option value="seccion-01" selected>SECCION-01</option>
+                <option value="seccion-02">SECCION-02</option>
+                <option value="seccion-03">SECCION-03</option>
+                <option value="seccion-04">SECCION-04</option>
+                <option value="seccion-05">SECCION-05</option>
+              </select>
+              <label for="floatingUbicacionNicho">Ubicacion del nicho</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="date"
+                class="form-control"
+                id="floatingDate"
+                placeholder="Date"
+              />
+              <label for="floatingDate">Fecha</label>
+            </div>
+            <div class="form-floating">
+              <textarea id="floatingComen" class="form-control"></textarea>
+              <label for="floatingComen">Comentario</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-success" type="submit">Solicitar</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <main class="container mb-3">
-        <Separacion texto="Tipos de nichos"/>
-        <section class="pedo">
-            <FlipCard 
-                title="Nicho Individual"
-                description="Espacio reservado para una sola persona, ideal para quienes buscan una solución sencilla y privada."
-                img="/servicios/nichos/nicho-individual.jpg"
-                icon="/cross.svg"
-                finalText="El nicho individual proporciona un lugar íntimo y respetuoso para el descanso de un ser querido, con la opción de personalizar la lápida."
-                features={[
-                    "Dimensiones: 80 cm x 50 cm x 50 cm",
-                    "Precio: S/ 3,000.00",
-                    "Duración de concesión: 10 años, con opción a renovación"
-                ]}
-            />
-            <FlipCard 
-                title="Nicho Familiar"
-                description="Espacio compartido con capacidad para varios miembros de la familia, manteniendo juntos a sus seres queridos."
-                img="/servicios/nichos/nicho-familiar.jpg"
-                icon="/cross.svg"
-                finalText="El nicho familiar permite a los seres queridos permanecer juntos en un solo lugar, con opciones de personalización y mantenimiento especializado."
-                features={[
-                    "Dimensiones: 160 cm x 100 cm x 100 cm",
-                    "Precio: S/ 8,500.00",
-                    "Duración de concesión: 20 años, con opción a renovación"
-                ]}
-            />
-            <FlipCard 
-                title="Nicho Conmemorativo"
-                description="Un espacio especial para recordar a personas que han sido cremadas, con un diseño elegante para urnas."
-                img="/servicios/nichos/nicho-conmemorativo.jpg"
-                icon="/cross.svg"
-                finalText="El nicho conmemorativo ofrece un espacio digno para urnas, permitiendo conmemorar a los seres queridos de manera elegante y respetuosa."
-                features={[
-                    "Dimensiones: 40 cm x 40 cm x 40 cm (por urna)",
-                    "Precio: S/ 2,000.00",
-                    "Duración de concesión: Permanente"
-                ]}
-            />
-            <FlipCard 
-                title="Nicho Premium"
-                description="Espacio exclusivo en áreas privilegiadas del cementerio, con servicios adicionales como visitas guiadas y cuidados especiales."
-                img="/servicios/nichos/nicho-premium.jpg"
-                icon="/cross.svg"
-                finalText="El nicho premium proporciona un lugar distinguido para el descanso eterno, con atención y mantenimiento de primer nivel."
-                features={[
-                    "Dimensiones: 120 cm x 60 cm x 60 cm",
-                    "Precio: S/ 12,000.00",
-                    "Duración de concesión: Permanente"
-                ]}
-            />
-            <FlipCard 
-                title="Nicho Temporal"
-                description="Opción económica para quienes buscan un espacio provisional, con posibilidad de trasladar los restos posteriormente."
-                img="/servicios/nichos/nicho-temporal.jpg"
-                icon="/cross.svg"
-                finalText="El nicho temporal es una opción flexible para un descanso provisional, con la posibilidad de transferir los restos a un espacio permanente."
-                features={[
-                    "Dimensiones: 70 cm x 40 cm x 40 cm",
-                    "Precio: S/ 1,500.00",
-                    "Duración de concesión: 5 años, con opción a extensión o traslado"
-                ]}
-            />
-        </section>
-    </main>
+  </div>
+  <main class="container mb-3">
+    <Separacion texto="Tipos de nichos" />
+    <section class="pedo">
+      <FlipCard
+        title="Nicho Individual"
+        description="Espacio reservado para una sola persona, ideal para quienes buscan una solución sencilla y privada."
+        img="/servicios/nichos/nicho-individual.jpg"
+        icon="/cross.svg"
+        finalText="El nicho individual proporciona un lugar íntimo y respetuoso para el descanso de un ser querido, con la opción de personalizar la lápida."
+        features={[
+          "Dimensiones: 80 cm x 50 cm x 50 cm",
+          "Precio: S/ 3,000.00",
+          "Duración de concesión: 10 años, con opción a renovación",
+        ]}
+      />
+      <FlipCard
+        title="Nicho Familiar"
+        description="Espacio compartido con capacidad para varios miembros de la familia, manteniendo juntos a sus seres queridos."
+        img="/servicios/nichos/nicho-familiar.jpg"
+        icon="/cross.svg"
+        finalText="El nicho familiar permite a los seres queridos permanecer juntos en un solo lugar, con opciones de personalización y mantenimiento especializado."
+        features={[
+          "Dimensiones: 160 cm x 100 cm x 100 cm",
+          "Precio: S/ 8,500.00",
+          "Duración de concesión: 20 años, con opción a renovación",
+        ]}
+      />
+      <FlipCard
+        title="Nicho Conmemorativo"
+        description="Un espacio especial para recordar a personas que han sido cremadas, con un diseño elegante para urnas."
+        img="/servicios/nichos/nicho-conmemorativo.jpg"
+        icon="/cross.svg"
+        finalText="El nicho conmemorativo ofrece un espacio digno para urnas, permitiendo conmemorar a los seres queridos de manera elegante y respetuosa."
+        features={[
+          "Dimensiones: 40 cm x 40 cm x 40 cm (por urna)",
+          "Precio: S/ 2,000.00",
+          "Duración de concesión: Permanente",
+        ]}
+      />
+      <FlipCard
+        title="Nicho Premium"
+        description="Espacio exclusivo en áreas privilegiadas del cementerio, con servicios adicionales como visitas guiadas y cuidados especiales."
+        img="/servicios/nichos/nicho-premium.jpg"
+        icon="/cross.svg"
+        finalText="El nicho premium proporciona un lugar distinguido para el descanso eterno, con atención y mantenimiento de primer nivel."
+        features={[
+          "Dimensiones: 120 cm x 60 cm x 60 cm",
+          "Precio: S/ 12,000.00",
+          "Duración de concesión: Permanente",
+        ]}
+      />
+      <FlipCard
+        title="Nicho Temporal"
+        description="Opción económica para quienes buscan un espacio provisional, con posibilidad de trasladar los restos posteriormente."
+        img="/servicios/nichos/nicho-temporal.jpg"
+        icon="/cross.svg"
+        finalText="El nicho temporal es una opción flexible para un descanso provisional, con la posibilidad de transferir los restos a un espacio permanente."
+        features={[
+          "Dimensiones: 70 cm x 40 cm x 40 cm",
+          "Precio: S/ 1,500.00",
+          "Duración de concesión: 5 años, con opción a extensión o traslado",
+        ]}
+      />
+    </section>
+  </main>
 </Layout>
 
 <style>
-    .pedo{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.5rem;
+  .pedo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .modal-title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  #floatingComen {
+    min-height: 7rem;
+  }
+  .bi-arrow-down-circle-fill {
+    font-size: xx-large;
+    margin: 1rem auto;
+    animation: bubble 1.5s infinite ease-in-out;
+  }
+  @keyframes bubble {
+    0%,
+    100% {
+      transform: translateY(0);
     }
-    .modal-title{
-        text-transform: uppercase;
-        font-weight: bold;
+    50% {
+      transform: translateY(-10px);
     }
-    #floatingComen{
-        min-height: 7rem;
+  }
+  .uwu {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+  }
+  .xd {
+    display: flex;
+    justify-content: space-between;
+    padding: 8rem 0 0 0;
+  }
+  .ppp {
+    flex-shrink: 1;
+    & img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
     }
-    .bi-arrow-down-circle-fill{
-        font-size: xx-large;
-        margin: 1rem auto;
-        animation: bubble 1.5s infinite ease-in-out;
+  }
+  .waza {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 35rem;
+    & a {
+      position: absolute;
+      top: 0;
+      margin-bottom: auto;
+      width: fit-content;
+      color: #f5f5f5;
     }
-    @keyframes bubble {
-        0%, 100% {
-            transform: translateY(0);
+    & h1 {
+      font-family: "Rubik", system-ui;
+      text-transform: uppercase;
+      font-size: 3.5rem;
+      font-weight: 600;
+    }
+  }
+  #reserva {
+    color: white;
+    width: 10rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid white;
+    border-radius: 8px;
+    overflow: hidden;
+    transition:
+      transform 200ms ease,
+      background-color 200ms ease;
+    position: relative;
+    z-index: 0;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      transition: left 300ms ease;
+      z-index: -1;
+      background-color: rgba(255, 255, 255, 0.4);
+      left: -85%;
+      width: 100%;
+      height: 150%;
+      transform: rotate(45deg);
+    }
+    &:hover {
+      transform: translateY(0.3rem);
+      &::before {
+        left: 100%;
+      }
+    }
+  }
+  @media (max-width: 991.98px) {
+    .xd {
+      flex-direction: column;
+      text-align: center;
+      & .waza {
+        width: 100%;
+        & a {
+          left: 0.5rem;
         }
-        50% {
-            transform: translateY(-10px);
+        & h1 {
+          margin: 1.5rem 0 0 0;
         }
+        & #reserva {
+          margin: 0 auto 1rem auto;
+        }
+      }
+      & .ppp {
+        padding: 1rem;
+      }
     }
-    .uwu{
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    .uwu {
+      clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
     }
-    .xd{
-        display: flex;
-        justify-content: space-between;
-        padding: 8rem 0 0 0;
-    }
-    .ppp{
-        flex-shrink: 1;
-        & img{
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-        }
-    }
-    .waza{
-        position: relative;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 35rem;
-        & a{
-            position: absolute;
-            top: 0;
-            margin-bottom: auto;
-            width: fit-content;
-            color: #f5f5f5;
-        }
-        & h1{
-            font-family: 'Rubik', system-ui;
-            text-transform: uppercase;
-            font-size: 3.5rem;
-            font-weight:600;
-        }
-    }
-    #reserva {
-        color: white;
-        width: 10rem;
-        padding: .5rem 1rem;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 1px solid white;
-        border-radius: 8px;
-        overflow: hidden;
-        transition: transform 200ms ease, background-color 200ms ease;
-        position: relative;
-        z-index: 0;
-        &::before{
-            content: "";
-            position: absolute;
-            top: 0;
-            transition: left 300ms ease;
-            z-index: -1;
-            background-color: rgba(255, 255, 255, 0.4);
-            left: -85%;
-            width: 100%;
-            height: 150%;
-            transform: rotate(45deg);
-        }
-        &:hover{
-            transform: translateY(.3rem);
-            &::before{
-                left: 100%;
-            }
-        }
-    }
-    @media (max-width: 991.98px) {
-        .xd{
-            flex-direction: column;
-            text-align: center;
-            & .waza{
-                width: 100%;
-                & a{
-                    left: .5rem;
-                }
-                & h1{
-                    margin: 1.5rem 0 0 0;
-                }
-                & #reserva{
-                    margin: 0 auto 1rem auto;
-                }
-            }
-            & .ppp{
-                padding: 1rem;
-            }
-        }
-        .uwu{
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
-        }
-    }
+  }
 </style>

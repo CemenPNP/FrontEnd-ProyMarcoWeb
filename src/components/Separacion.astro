@@ -4,34 +4,42 @@ interface Props {
 }
 const { texto } = Astro.props
 ---
-<div class="section-separator d-flex text-center m-0 align-items-center my-5 mx-0 mx-md-n3">
-    <span class="section-title text-success p-0 fw-bold text-nowrap text-uppercase">{texto}</span>
+
+<div
+  class="section-separator d-flex text-center m-0 align-items-center my-5 mx-0 mx-md-n3"
+>
+  <span
+    class="section-title text-success p-0 fw-bold text-nowrap text-uppercase"
+  >
+    {texto}
+  </span>
 </div>
 
 <style>
-.section-separator::before, .section-separator::after {
+  .section-separator::before,
+  .section-separator::after {
     content: "";
     flex: 1;
     border-bottom: 2px solid rgba(25, 135, 84, 1);
     border-radius: 5px;
-}
+  }
 
-.section-separator::before {
+  .section-separator::before {
     margin-right: 10px;
-}
+  }
 
-.section-separator::after {
+  .section-separator::after {
     margin-left: 10px;
-}
+  }
 </style>
 
 <style>
-    span{
-        font-size: 28px;
+  span {
+    font-size: 28px;
+  }
+  @media (max-width: 991.98px) {
+    span {
+      font-size: 16px;
     }
-    @media (max-width: 991.98px) {
-        span{
-            font-size: 16px;
-        }
-    }
+  }
 </style>

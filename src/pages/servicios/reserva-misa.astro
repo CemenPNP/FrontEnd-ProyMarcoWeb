@@ -5,249 +5,285 @@ import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout title="Reserva de misas">
-    <div class="bg-success uwu text-light">
-        <div class="container xd">
-            <div class="waza">
-                <a href="/servicios" class="text-decoration-none">
-                    <i class="bi bi-arrow-left"></i>
-                    Regregar
-                </a>
-                <h1>Reserva de misa</h1>
-                <p>Reserve una misa en honor a sus seres queridos en un ambiente solemne y respetuoso, con opciones adaptadas a sus necesidades.</p>
-                <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">Reservar</button>
-            </div>
-            <div class="ppp">
-                <img src="/servicios/misa.png" alt="">
-            </div>
-        </div>
-        <i class="bi bi-arrow-down-circle-fill"></i>
+  <div class="bg-success uwu text-light">
+    <div class="container xd">
+      <div class="waza">
+        <a href="/servicios" class="text-decoration-none">
+          <i class="bi bi-arrow-left"></i>
+          Regregar
+        </a>
+        <h1>Reserva de misa</h1>
+        <p>
+          Reserve una misa en honor a sus seres queridos en un ambiente solemne
+          y respetuoso, con opciones adaptadas a sus necesidades.
+        </p>
+        <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">
+          Reservar
+        </button>
+      </div>
+      <div class="ppp">
+        <img src="/servicios/misa.png" alt="" />
+      </div>
     </div>
-    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="formModalLabel">Solicitud de misa</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form>
-                    <div class="modal-body">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingIntencion" placeholder="Intencion">
-                            <label for="floatingIntencion">Intención</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" aria-label="selector de tipo de misa" id="floatingTipoMisa">
-                                <option value="requiem" selected>Misa de Réquiem</option>
-                                <option value="aniversario">Misa de aniversario</option>
-                                <option value="cuerpo-presente">Misa de cuerpo presente</option>
-                                <option value="novenario">Misa de novenario</option>
-                                <option value="intenciones-especiales">Misa de intenciones especiales</option>
-                            </select>
-                            <label for="floatingTipoMisa">Tipo de misa</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="floatingDate" placeholder="Date">
-                            <label for="floatingDate">Fecha de reserva</label>
-                        </div>
-                        <div class="form-floating">
-                            <textarea id="floatingComen" class="form-control"></textarea>
-                            <label for="floatingComen">Comentario</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-bs-dismiss="modal">Cerrar</button>
-                        <button class="btn btn-success" type="submit">Solicitar</button>
-                    </div>
-                </form>
-            </div>
+    <i class="bi bi-arrow-down-circle-fill"></i>
+  </div>
+  <div
+    class="modal fade"
+    id="formModal"
+    tabindex="-1"
+    aria-labelledby="formModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="formModalLabel">
+            Solicitud de misa
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
         </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingIntencion"
+                placeholder="Intencion"
+              />
+              <label for="floatingIntencion">Intención</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select
+                class="form-select"
+                aria-label="selector de tipo de misa"
+                id="floatingTipoMisa"
+              >
+                <option value="requiem" selected>Misa de Réquiem</option>
+                <option value="aniversario">Misa de aniversario</option>
+                <option value="cuerpo-presente">Misa de cuerpo presente</option>
+                <option value="novenario">Misa de novenario</option>
+                <option value="intenciones-especiales">
+                  Misa de intenciones especiales
+                </option>
+              </select>
+              <label for="floatingTipoMisa">Tipo de misa</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="date"
+                class="form-control"
+                id="floatingDate"
+                placeholder="Date"
+              />
+              <label for="floatingDate">Fecha de reserva</label>
+            </div>
+            <div class="form-floating">
+              <textarea id="floatingComen" class="form-control"></textarea>
+              <label for="floatingComen">Comentario</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-success" type="submit">Solicitar</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <main class="container mb-3">
-        <Separacion texto="Tipos de misa"/>
-        <section class="pedo">
-            <FlipCard 
-                title="Misas de Réquiem"
-                description="Una misa solemne ofrecida en memoria de un ser querido fallecido, rogando por su descanso eterno y la paz de su alma."
-                img="/servicios/misas/misa-requiem.jpg"
-                icon="/cross.svg"
-                finalText="La misa de réquiem es ideal para conmemorar el fallecimiento de un ser querido, buscando consuelo espiritual y unión familiar a través de las oraciones. Acompañada de cantos litúrgicos específicos, esta ceremonia ofrece una despedida digna en la fe cristiana."
-                features={[
-                    "Ambiente solemne y respetuoso",
-                    "Oraciones por el descanso del difunto",
-                    "Música y lecturas especiales"
-                ]}
-            />
-            <FlipCard 
-                title="Misa de Aniversario"
-                description="Una misa especial para conmemorar el aniversario del fallecimiento de un ser querido, pidiendo por su descanso eterno."
-                img="/servicios/misas/misa-aniversario.jpg"
-                icon="/cross.svg"
-                finalText="Ideal para recordar a un ser querido en su aniversario, brindando consuelo y unión familiar en oración."
-                features={[
-                    "Conmemoración del aniversario del fallecimiento",
-                    "Oraciones especiales por el alma del difunto",
-                    "Acompañamiento familiar en un ambiente íntimo"
-                ]}
-            />
-            <FlipCard 
-                title="Misa de Cuerpo Presente"
-                description="Un servicio religioso que acompaña el velorio del difunto, brindando consuelo espiritual a los familiares y pidiendo por el eterno descanso de su alma."
-                img="/servicios/misas/misa-cuerpo.jpg"
-                icon="/cross.svg"
-                finalText="La misa de cuerpo presente permite despedir al ser querido antes de su entierro, ofreciendo un momento de oración, reflexión y acompañamiento espiritual. Es un espacio donde la fe y la unión familiar cobran importancia en el proceso de duelo."
-                features={[
-                    "Despedida solemne durante el velorio",
-                    "Oraciones por el descanso eterno",
-                    "Acompañamiento de familiares"
-                ]}
-            />
-            <FlipCard 
-                title="Misa de Novenario"
-                description="Una serie de misas celebradas durante nueve días consecutivos, en honor al alma del difunto, como parte del proceso de duelo y oración por su descanso eterno."
-                img="/servicios/misas/misa-novenario.jpg"
-                icon="/cross.svg"
-                finalText="La misa de novenario es una tradición que permite a los familiares y amigos orar por el descanso del alma del difunto durante los nueve días posteriores a su fallecimiento. Es un tiempo de reflexión, oración y acompañamiento familiar."
-                features={[
-                    "Serie de misas durante nueve días",
-                    "Oraciones por el descanso eterno",
-                    "Reflexión y unión familiar"
-                ]}
-            />
-            <FlipCard 
-                title="Misa de Intenciones Especiales"
-                description="Un servicio religioso ofrecido para pedir por diversas intenciones personales o familiares, como salud, paz, agradecimiento, o por el descanso de un ser querido."
-                img="/servicios/misas/misa-especial.jpg"
-                icon="/cross.svg"
-                finalText="La misa de intenciones especiales permite a los fieles elevar oraciones específicas en comunidad, ya sea para pedir por la salud, bienestar, o por el eterno descanso de un ser querido. Un momento de conexión espiritual y reflexión."
-                features={[
-                    "Oraciones por intenciones personales",
-                    "Misa dedicada a un ser querido o motivo especial",
-                    "Conexión espiritual en comunidad"
-                ]}
-            />
-        </section>
-    </main>
+  </div>
+  <main class="container mb-3">
+    <Separacion texto="Tipos de misa" />
+    <section class="pedo">
+      <FlipCard
+        title="Misas de Réquiem"
+        description="Una misa solemne ofrecida en memoria de un ser querido fallecido, rogando por su descanso eterno y la paz de su alma."
+        img="/servicios/misas/misa-requiem.jpg"
+        icon="/cross.svg"
+        finalText="La misa de réquiem es ideal para conmemorar el fallecimiento de un ser querido, buscando consuelo espiritual y unión familiar a través de las oraciones. Acompañada de cantos litúrgicos específicos, esta ceremonia ofrece una despedida digna en la fe cristiana."
+        features={[
+          "Ambiente solemne y respetuoso",
+          "Oraciones por el descanso del difunto",
+          "Música y lecturas especiales",
+        ]}
+      />
+      <FlipCard
+        title="Misa de Aniversario"
+        description="Una misa especial para conmemorar el aniversario del fallecimiento de un ser querido, pidiendo por su descanso eterno."
+        img="/servicios/misas/misa-aniversario.jpg"
+        icon="/cross.svg"
+        finalText="Ideal para recordar a un ser querido en su aniversario, brindando consuelo y unión familiar en oración."
+        features={[
+          "Conmemoración del aniversario del fallecimiento",
+          "Oraciones especiales por el alma del difunto",
+          "Acompañamiento familiar en un ambiente íntimo",
+        ]}
+      />
+      <FlipCard
+        title="Misa de Cuerpo Presente"
+        description="Un servicio religioso que acompaña el velorio del difunto, brindando consuelo espiritual a los familiares y pidiendo por el eterno descanso de su alma."
+        img="/servicios/misas/misa-cuerpo.jpg"
+        icon="/cross.svg"
+        finalText="La misa de cuerpo presente permite despedir al ser querido antes de su entierro, ofreciendo un momento de oración, reflexión y acompañamiento espiritual. Es un espacio donde la fe y la unión familiar cobran importancia en el proceso de duelo."
+        features={[
+          "Despedida solemne durante el velorio",
+          "Oraciones por el descanso eterno",
+          "Acompañamiento de familiares",
+        ]}
+      />
+      <FlipCard
+        title="Misa de Novenario"
+        description="Una serie de misas celebradas durante nueve días consecutivos, en honor al alma del difunto, como parte del proceso de duelo y oración por su descanso eterno."
+        img="/servicios/misas/misa-novenario.jpg"
+        icon="/cross.svg"
+        finalText="La misa de novenario es una tradición que permite a los familiares y amigos orar por el descanso del alma del difunto durante los nueve días posteriores a su fallecimiento. Es un tiempo de reflexión, oración y acompañamiento familiar."
+        features={[
+          "Serie de misas durante nueve días",
+          "Oraciones por el descanso eterno",
+          "Reflexión y unión familiar",
+        ]}
+      />
+      <FlipCard
+        title="Misa de Intenciones Especiales"
+        description="Un servicio religioso ofrecido para pedir por diversas intenciones personales o familiares, como salud, paz, agradecimiento, o por el descanso de un ser querido."
+        img="/servicios/misas/misa-especial.jpg"
+        icon="/cross.svg"
+        finalText="La misa de intenciones especiales permite a los fieles elevar oraciones específicas en comunidad, ya sea para pedir por la salud, bienestar, o por el eterno descanso de un ser querido. Un momento de conexión espiritual y reflexión."
+        features={[
+          "Oraciones por intenciones personales",
+          "Misa dedicada a un ser querido o motivo especial",
+          "Conexión espiritual en comunidad",
+        ]}
+      />
+    </section>
+  </main>
 </Layout>
-    
+
 <style>
-    .pedo{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.5rem;
+  .pedo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .modal-title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  #floatingComen {
+    min-height: 7rem;
+  }
+  .bi-arrow-down-circle-fill {
+    font-size: xx-large;
+    margin: 1rem auto;
+    animation: bubble 1.5s infinite ease-in-out;
+  }
+  @keyframes bubble {
+    0%,
+    100% {
+      transform: translateY(0);
     }
-    .modal-title{
-        text-transform: uppercase;
-        font-weight: bold;
+    50% {
+      transform: translateY(-10px);
     }
-    #floatingComen{
-        min-height: 7rem;
+  }
+  .uwu {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+  }
+  .xd {
+    display: flex;
+    justify-content: space-between;
+    padding: 8rem 0 0 0;
+  }
+  .ppp {
+    flex-shrink: 1;
+    & img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
     }
-    .bi-arrow-down-circle-fill{
-        font-size: xx-large;
-        margin: 1rem auto;
-        animation: bubble 1.5s infinite ease-in-out;
+  }
+  .waza {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 35rem;
+    & a {
+      position: absolute;
+      top: 0;
+      margin-bottom: auto;
+      width: fit-content;
+      color: #f5f5f5;
     }
-    @keyframes bubble {
-        0%, 100% {
-            transform: translateY(0);
+    & h1 {
+      font-family: "Rubik", system-ui;
+      text-transform: uppercase;
+      font-size: 3.5rem;
+      font-weight: 600;
+    }
+  }
+  #reserva {
+    color: white;
+    width: 10rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid white;
+    border-radius: 8px;
+    overflow: hidden;
+    transition:
+      transform 200ms ease,
+      background-color 200ms ease;
+    position: relative;
+    z-index: 0;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      transition: left 300ms ease;
+      z-index: -1;
+      background-color: rgba(255, 255, 255, 0.4);
+      left: -85%;
+      width: 100%;
+      height: 150%;
+      transform: rotate(45deg);
+    }
+    &:hover {
+      transform: translateY(0.3rem);
+      &::before {
+        left: 100%;
+      }
+    }
+  }
+  @media (max-width: 991.98px) {
+    .xd {
+      flex-direction: column;
+      text-align: center;
+      & .waza {
+        width: 100%;
+        & a {
+          left: 0.5rem;
         }
-        50% {
-            transform: translateY(-10px);
+        & h1 {
+          margin: 1.5rem 0 0 0;
         }
+        & #reserva {
+          margin: 0 auto 1rem auto;
+        }
+      }
+      & .ppp {
+        padding: 1rem;
+      }
     }
-    .uwu{
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    .uwu {
+      clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
     }
-    .xd{
-        display: flex;
-        justify-content: space-between;
-        padding: 8rem 0 0 0;
-    }
-    .ppp{
-        flex-shrink: 1;
-        & img{
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-        }
-    }
-    .waza{
-        position: relative;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 35rem;
-        & a{
-            position: absolute;
-            top: 0;
-            margin-bottom: auto;
-            width: fit-content;
-            color: #f5f5f5;
-        }
-        & h1{
-            font-family: 'Rubik', system-ui;
-            text-transform: uppercase;
-            font-size: 3.5rem;
-            font-weight:600;
-        }
-    }
-    #reserva {
-        color: white;
-        width: 10rem;
-        padding: .5rem 1rem;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 1px solid white;
-        border-radius: 8px;
-        overflow: hidden;
-        transition: transform 200ms ease, background-color 200ms ease;
-        position: relative;
-        z-index: 0;
-        &::before{
-            content: "";
-            position: absolute;
-            top: 0;
-            transition: left 300ms ease;
-            z-index: -1;
-            background-color: rgba(255, 255, 255, 0.4);
-            left: -85%;
-            width: 100%;
-            height: 150%;
-            transform: rotate(45deg);
-        }
-        &:hover{
-            transform: translateY(.3rem);
-            &::before{
-                left: 100%;
-            }
-        }
-    }
-    @media (max-width: 991.98px) {
-        .xd{
-            flex-direction: column;
-            text-align: center;
-            & .waza{
-                width: 100%;
-                & a{
-                    left: .5rem;
-                }
-                & h1{
-                    margin: 1.5rem 0 0 0;
-                }
-                & #reserva{
-                    margin: 0 auto 1rem auto;
-                }
-            }
-            & .ppp{
-                padding: 1rem;
-            }
-        }
-        .uwu{
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
-        }
-    }
+  }
 </style>

@@ -1,44 +1,44 @@
-import { useState } from 'react';
-import '@/styles/registroAsistencia.css';
+import { useState } from "react"
+import "@/styles/registroAsistencia.css"
 
 const RegistroAsistencia = () => {
-  const [dni, setDni] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dni, setDni] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const fechaActual = new Date().toISOString().split('T')[0];
-    const now = new Date();
-    const horas = now.getHours().toString().padStart(2, '0');
-    const minutos = now.getMinutes().toString().padStart(2, '0');
-    const horaActual = `${horas}:${minutos}`;
+    e.preventDefault()
+    const fechaActual = new Date().toISOString().split("T")[0]
+    const now = new Date()
+    const horas = now.getHours().toString().padStart(2, "0")
+    const minutos = now.getMinutes().toString().padStart(2, "0")
+    const horaActual = `${horas}:${minutos}`
 
     const datosAsistencia = {
       dni: parseInt(dni, 10),
       fecha: fechaActual,
       hora: horaActual,
-    };
+    }
 
     try {
-      const response = await fetch('http://localhost:8080/asistencia', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("http://localhost:8080/asistencia", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datosAsistencia),
-      });
+      })
 
       if (!response.ok) {
-        throw new Error('Error al registrar la asistencia');
+        throw new Error("Error al registrar la asistencia")
       }
 
-      setDni('');
-      alert('Asistencia registrada con éxito');
-      setIsModalOpen(false);
+      setDni("")
+      alert("Asistencia registrada con éxito")
+      setIsModalOpen(false)
       window.location.reload()
     } catch (error) {
-      console.error('Error:', error.message);
-      alert('No se pudo registrar la asistencia: ' + error.message);
+      console.error("Error:", error.message)
+      alert("No se pudo registrar la asistencia: " + error.message)
     }
-  };
+  }
 
   return (
     <div>
@@ -60,7 +60,11 @@ const RegistroAsistencia = () => {
                 required
               />
               <button type="submit">Registrar</button>
-              <button type="button" className="modal-close" onClick={() => setIsModalOpen(false)}>
+              <button
+                type="button"
+                className="modal-close"
+                onClick={() => setIsModalOpen(false)}
+              >
                 Cerrar
               </button>
             </form>
@@ -68,8 +72,7 @@ const RegistroAsistencia = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default RegistroAsistencia;
-RegistroAsistencia.jsx
+export default RegistroAsistencia

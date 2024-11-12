@@ -1,16 +1,13 @@
-/* Contenedor general */
 .table-container {
   width: 100%;
   margin-top: 20px;
   font-family: "Quicksand", sans-serif;
 }
 
-/* Scroll horizontal */
 .table-responsive {
   overflow-x: auto;
 }
 
-/* Input de búsqueda */
 .search-input {
   width: 100%;
   padding: 10px;
@@ -26,10 +23,9 @@
   outline: none;
 }
 
-/* Tabla */
 .table-empleados {
   width: 100%;
-  min-width: 600px; /* Asegura que la tabla tenga un ancho mínimo para el scroll */
+  min-width: 600px;
   border-collapse: collapse;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -58,7 +54,6 @@
   border-bottom: 1px solid #ddd;
 }
 
-/* Botones de acción */
 .action-btn {
   padding: 8px 12px;
   font-size: 0.9rem;
@@ -88,7 +83,6 @@
   background-color: #2fd39c;
 }
 
-/* Mensaje cuando no hay empleados */
 .no-employees-message {
   text-align: center;
   font-size: 1rem;

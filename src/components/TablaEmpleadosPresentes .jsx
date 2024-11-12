@@ -1,66 +1,72 @@
-import { useEffect, useState } from "react";
-import BotonSalida from "./BotonSalida";
-import "@/styles/tablaempleadospresentes.css";
+import { useEffect, useState } from "react"
+import BotonSalida from "./BotonSalida"
+import "@/styles/tablaempleadospresentes.css"
 
 const getColorBasedOnTime = (horaIngreso, horaEntrada) => {
-  if (!horaIngreso || !horaEntrada) return { color: "gray", text: "Sin registro" };
+  if (!horaIngreso || !horaEntrada)
+    return { color: "gray", text: "Sin registro" }
 
-  const [ingresoH, ingresoM] = horaIngreso.split(":").map(Number);
-  const [entradaH, entradaM] = horaEntrada.split(":").map(Number);
+  const [ingresoH, ingresoM] = horaIngreso.split(":").map(Number)
+  const [entradaH, entradaM] = horaEntrada.split(":").map(Number)
 
-  const dateIngreso = new Date();
-  dateIngreso.setHours(ingresoH, ingresoM);
+  const dateIngreso = new Date()
+  dateIngreso.setHours(ingresoH, ingresoM)
 
-  const dateEntrada = new Date();
-  dateEntrada.setHours(entradaH, entradaM);
+  const dateEntrada = new Date()
+  dateEntrada.setHours(entradaH, entradaM)
 
-  const differenceInMinutes = (dateIngreso - dateEntrada) / (1000 * 60);
+  const differenceInMinutes = (dateIngreso - dateEntrada) / (1000 * 60)
 
-  if (differenceInMinutes < 0) return { color: "green", text: "Llegó a tiempo" };
-  if (differenceInMinutes <= 10) return { color: "orange", text: "Retraso menor a 10 min" };
-  return { color: "red", text: "Retraso mayor a 10 min" };
-};
+  if (differenceInMinutes < 0) return { color: "green", text: "Llegó a tiempo" }
+  if (differenceInMinutes <= 10)
+    return { color: "orange", text: "Retraso menor a 10 min" }
+  return { color: "red", text: "Retraso mayor a 10 min" }
+}
 
 const TablaEmpleadosPresentes = () => {
-  const [empleados, setEmpleados] = useState([]);
-  const [busqueda, setBusqueda] = useState("");
-  const [empleadosFiltrados, setEmpleadosFiltrados] = useState([]);
+  const [empleados, setEmpleados] = useState([])
+  const [busqueda, setBusqueda] = useState("")
+  const [empleadosFiltrados, setEmpleadosFiltrados] = useState([])
 
   useEffect(() => {
     const obtenerEmpleados = async () => {
       try {
-        const response = await fetch("http://localhost:8080/asistencia/empleados");
-        if (!response.ok) throw new Error("Error al obtener los empleados");
+        const response = await fetch(
+          "http://localhost:8080/asistencia/empleados"
+        )
+        if (!response.ok) throw new Error("Error al obtener los empleados")
 
-        const empleadosData = await response.json();
-        const fechaActual = new Date().toISOString().split("T")[0];
+        const empleadosData = await response.json()
+        const fechaActual = new Date().toISOString().split("T")[0]
 
         const empleadosPresentes = empleadosData.filter((empleado) =>
-          empleado.registroHorarios.some((registro) => registro.fecha === fechaActual && registro.horaIngreso)
-        );
+          empleado.registroHorarios.some(
+            (registro) => registro.fecha === fechaActual && registro.horaIngreso
+          )
+        )
 
-        setEmpleados(empleadosPresentes);
-        setEmpleadosFiltrados(empleadosPresentes);
+        setEmpleados(empleadosPresentes)
+        setEmpleadosFiltrados(empleadosPresentes)
       } catch (error) {
-        console.error("Error:", error.message);
+        console.error("Error:", error.message)
       }
-    };
+    }
 
-    obtenerEmpleados();
-  }, []);
+    obtenerEmpleados()
+  }, [])
 
   const handleBusqueda = (e) => {
-    const valor = e.target.value.toLowerCase();
-    setBusqueda(valor);
+    const valor = e.target.value.toLowerCase()
+    setBusqueda(valor)
 
     const filtrados = empleados.filter((empleado) =>
-      [empleado.nombre, empleado.apellido, empleado.dni.toString()].some((dato) =>
-        dato.toLowerCase().includes(valor)
+      [empleado.nombre, empleado.apellido, empleado.dni.toString()].some(
+        (dato) => dato.toLowerCase().includes(valor)
       )
-    );
+    )
 
-    setEmpleadosFiltrados(filtrados);
-  };
+    setEmpleadosFiltrados(filtrados)
+  }
 
   return (
     <div className="tabla-empleados-container">
@@ -86,10 +92,14 @@ const TablaEmpleadosPresentes = () => {
             {empleadosFiltrados.length > 0 ? (
               empleadosFiltrados.map((empleado) => {
                 const registroHoy = empleado.registroHorarios.find(
-                  (registro) => registro.fecha === new Date().toISOString().split("T")[0]
-                );
-                const horaEntrada = empleado.cargo.horaEntrada;
-                const { color, text } = getColorBasedOnTime(registroHoy.horaIngreso, horaEntrada);
+                  (registro) =>
+                    registro.fecha === new Date().toISOString().split("T")[0]
+                )
+                const horaEntrada = empleado.cargo.horaEntrada
+                const { color, text } = getColorBasedOnTime(
+                  registroHoy.horaIngreso,
+                  horaEntrada
+                )
 
                 return (
                   <tr key={empleado.id}>
@@ -97,18 +107,25 @@ const TablaEmpleadosPresentes = () => {
                     <td>{empleado.apellido}</td>
                     <td>{empleado.dni}</td>
                     <td>
-                      <span className={`tooltip tooltip-${color}`} data-tooltip={text}></span>
+                      <span
+                        className={`tooltip tooltip-${color}`}
+                        data-tooltip={text}
+                      ></span>
                       {registroHoy.horaIngreso}
                     </td>
                     <td>
                       {registroHoy.horaSalida ? (
                         registroHoy.horaSalida
                       ) : (
-                        <BotonSalida key={empleado.id} dni={empleado.dni} client:load />
+                        <BotonSalida
+                          key={empleado.id}
+                          dni={empleado.dni}
+                          client:load
+                        />
                       )}
                     </td>
                   </tr>
-                );
+                )
               })
             ) : (
               <tr>
@@ -119,7 +136,7 @@ const TablaEmpleadosPresentes = () => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TablaEmpleadosPresentes;
+export default TablaEmpleadosPresentes

@@ -1,21 +1,23 @@
-import { useEffect, useState } from 'react';
-import TablaEmpleadosPorDia from '@/components/TablaEmpleadosPorDia';
-import "@/styles/historialasistencia.css";
+import { useEffect, useState } from "react"
+import TablaEmpleadosPorDia from "@/components/TablaEmpleadosPorDia"
+import "@/styles/historialasistencia.css"
 
 const HistorialAsistencia = () => {
-  const [empleadosPorFecha, setEmpleadosPorFecha] = useState({});
+  const [empleadosPorFecha, setEmpleadosPorFecha] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/asistencia/empleados');
-        const data = await response.json();
+        const response = await fetch(
+          "http://localhost:8080/asistencia/empleados"
+        )
+        const data = await response.json()
 
         const groupedByDate = data.reduce((acc, empleado) => {
           empleado.registroHorarios.forEach((registro) => {
-            const fecha = registro.fecha;
+            const fecha = registro.fecha
             if (!acc[fecha]) {
-              acc[fecha] = [];
+              acc[fecha] = []
             }
             acc[fecha].push({
               nombre: empleado.nombre,
@@ -23,19 +25,19 @@ const HistorialAsistencia = () => {
               cargo: empleado.cargo.cargo,
               horaIngreso: registro.horaIngreso,
               horaSalida: registro.horaSalida,
-            });
-          });
-          return acc;
-        }, {});
+            })
+          })
+          return acc
+        }, {})
 
-        setEmpleadosPorFecha(groupedByDate);
+        setEmpleadosPorFecha(groupedByDate)
       } catch (error) {
-        console.error('Error al obtener los datos:', error);
+        console.error("Error al obtener los datos:", error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <div className="historial-container">
@@ -47,7 +49,7 @@ const HistorialAsistencia = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default HistorialAsistencia;
+export default HistorialAsistencia

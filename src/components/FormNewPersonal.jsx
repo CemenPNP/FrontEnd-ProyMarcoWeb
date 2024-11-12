@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 import "@/styles/formnewpersonal.css"
 
 const FormNewPersonal = () => {
@@ -6,27 +6,27 @@ const FormNewPersonal = () => {
     { id: "1", cargo: "Gerente", horaEntrada: "08:00", horaSalida: "17:00" },
     { id: "2", cargo: "Contador", horaEntrada: "08:00", horaSalida: "16:00" },
     { id: "3", cargo: "Asistente", horaEntrada: "09:00", horaSalida: "18:00" },
-    { id: "4", cargo: "Limpieza", horaEntrada: "06:00", horaSalida: "14:00" }
-  ];
+    { id: "4", cargo: "Limpieza", horaEntrada: "06:00", horaSalida: "14:00" },
+  ]
 
   const [formData, setFormData] = useState({
     nombre: "",
     apellido: "",
     dni: "",
-    cargo: ""
-  });
+    cargo: "",
+  })
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const selectedCargo = CARGOS.find((c) => c.id === formData.cargo);
+    const selectedCargo = CARGOS.find((c) => c.id === formData.cargo)
 
-    const dniNumber = parseInt(formData.dni, 10);
+    const dniNumber = parseInt(formData.dni, 10)
 
     const payload = {
       nombre: formData.nombre,
@@ -35,31 +35,31 @@ const FormNewPersonal = () => {
       cargo: {
         cargo: selectedCargo.cargo,
         horaEntrada: selectedCargo.horaEntrada,
-        horaSalida: selectedCargo.horaSalida
-      }
-    };
+        horaSalida: selectedCargo.horaSalida,
+      },
+    }
 
-    console.log(JSON.stringify(payload));
+    console.log(JSON.stringify(payload))
 
     try {
       const response = await fetch("http://localhost:8080/trabajador/crear", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload)
-      });
+        body: JSON.stringify(payload),
+      })
 
       if (!response.ok) {
-        throw new Error("Error al crear el empleado");
+        throw new Error("Error al crear el empleado")
       }
 
-      console.log("Empleado creado exitosamente");
+      console.log("Empleado creado exitosamente")
       window.location.reload()
     } catch (error) {
-      console.error("Error:", error.message);
+      console.error("Error:", error.message)
     }
-  };
+  }
 
   return (
     <form className="new-employee-form" onSubmit={handleSubmit}>
@@ -111,9 +111,10 @@ const FormNewPersonal = () => {
           ))}
         </select>
       </div>
-      <button type="submit" className="submit-button">Registrar Nuevo Personal</button>
+      <button type="submit" className="submit-button">
+        Registrar Nuevo Personal
+      </button>
     </form>
-
 
     // <form className="new-employee-form" onSubmit={handleSubmit}>
     //   <div className="column-1">
@@ -164,7 +165,7 @@ const FormNewPersonal = () => {
     //   </div>
     //   <button type="submit">Registrar Nuevo Personal</button>
     // </form>
-  );
-};
+  )
+}
 
-export default FormNewPersonal;
+export default FormNewPersonal
