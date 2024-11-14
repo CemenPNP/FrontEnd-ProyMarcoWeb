@@ -121,7 +121,13 @@ const session = await getSession(Astro.request)
                 <label for="floatingComen">Comentario</label>
               </div>
             ) : (
-              <h3>INICIA SESSION PERRO</h3>
+              <h5 class="text-center">Inicia sesion para hacer una reserva</h5>
+              <a
+                href="/login"
+                class="login-button text-decoration-none text-white rounded-4 px-3 py-2 m-t-5"
+              >
+                Iniciar sesión
+              </a>
             )}
           </div>
           <div class="modal-footer">
@@ -200,6 +206,16 @@ const session = await getSession(Astro.request)
 </Layout>
 
 <style>
+  .login-button {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: #009970;
+    transition: 0.3s background-color;
+    &:hover {
+      background-color: #00b383;
+    }
+  }
   .pedo {
     display: flex;
     flex-wrap: wrap;
