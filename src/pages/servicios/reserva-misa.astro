@@ -2,6 +2,8 @@
 import FlipCard from "@/components/FlipCard.astro"
 import Separacion from "@/components/Separacion.astro"
 import Layout from "@/layouts/Layout.astro"
+import { getSession } from "auth-astro/server"
+const session = await getSession(Astro.request)
 ---
 
 <Layout title="Reserva de misas">
@@ -48,48 +50,85 @@ import Layout from "@/layouts/Layout.astro"
         </div>
         <form>
           <div class="modal-body">
-            <div class="form-floating mb-3">
-              <input
-                type="text"
-                class="form-control"
-                id="floatingIntencion"
-                placeholder="Intencion"
-              />
-              <label for="floatingIntencion">Intención</label>
-            </div>
-            <div class="form-floating mb-3">
-              <select
-                class="form-select"
-                aria-label="selector de tipo de misa"
-                id="floatingTipoMisa"
-              >
-                <option value="requiem" selected>Misa de Réquiem</option>
-                <option value="aniversario">Misa de aniversario</option>
-                <option value="cuerpo-presente">Misa de cuerpo presente</option>
-                <option value="novenario">Misa de novenario</option>
-                <option value="intenciones-especiales">
-                  Misa de intenciones especiales
-                </option>
-              </select>
-              <label for="floatingTipoMisa">Tipo de misa</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                type="date"
-                class="form-control"
-                id="floatingDate"
-                placeholder="Date"
-              />
-              <label for="floatingDate">Fecha de reserva</label>
-            </div>
-            <div class="form-floating">
-              <textarea id="floatingComen" class="form-control"></textarea>
-              <label for="floatingComen">Comentario</label>
-            </div>
+            {session?.user ? (
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingIntencion"
+                  placeholder="Intención"
+                />
+                <label for="floatingIntencion">Intención</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <select
+                  class="form-select"
+                  aria-label="selector de tipo de misa"
+                  id="floatingTipoMisa"
+                >
+                  <option value="requiem" selected>Misa de Réquiem (S/ 350 por hora)</option>
+                  <option value="aniversario">Misa de Aniversario (S/ 300 por hora)</option>
+                  <option value="cuerpo-presente">Misa de Cuerpo Presente (S/ 500 por hora)</option>
+                  <option value="novenario">Misa de Novenario (S/ 2000 por novenario)</option>
+                  <option value="intenciones-especiales">
+                    Misa de Intenciones Especiales (S/ 250 por hora)
+                  </option>
+                </select>
+                <label for="floatingTipoMisa">Tipo de misa</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <select
+                  class="form-select"
+                  aria-label="duración de misa"
+                  id="floatingDuration"
+                >
+                  <option value="60" selected>1 hora</option>
+                  <option value="90">1.5 horas</option>
+                  <option value="120">2 horas</option>
+                  <option value="150">2.5 horas</option>
+                  <option value="180">3 horas</option>
+                </select>
+                <label for="floatingDuration">Duración de la misa</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="floatingDate"
+                  placeholder="Fecha de reserva"
+                />
+                <label for="floatingDate">Fecha de reserva</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input
+                  type="time"
+                  class="form-control"
+                  id="floatingTime"
+                  placeholder="Hora de reserva"
+                  min="06:00"
+                  max="20:00"
+                  step="1800"
+                />
+                <label for="floatingTime">Hora de reserva</label>
+              </div>
+
+              <div class="form-floating">
+                <textarea id="floatingComen" class="form-control"></textarea>
+                <label for="floatingComen">Comentario</label>
+              </div>
+            ) : (
+              <h3>INICIA SESSION PERRO</h3>
+            )}
           </div>
           <div class="modal-footer">
             <button class="btn" data-bs-dismiss="modal">Cerrar</button>
-            <button class="btn btn-success" type="submit">Solicitar</button>
+            {session?.user && (
+              <button class="btn btn-success" type="submit">Solicitar</button>
+            )}
           </div>
         </form>
       </div>
@@ -100,26 +139,26 @@ import Layout from "@/layouts/Layout.astro"
     <section class="pedo">
       <FlipCard
         title="Misas de Réquiem"
-        description="Una misa solemne ofrecida en memoria de un ser querido fallecido, rogando por su descanso eterno y la paz de su alma."
+        description="Misa solemne ofrecida en memoria de un ser querido fallecido, rogando por su descanso eterno y la paz de su alma."
         img="/servicios/misas/misa-requiem.jpg"
         icon="/cross.svg"
-        finalText="La misa de réquiem es ideal para conmemorar el fallecimiento de un ser querido, buscando consuelo espiritual y unión familiar a través de las oraciones. Acompañada de cantos litúrgicos específicos, esta ceremonia ofrece una despedida digna en la fe cristiana."
+        finalText="Ideal para conmemorar el fallecimiento de un ser querido, buscando consuelo espiritual y unión familiar a través de las oraciones."
         features={[
-          "Ambiente solemne y respetuoso",
-          "Oraciones por el descanso del difunto",
-          "Música y lecturas especiales",
+          "Duración mínima de 1 hora",
+          "Precio: S/ 350 por la primera hora, S/ 150 por cada 30 min adicionales",
+          "Incluye música litúrgica solemne y oraciones personalizadas",
         ]}
       />
       <FlipCard
         title="Misa de Aniversario"
-        description="Una misa especial para conmemorar el aniversario del fallecimiento de un ser querido, pidiendo por su descanso eterno."
+        description="Misa especial para conmemorar el aniversario del fallecimiento de un ser querido, pidiendo por su descanso eterno."
         img="/servicios/misas/misa-aniversario.jpg"
         icon="/cross.svg"
         finalText="Ideal para recordar a un ser querido en su aniversario, brindando consuelo y unión familiar en oración."
         features={[
-          "Conmemoración del aniversario del fallecimiento",
-          "Oraciones especiales por el alma del difunto",
-          "Acompañamiento familiar en un ambiente íntimo",
+          "Duración mínima de 1 hora",
+          "Precio: S/ 300 por la primera hora, S/ 120 por cada 30 min adicionales",
+          "Ceremonia íntima con opción de dedicatorias y lecturas personalizadas",
         ]}
       />
       <FlipCard
@@ -127,23 +166,22 @@ import Layout from "@/layouts/Layout.astro"
         description="Un servicio religioso que acompaña el velorio del difunto, brindando consuelo espiritual a los familiares y pidiendo por el eterno descanso de su alma."
         img="/servicios/misas/misa-cuerpo.jpg"
         icon="/cross.svg"
-        finalText="La misa de cuerpo presente permite despedir al ser querido antes de su entierro, ofreciendo un momento de oración, reflexión y acompañamiento espiritual. Es un espacio donde la fe y la unión familiar cobran importancia en el proceso de duelo."
+        finalText="Para despedir un ser querido antes de su entierro, con un momento de oración y compañia espiritual. Es un espacio donde la fe y la unión familiar cobran importancia en el proceso de duelo."
         features={[
-          "Despedida solemne durante el velorio",
-          "Oraciones por el descanso eterno",
-          "Acompañamiento de familiares",
+          "Duración mínima de 1.5 horas",
+          "Precio: S/ 500 por la primera hora, S/ 200 por cada 30 min adicionales",
+          "Servicio especial durante el velorio, con acompañamiento espiritual completo",
         ]}
       />
       <FlipCard
         title="Misa de Novenario"
-        description="Una serie de misas celebradas durante nueve días consecutivos, en honor al alma del difunto, como parte del proceso de duelo y oración por su descanso eterno."
+        description="Serie de misas celebradas durante nueve días consecutivos, en honor al alma del difunto, como parte del proceso de duelo y oración por su descanso eterno."
         img="/servicios/misas/misa-novenario.jpg"
         icon="/cross.svg"
-        finalText="La misa de novenario es una tradición que permite a los familiares y amigos orar por el descanso del alma del difunto durante los nueve días posteriores a su fallecimiento. Es un tiempo de reflexión, oración y acompañamiento familiar."
+        finalText="Tradición que permite a familiares y amigos orar por el descanso del alma del difunto en los nueve días posteriores a su fallecimiento. Tiempo de reflexión, oración y acompañamiento familiar."
         features={[
-          "Serie de misas durante nueve días",
-          "Oraciones por el descanso eterno",
-          "Reflexión y unión familiar",
+          "Precio: S/ 2000 por el novenario completo, S/ 150 por cada 30 min adicionales(afecta a todas las misas)",
+          "Incluye guías y recursos para oraciones diarias durante los nueve días",
         ]}
       />
       <FlipCard
@@ -153,9 +191,8 @@ import Layout from "@/layouts/Layout.astro"
         icon="/cross.svg"
         finalText="La misa de intenciones especiales permite a los fieles elevar oraciones específicas en comunidad, ya sea para pedir por la salud, bienestar, o por el eterno descanso de un ser querido. Un momento de conexión espiritual y reflexión."
         features={[
-          "Oraciones por intenciones personales",
-          "Misa dedicada a un ser querido o motivo especial",
-          "Conexión espiritual en comunidad",
+          "Duración mínima de 1 hora",
+          "Precio: S/ 250 por la primera hora, S/ 100 por cada 30 min adicionales",
         ]}
       />
     </section>
