@@ -2,6 +2,8 @@
 import FlipCard from "@/components/FlipCard.astro"
 import Separacion from "@/components/Separacion.astro"
 import Layout from "@/layouts/Layout.astro"
+import { getSession } from "auth-astro/server"
+const session = await getSession(Astro.request)
 ---
 
 <Layout title="Reserva de nichos">
@@ -49,51 +51,63 @@ import Layout from "@/layouts/Layout.astro"
         </div>
         <form>
           <div class="modal-body">
-            <div class="form-floating mb-3">
-              <select
-                class="form-select"
-                aria-label="selector de tipo de nicho"
-                id="floatingTipoNicho"
+            {session?.user ? (
+              <div class="form-floating mb-3">
+                <select
+                  class="form-select"
+                  aria-label="selector de tipo de nicho"
+                  id="floatingTipoNicho"
+                >
+                  <option value="individual" selected>Nicho individual</option>
+                  <option value="familiar">Nicho Familiar</option>
+                  <option value="conmemorativo">Nicho Conmemorativo</option>
+                  <option value="premium">Nicho Premium</option>
+                  <option value="temporal">Nicho Temporal</option>
+                </select>
+                <label for="floatingTipoNicho">Tipo de nicho</label>
+              </div>
+              <div class="form-floating mb-3">
+                <select
+                  class="form-select"
+                  aria-label="selector de ubicacion de nicho"
+                  id="floatingUbicacionNicho"
+                >
+                  <option value="seccion-01" selected>SECCION-01</option>
+                  <option value="seccion-02">SECCION-02</option>
+                  <option value="seccion-03">SECCION-03</option>
+                  <option value="seccion-04">SECCION-04</option>
+                  <option value="seccion-05">SECCION-05</option>
+                </select>
+                <label for="floatingUbicacionNicho">Ubicacion del nicho</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="floatingDate"
+                  placeholder="Date"
+                />
+                <label for="floatingDate">Fecha</label>
+              </div>
+              <div class="form-floating">
+                <textarea id="floatingComen" class="form-control"></textarea>
+                <label for="floatingComen">Comentario</label>
+              </div>
+            ) : (
+              <h5 class="text-center">Inicia sesion para hacer una reserva</h5>
+              <a
+                href="/login"
+                class="login-button text-decoration-none text-white rounded-4 px-3 py-2 m-t-5"
               >
-                <option value="individual" selected>Nicho individual</option>
-                <option value="familiar">Nicho Familiar</option>
-                <option value="conmemorativo">Nicho Conmemorativo</option>
-                <option value="premium">Nicho Premium</option>
-                <option value="temporal">Nicho Temporal</option>
-              </select>
-              <label for="floatingTipoNicho">Tipo de nicho</label>
-            </div>
-            <div class="form-floating mb-3">
-              <select
-                class="form-select"
-                aria-label="selector de ubicacion de nicho"
-                id="floatingUbicacionNicho"
-              >
-                <option value="seccion-01" selected>SECCION-01</option>
-                <option value="seccion-02">SECCION-02</option>
-                <option value="seccion-03">SECCION-03</option>
-                <option value="seccion-04">SECCION-04</option>
-                <option value="seccion-05">SECCION-05</option>
-              </select>
-              <label for="floatingUbicacionNicho">Ubicacion del nicho</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input
-                type="date"
-                class="form-control"
-                id="floatingDate"
-                placeholder="Date"
-              />
-              <label for="floatingDate">Fecha</label>
-            </div>
-            <div class="form-floating">
-              <textarea id="floatingComen" class="form-control"></textarea>
-              <label for="floatingComen">Comentario</label>
-            </div>
-          </div>
+                Iniciar sesión
+              </a>
+            )}
           <div class="modal-footer">
             <button class="btn" data-bs-dismiss="modal">Cerrar</button>
-            <button class="btn btn-success" type="submit">Solicitar</button>
+            {session?.user && (
+              <button class="btn btn-success" type="submit">Solicitar</button>
+            )}
+          </div>
           </div>
         </form>
       </div>
@@ -167,6 +181,16 @@ import Layout from "@/layouts/Layout.astro"
 </Layout>
 
 <style>
+  .login-button {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: #009970;
+    transition: 0.3s background-color;
+    &:hover {
+      background-color: #00b383;
+    }
+  }
   .pedo {
     display: flex;
     flex-wrap: wrap;
