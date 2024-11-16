@@ -4,6 +4,36 @@ import Layout from "@/layouts/Layout.astro"
 import { SignIn } from "auth-astro/components"
 import { getSession } from "auth-astro/server"
 const session = await getSession(Astro.request)
+
+let jwtPosted = false
+let newToken = null
+
+if (session?.jwt && !jwtPosted) {
+  const jwt = session.jwt
+  console.log(jwt)
+
+  try {
+    const response = await fetch("http://localhost:8080/auth/google", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token: jwt }),
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+
+      newToken = data.token
+
+      jwtPosted = true
+    } else {
+      console.error("Error al enviar el JWT:", response.statusText)
+    }
+  } catch (error) {
+    console.error("Error en la solicitud:", error)
+  }
+}
 ---
 
 <Layout title="Inicio de sesion">
