@@ -25,6 +25,11 @@ if (session?.jwt && !jwtPosted) {
       const data = await response.json()
 
       newToken = data.token
+      Astro.cookies.set("auth_token", newToken, {
+        path: "/",
+        httpOnly: true,
+        secure: true,
+      })
 
       jwtPosted = true
     } else {
