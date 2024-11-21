@@ -5,66 +5,83 @@ import { SignIn } from "auth-astro/components"
 import { getSession } from "auth-astro/server"
 const session = await getSession(Astro.request)
 
-let jwtPosted = false
-let newToken = null
+// let jwtPosted = false
+// let newToken = null
 
-if (session?.jwt && !jwtPosted) {
-  const jwt = session.jwt
-  console.log(jwt)
+// if (session?.jwt && !jwtPosted) {
+//   const jwt = session.jwt
+//   console.log(jwt)
 
-  try {
-    const response = await fetch("http://localhost:8080/auth/google", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ token: jwt }),
-    })
+//   try {
+//     const response = await fetch("http://localhost:8080/auth/google", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ token: jwt }),
+//     })
 
-    if (response.ok) {
-      const data = await response.json()
+//     if (response.ok) {
+//       const data = await response.json()
 
-      newToken = data.token
-      Astro.cookies.set("auth_token", newToken, {
-        path: "/",
-        httpOnly: true,
-        secure: true,
-      })
+//       newToken = data.token
+//       Astro.cookies.set("auth_token", newToken, {
+//         path: "/",
+//         httpOnly: true,
+//         secure: true,
+//       })
 
-      jwtPosted = true
-    } else {
-      console.error("Error al enviar el JWT:", response.statusText)
-    }
-  } catch (error) {
-    console.error("Error en la solicitud:", error)
-  }
-}
+//       jwtPosted = true
+//     } else {
+//       console.error("Error al enviar el JWT:", response.statusText)
+//     }
+//   } catch (error) {
+//     console.error("Error en la solicitud:", error)
+//   }
+// }
 ---
 
 <Layout title="Inicio de sesion">
   <Hero image="/hero.webp">
     <section class="flip-card">
       <article class="face front">
-        <form class="mx-auto bg-white p-3 rounded-4" style="width: 400px;">
+        <form
+          id="login-form"
+          class="mx-auto bg-white p-3 rounded-4"
+          style="width: 400px;"
+        >
           <h3 class="text-center text-success fw-bold">Iniciar sesion</h3>
           <hr class="border border-primary mx-3 mt-0" />
           <div class="mb-3">
-            <label for="inputEmail" class="form-label text-dark">
+            <label for="inputEmailLogin" class="form-label text-dark">
               Correo electronico
             </label>
-            <input type="email" class="form-control" id="inputEmail" />
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmailLogin"
+              name="correo"
+              autocomplete="email"
+            />
           </div>
           <div class="mb-3">
-            <label for="inputPassword" class="form-label text-dark">
+            <label for="inputPasswordLogin" class="form-label text-dark">
               Contraseña
             </label>
-            <input type="password" class="form-control" id="inputPassword" />
-            <div class="form-text mt-0">Olvido su contraseña?</div>
+            <input
+              type="password"
+              class="form-control"
+              id="inputPasswordLogin"
+              autocomplete="current-password"
+              name="contraseña"
+            />
+            <p class="form-text mt-0">Olvido su contraseña?</p>
           </div>
           <div class="d-flex gap-2 justify-content-center">
             <SignIn
               class={"p-1 d-flex align-items-center gap-2 btn btn-primary text-white fw-bold"}
               provider="google"
+              type="button"
             >
               Con Google
               <svg
@@ -99,16 +116,28 @@ if (session?.jwt && !jwtPosted) {
           <h3 class="text-center text-success fw-bold">Registro</h3>
           <hr class="border border-primary mx-3 mt-0" />
           <div class="mb-3">
-            <label for="inputEmail" class="form-label text-dark">
+            <label for="inputEmailRegister" class="form-label text-dark">
               Correo electronico
             </label>
-            <input type="email" class="form-control" id="inputEmail" />
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmailRegister"
+              name="correo"
+              autocomplete="email"
+            />
           </div>
           <div class="mb-3">
-            <label for="inputPassword" class="form-label text-dark">
+            <label for="inputPasswordRegister" class="form-label text-dark">
               Contraseña
             </label>
-            <input type="password" class="form-control" id="inputPassword" />
+            <input
+              type="password"
+              class="form-control"
+              id="inputPasswordRegister"
+              autocomplete="new-password"
+              name="contraseña"
+            />
           </div>
           <div class="d-flex gap-2 justify-content-center">
             <button type="submit" class="btn btn-primary text-white fw-bold">
@@ -128,51 +157,77 @@ if (session?.jwt && !jwtPosted) {
       </article>
     </section>
   </Hero>
+  <script>
+    const registerBtn = document.getElementById("register-btn")
+    const loginBtn = document.getElementById("login-btn")
+    const flipCard = document.querySelector(".flip-card")
+
+    if (registerBtn && loginBtn && flipCard) {
+      registerBtn.addEventListener("click", () => {
+        flipCard.classList.add("flipped")
+      })
+
+      loginBtn.addEventListener("click", () => {
+        flipCard.classList.remove("flipped")
+      })
+    }
+  </script>
+  <script>
+    const loginForm = document.getElementById("login-form")
+    if (loginForm) {
+      loginForm.addEventListener("submit", async (event: any) => {
+        event.preventDefault()
+        const data = Object.fromEntries(new FormData(event.target))
+        try {
+          const response = await fetch("http://localhost:8080/loggin/usuario", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          })
+
+          if (response.ok) {
+            console.log("Inicio de sesión exitoso")
+          } else {
+            console.error("Error al iniciar sesión:", response.statusText)
+          }
+        } catch (error) {
+          console.error("Error en la solicitud:", error)
+        }
+      })
+    }
+  </script>
+  <script>
+    const registerForm = document.getElementById("register-form")
+    if (registerForm) {
+      registerForm.addEventListener("submit", async (event: any) => {
+        event.preventDefault()
+        const data = Object.fromEntries(new FormData(event.target))
+        try {
+          const response = await fetch("http://localhost:8080/registro", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          })
+
+          if (response.ok) {
+            console.log("Registro exitoso")
+          } else {
+            console.error("Error al registar:", response.statusText)
+          }
+        } catch (error) {
+          console.error("Error en la solicitud:", error)
+        }
+      })
+    }
+  </script>
 </Layout>
 
-<!-- <style>
-  .flip-card {
-    position: relative;
-    width: 40rem;
-    height: 405px;
-    background-color: aqua;
-    z-index: 2;
-    & .face {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.5s ease-in-out;
-    }
-    & .front {
-      transform: perspective(600px) rotateY(0deg);
-    }
-    & .back {
-      transform: perspective(600px) rotateY(180deg);
-    }
-    &:hover {
-      & .front {
-        transition-delay: 0.1s;
-        transform: perspective(600px) rotateY(180deg);
-      }
-      & .back {
-        transition-delay: 0.1s;
-        transform: perspective(600px) rotateY(360deg);
-      }
-    }
-  }
-</style> -->
 <style>
   .flip-card {
     position: relative;
-    width: 40rem;
+    width: 400px;
     height: 405px;
     z-index: 2;
-    cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.5s;
   }
@@ -200,18 +255,3 @@ if (session?.jwt && !jwtPosted) {
     transform: perspective(600px) rotateY(180deg);
   }
 </style>
-<script>
-  const registerBtn = document.getElementById("register-btn")
-  const loginBtn = document.getElementById("login-btn")
-  const flipCard = document.querySelector(".flip-card")
-
-  if (registerBtn && loginBtn && flipCard) {
-    registerBtn.addEventListener("click", () => {
-      flipCard.classList.add("flipped")
-    })
-
-    loginBtn.addEventListener("click", () => {
-      flipCard.classList.remove("flipped")
-    })
-  }
-</script>
