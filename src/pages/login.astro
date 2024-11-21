@@ -43,39 +43,175 @@ if (session?.jwt && !jwtPosted) {
 
 <Layout title="Inicio de sesion">
   <Hero image="/hero.webp">
-    <form class="mx-auto z-1 bg-white p-3 rounded-4" style="width: 400px;">
-      <h3 class="text-center text-success fw-bold">Iniciar sesion</h3>
-      <hr class="border border-primary mx-3 mt-0" />
-      <div class="mb-3">
-        <label for="inputUser" class="form-label text-dark">
-          Nombre de usuario
-        </label>
-        <input type="email" class="form-control" id="inputUser" />
-      </div>
-      <div class="mb-3">
-        <label for="inputPassword" class="form-label text-dark">
-          Contraseña
-        </label>
-        <input type="password" class="form-control" id="inputPassword" />
-        <div class="form-text mt-0">Olvido su contraseña?</div>
-      </div>
-      <div class="d-flex flex-column align-items-center gap-2">
-        <SignIn
-          class={"p-1 d-flex align-items-center gap-2 btn btn-primary text-white fw-bold"}
-          provider="google"
-        >
-          Con Google
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z"
-            ></path>
-          </svg>
-        </SignIn>
-        <button type="submit" class="btn btn-primary text-white fw-bold">
-          Entrar
-        </button>
-      </div>
-    </form>
+    <section class="flip-card">
+      <article class="face front">
+        <form class="mx-auto bg-white p-3 rounded-4" style="width: 400px;">
+          <h3 class="text-center text-success fw-bold">Iniciar sesion</h3>
+          <hr class="border border-primary mx-3 mt-0" />
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label text-dark">
+              Correo electronico
+            </label>
+            <input type="email" class="form-control" id="inputEmail" />
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword" class="form-label text-dark">
+              Contraseña
+            </label>
+            <input type="password" class="form-control" id="inputPassword" />
+            <div class="form-text mt-0">Olvido su contraseña?</div>
+          </div>
+          <div class="d-flex gap-2 justify-content-center">
+            <SignIn
+              class={"p-1 d-flex align-items-center gap-2 btn btn-primary text-white fw-bold"}
+              provider="google"
+            >
+              Con Google
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z"
+                ></path>
+              </svg>
+            </SignIn>
+            <button type="submit" class="btn btn-primary text-white fw-bold">
+              Entrar
+            </button>
+          </div>
+          <hr class="border border-primary mx-3 mb-0" />
+          <p class="form-text mt-2 m-0">¿No tienes una cuenta?</p>
+          <button
+            type="button"
+            id="register-btn"
+            class="btn btn-primary text-white fw-bold"
+          >
+            Registrate
+          </button>
+        </form>
+      </article>
+      <article class="face back">
+        <form class="mx-auto bg-white p-3 rounded-4" style="width: 400px;">
+          <h3 class="text-center text-success fw-bold">Registro</h3>
+          <hr class="border border-primary mx-3 mt-0" />
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label text-dark">
+              Correo electronico
+            </label>
+            <input type="email" class="form-control" id="inputEmail" />
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword" class="form-label text-dark">
+              Contraseña
+            </label>
+            <input type="password" class="form-control" id="inputPassword" />
+          </div>
+          <div class="d-flex gap-2 justify-content-center">
+            <button type="submit" class="btn btn-primary text-white fw-bold">
+              Registrarse
+            </button>
+          </div>
+          <hr class="border border-primary mx-3 mb-0" />
+          <p class="form-text mt-2">¿Ya tienes una cuenta?</p>
+          <button
+            type="button"
+            id="login-btn"
+            class="btn btn-primary text-white fw-bold"
+          >
+            inicia sesión
+          </button>
+        </form>
+      </article>
+    </section>
   </Hero>
 </Layout>
+
+<!-- <style>
+  .flip-card {
+    position: relative;
+    width: 40rem;
+    height: 405px;
+    background-color: aqua;
+    z-index: 2;
+    & .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.5s ease-in-out;
+    }
+    & .front {
+      transform: perspective(600px) rotateY(0deg);
+    }
+    & .back {
+      transform: perspective(600px) rotateY(180deg);
+    }
+    &:hover {
+      & .front {
+        transition-delay: 0.1s;
+        transform: perspective(600px) rotateY(180deg);
+      }
+      & .back {
+        transition-delay: 0.1s;
+        transform: perspective(600px) rotateY(360deg);
+      }
+    }
+  }
+</style> -->
+<style>
+  .flip-card {
+    position: relative;
+    width: 40rem;
+    height: 405px;
+    z-index: 2;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+
+  .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .front {
+    transform: perspective(600px) rotateY(0deg);
+  }
+
+  .back {
+    transform: perspective(600px) rotateY(180deg);
+  }
+
+  .flipped {
+    transform: perspective(600px) rotateY(180deg);
+  }
+</style>
+<script>
+  const registerBtn = document.getElementById("register-btn")
+  const loginBtn = document.getElementById("login-btn")
+  const flipCard = document.querySelector(".flip-card")
+
+  if (registerBtn && loginBtn && flipCard) {
+    registerBtn.addEventListener("click", () => {
+      flipCard.classList.add("flipped")
+    })
+
+    loginBtn.addEventListener("click", () => {
+      flipCard.classList.remove("flipped")
+    })
+  }
+</script>
