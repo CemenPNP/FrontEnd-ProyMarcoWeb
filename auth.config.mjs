@@ -21,4 +21,7 @@ export default defineConfig({
       return session
     },
   },
+  pages: {
+    signIn: "/login",
+  },
 })
