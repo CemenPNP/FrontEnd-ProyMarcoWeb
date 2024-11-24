@@ -1,6 +1,13 @@
 import type { APIRoute } from "astro"
 
 export const POST: APIRoute = async ({ request, cookies }) => {
+  // cookies.set("auth_token", "token.prueba", {
+  //   path: "/",
+  //   httpOnly: true,
+  //   secure: true,
+  //   sameSite: "strict",
+  // })
+  // return new Response(null, { status: 200 })
   try {
     const body = await request.json()
     const response = await fetch("http://localhost:8080/loggin/usuario", {

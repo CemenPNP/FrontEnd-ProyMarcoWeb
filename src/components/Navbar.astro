@@ -1,13 +1,12 @@
 ---
-import { SignOut } from "auth-astro/components"
 import { getSession } from "auth-astro/server"
 
 interface Props {
   page: string
 }
 const { page } = Astro.props
-
-let session = false
+const authCookie = Astro.cookies.get("auth_token")?.value
+const session = await getSession(Astro.request)
 ---
 
 <nav
@@ -115,23 +114,42 @@ let session = false
       </div>
     </div>
     {
-      session ? (
-        <div class="d-flex align-items-center gap-2 d-lg-block d-none">
+      authCookie ? (
+        <div class="align-items-center gap-2 d-lg-flex d-none">
           <img
-            src="/user-icon.svg"
+            src={`${session?.user?.image || "/user-icon.svg"}`}
             alt="Foto del usuario"
             class="rounded-circle"
             width="40"
             height="40"
           />
-          {/* <SignOut class="btn btn-outline-danger btn-sm">Cerrar sesión</SignOut> */}
-          <button
-            id="btn-logout"
-            type="button"
-            class="btn btn-outline-danger btn-sm"
-          >
-            Cerrar sesión
-          </button>
+          <div class="dropdown">
+            <button
+              class="btn btn-primary text-white dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            />
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="/usuario">
+                  Usuario
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <button
+                  id="btn-logout"
+                  type="button"
+                  class="btn btn-outline-danger btn-sm mx-auto d-block"
+                >
+                  Cerrar sesión
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       ) : (
         <a
@@ -164,8 +182,8 @@ let session = false
         await signOut()
         const response = await fetch("/api/logout", { method: "POST" })
         if (response.ok) {
-          console.log("Sesión cerrada desde el servidor")
           alert("Has cerrado sesión correctamente.")
+          location.reload()
         } else {
           console.error("Error al cerrar sesión")
         }

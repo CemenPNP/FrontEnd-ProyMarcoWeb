@@ -3,10 +3,19 @@ import Hero from "@/components/Hero.astro"
 import Layout from "@/layouts/Layout.astro"
 import { SignIn } from "auth-astro/components"
 import { getSession } from "auth-astro/server"
-const session = await getSession(Astro.request)
 
-if (session) {
+const session = await getSession(Astro.request)
+const authCookie = Astro.cookies.get("auth_token")?.value
+console.log(authCookie)
+
+if (session && !authCookie) {
   const jwt = session.jwt
+  // Astro.cookies.set("auth_token", "token.prueba", {
+  //   path: "/",
+  //   httpOnly: true,
+  //   secure: true,
+  //   sameSite: "strict",
+  // })
   try {
     const response = await fetch("http://localhost:8080/auth/google", {
       method: "POST",
@@ -21,6 +30,7 @@ if (session) {
         path: "/",
         httpOnly: true,
         secure: true,
+        sameSite: "strict",
       })
     } else {
       console.error("Error al enviar el JWT al backend:", response.statusText)
@@ -29,158 +39,181 @@ if (session) {
     console.error("Error en la solicitud:", error)
   }
 }
+
+if (authCookie) {
+  return Astro.redirect("/")
+}
 ---
 
 <Layout title="Inicio de sesion">
   <Hero image="/hero.webp">
-    <section class="flip-card">
-      <article class="face front">
-        <form
-          id="login-form"
-          class="mx-auto bg-white p-3 rounded-4"
-          style="width: 400px;"
-        >
-          <h3 class="text-center text-success fw-bold">Iniciar sesion</h3>
-          <hr class="border border-primary mx-3 mt-0" />
-          <div class="mb-3">
-            <label for="inputEmailLogin" class="form-label text-dark">
-              Correo electronico
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              id="inputEmailLogin"
-              name="correo"
-              autocomplete="email"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="inputPasswordLogin" class="form-label text-dark">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              class="form-control"
-              id="inputPasswordLogin"
-              autocomplete="current-password"
-              name="contraseña"
-            />
-            <p class="form-text mt-0">Olvido su contraseña?</p>
-          </div>
-          <div class="d-flex gap-2 justify-content-center">
-            <SignIn
-              class={"p-1 d-flex align-items-center gap-2 btn btn-primary text-white fw-bold"}
-              provider="google"
-              type="button"
+    {
+      !authCookie && (
+        <section class="flip-card">
+          <article class="face front">
+            <form
+              id="login-form"
+              class="mx-auto bg-white p-3 rounded-4"
+              style="width: 400px;"
             >
-              Con Google
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
+              <h3 class="text-center text-success fw-bold">Iniciar sesion</h3>
+              <hr class="border border-primary mx-3 mt-0" />
+              <div class="mb-3">
+                <label for="inputEmailLogin" class="form-label text-dark">
+                  Correo electronico
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="inputEmailLogin"
+                  name="correo"
+                  autocomplete="email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="inputPasswordLogin" class="form-label text-dark">
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="inputPasswordLogin"
+                  autocomplete="current-password"
+                  name="contraseña"
+                />
+                <p class="form-text mt-0">Olvido su contraseña?</p>
+              </div>
+              <div class="d-flex gap-2 justify-content-center">
+                <SignIn
+                  class={
+                    "p-1 d-flex align-items-center gap-2 btn btn-primary text-white fw-bold"
+                  }
+                  provider="google"
+                  type="button"
+                >
+                  Con Google
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z" />
+                  </svg>
+                </SignIn>
+                <button
+                  type="submit"
+                  class="btn btn-primary text-white fw-bold"
+                >
+                  Entrar
+                </button>
+              </div>
+              <hr class="border border-primary mx-3 mb-0" />
+              <p class="form-text mt-2 m-0">¿No tienes una cuenta?</p>
+              <button
+                type="button"
+                id="register-btn"
+                class="btn btn-primary text-white fw-bold"
               >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path
-                  d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z"
-                ></path>
-              </svg>
-            </SignIn>
-            <button type="submit" class="btn btn-primary text-white fw-bold">
-              Entrar
-            </button>
-          </div>
-          <hr class="border border-primary mx-3 mb-0" />
-          <p class="form-text mt-2 m-0">¿No tienes una cuenta?</p>
-          <button
-            type="button"
-            id="register-btn"
-            class="btn btn-primary text-white fw-bold"
-          >
-            Registrate
-          </button>
-        </form>
-      </article>
-      <article class="face back">
-        <form
-          id="register-form"
-          class="mx-auto bg-white p-3 rounded-4"
-          style="width: 450px;"
-        >
-          <h3 class="text-center text-success fw-bold mt-0">Registro</h3>
-          <hr class="border border-primary mx-3 mb-2" />
-          <div class="d-flex gap-1">
-            <div class="mb-2 flex-fill">
-              <label for="inputNombreRegister" class="form-label text-dark m-0">
-                Nombre
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputNombreRegister"
-                name="nombre"
-                required
-              />
-            </div>
-            <div class="mb-2 flex-fill">
-              <label
-                for="inputApellidoRegister"
-                class="form-label text-dark m-0"
+                Registrate
+              </button>
+            </form>
+          </article>
+          <article class="face back">
+            <form
+              id="register-form"
+              class="mx-auto bg-white p-3 rounded-4"
+              style="width: 450px;"
+            >
+              <h3 class="text-center text-success fw-bold mt-0">Registro</h3>
+              <hr class="border border-primary mx-3 mb-2" />
+              <div class="d-flex gap-1">
+                <div class="mb-2 flex-fill">
+                  <label
+                    for="inputNombreRegister"
+                    class="form-label text-dark m-0"
+                  >
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputNombreRegister"
+                    name="nombre"
+                    required
+                  />
+                </div>
+                <div class="mb-2 flex-fill">
+                  <label
+                    for="inputApellidoRegister"
+                    class="form-label text-dark m-0"
+                  >
+                    Apellido
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputApellidoRegister"
+                    name="apellido"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-2">
+                <label
+                  for="inputEmailRegister"
+                  class="form-label text-dark m-0"
+                >
+                  Correo electrónico
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="inputEmailRegister"
+                  name="correo"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label
+                  for="inputPasswordRegister"
+                  class="form-label text-dark m-0"
+                >
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="inputPasswordRegister"
+                  name="contraseña"
+                  autocomplete="new-password"
+                  required
+                />
+              </div>
+              <div class="d-flex gap-2 justify-content-center">
+                <button
+                  type="submit"
+                  class="btn btn-primary text-white fw-bold"
+                >
+                  Registrarse
+                </button>
+              </div>
+              <hr class="border border-primary mx-3 mb-0 mt-1" />
+              <p class="form-text m-0">¿Ya tienes una cuenta?</p>
+              <button
+                type="button"
+                id="login-btn"
+                class="btn btn-primary text-white fw-bold"
               >
-                Apellido
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputApellidoRegister"
-                name="apellido"
-                required
-              />
-            </div>
-          </div>
-          <div class="mb-2">
-            <label for="inputEmailRegister" class="form-label text-dark m-0">
-              Correo electrónico
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              id="inputEmailRegister"
-              name="correo"
-              autocomplete="email"
-              required
-            />
-          </div>
-          <div class="mb-2">
-            <label for="inputPasswordRegister" class="form-label text-dark m-0">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              class="form-control"
-              id="inputPasswordRegister"
-              name="contraseña"
-              autocomplete="new-password"
-              required
-            />
-          </div>
-          <div class="d-flex gap-2 justify-content-center">
-            <button type="submit" class="btn btn-primary text-white fw-bold">
-              Registrarse
-            </button>
-          </div>
-          <hr class="border border-primary mx-3 mb-0 mt-1" />
-          <p class="form-text m-0">¿Ya tienes una cuenta?</p>
-          <button
-            type="button"
-            id="login-btn"
-            class="btn btn-primary text-white fw-bold"
-          >
-            Inicia sesión
-          </button>
-        </form>
-      </article>
-    </section>
+                Inicia sesión
+              </button>
+            </form>
+          </article>
+        </section>
+      )
+    }
   </Hero>
   <script>
     const loginForm = document.getElementById("login-form")
@@ -195,8 +228,8 @@ if (session) {
             body: JSON.stringify(data),
           })
           if (response.ok) {
-            console.log("Inicio de sesión exitoso")
             alert("Sesión iniciada correctamente.")
+            location.reload()
           } else {
             console.error("Error al iniciar sesión")
             alert("Credenciales inválidas")

@@ -2,8 +2,7 @@
 import FlipCard from "@/components/FlipCard.astro"
 import Separacion from "@/components/Separacion.astro"
 import Layout from "@/layouts/Layout.astro"
-import { getSession } from "auth-astro/server"
-const session = await getSession(Astro.request)
+const authCookie = Astro.cookies.get("auth_token")?.value
 ---
 
 <Layout title="Reserva de misas">
@@ -50,7 +49,7 @@ const session = await getSession(Astro.request)
         </div>
         <form>
           <div class="modal-body">
-            {session?.user ? (
+            {authCookie ? (
               <div class="form-floating mb-3">
                 <input
                   type="text"
@@ -132,7 +131,7 @@ const session = await getSession(Astro.request)
           </div>
           <div class="modal-footer">
             <button class="btn" data-bs-dismiss="modal">Cerrar</button>
-            {session?.user && (
+            {authCookie && (
               <button class="btn btn-success" type="submit">Solicitar</button>
             )}
           </div>

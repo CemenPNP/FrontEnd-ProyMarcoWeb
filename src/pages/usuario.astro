@@ -3,11 +3,19 @@ import Layout from "@/layouts/Layout.astro"
 import CrearDifunto from "@/components/CrearDifunto"
 import { getSession } from "auth-astro/server"
 const session = await getSession(Astro.request)
-const token = Astro.cookies.get("auth_token")?.value
+const authCookie = Astro.cookies.get("auth_token")?.value
 ---
 
-<Layout title="">
-  <h1>Administrar cuenta</h1>
-  <h2>Agregar difunto</h2>
-  <CrearDifunto correo={session?.user?.email} token={token} client:load />
-</Layout>
+{
+  authCookie && (
+    <Layout title="">
+      <h1>Administrar cuenta</h1>
+      <h2>Agregar difunto</h2>
+      <CrearDifunto
+        correo={session?.user?.email}
+        token={authCookie}
+        client:load
+      />
+    </Layout>
+  )
+}
