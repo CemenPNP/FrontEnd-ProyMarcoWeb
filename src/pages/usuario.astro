@@ -1,21 +1,26 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import CrearDifunto from "@/components/CrearDifunto"
-import { getSession } from "auth-astro/server"
-const session = await getSession(Astro.request)
+import useAuthStore from "@/stores/authStore"
+
 const authCookie = Astro.cookies.get("auth_token")?.value
+const authStore = useAuthStore.getState()
+
+if (authStore.isAuthenticated === false) {
+  return Astro.redirect("/")
+}
 ---
 
-{
-  authCookie && (
-    <Layout title="">
+<Layout title="">
+  {
+    authStore.isAuthenticated === true && (
       <h1>Administrar cuenta</h1>
       <h2>Agregar difunto</h2>
       <CrearDifunto
-        correo={session?.user?.email}
+        correo={authStore.user?.correo}
         token={authCookie}
         client:load
       />
-    </Layout>
-  )
-}
+    )
+  }
+</Layout>

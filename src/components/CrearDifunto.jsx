@@ -7,8 +7,46 @@ const AgregarDifunto = ({ correo, token }) => {
   const [fechaNacimiento, setFechaNacimiento] = useState("")
   const [fechaFallecimiento, setFechaFallecimiento] = useState("")
 
+  const validarTexto = (texto) => /^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/.test(texto)
+  const validarFechas = () => {
+    const nacimiento = new Date(fechaNacimiento)
+    const fallecimiento = new Date(fechaFallecimiento)
+    const hoy = new Date()
+
+    if (nacimiento > hoy) {
+      alert("La fecha de nacimiento no puede ser en el futuro.")
+      return false
+    }
+    if (fallecimiento < nacimiento) {
+      alert(
+        "La fecha de fallecimiento no puede ser anterior a la fecha de nacimiento."
+      )
+      return false
+    }
+    if (fallecimiento > hoy) {
+      alert("La fecha de fallecimiento no puede ser en el futuro.")
+      return false
+    }
+    return true
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    console.log(token)
+
+    if (!validarTexto(nombre)) {
+      alert("El nombre solo debe contener letras y espacios.")
+      return
+    }
+    if (!validarTexto(apellidos)) {
+      alert("Los apellidos solo deben contener letras y espacios.")
+      return
+    }
+
+    if (!validarFechas()) {
+      return
+    }
 
     const datos = {
       correo,
@@ -23,13 +61,14 @@ const AgregarDifunto = ({ correo, token }) => {
       const response = await fetch("http://localhost:8080/fallecidos/crear", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(datos),
       })
 
       if (!response.ok) {
+        alert("Error al agregar el difunto")
         throw new Error("Error al agregar el difunto")
       }
 

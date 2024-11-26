@@ -1,11 +1,11 @@
 ---
 import { getSession } from "auth-astro/server"
+import UserMenu from "@/components/UserMenu"
 
 interface Props {
   page: string
 }
 const { page } = Astro.props
-const authCookie = Astro.cookies.get("auth_token")?.value
 const session = await getSession(Astro.request)
 ---
 
@@ -113,53 +113,7 @@ const session = await getSession(Astro.request)
         </div>
       </div>
     </div>
-    {
-      authCookie ? (
-        <div class="align-items-center gap-2 d-lg-flex d-none">
-          <img
-            src={`${session?.user?.image || "/user-icon.svg"}`}
-            alt="Foto del usuario"
-            class="rounded-circle"
-            width="40"
-            height="40"
-          />
-          <div class="dropdown">
-            <button
-              class="btn btn-primary text-white dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            />
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="/usuario">
-                  Usuario
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <button
-                  id="btn-logout"
-                  type="button"
-                  class="btn btn-outline-danger btn-sm mx-auto d-block"
-                >
-                  Cerrar sesión
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      ) : (
-        <a
-          href="/login"
-          class="login-button text-decoration-none text-white rounded-4 px-3 py-2 d-lg-block d-none"
-        >
-          Iniciar sesión
-        </a>
-      )
-    }
+    <UserMenu userImage={session?.user?.image} client:load />
     <button
       class="navbar-toggler border border-0"
       type="button"
@@ -173,7 +127,7 @@ const session = await getSession(Astro.request)
   </div>
 </nav>
 
-<script>
+<!-- <script>
   const { signOut } = await import("auth-astro/client")
   const logoutButton = document.getElementById("btn-logout")
   if (logoutButton) {
@@ -192,20 +146,13 @@ const session = await getSession(Astro.request)
       }
     })
   }
-</script>
+</script> -->
 <style>
   .navbar-brand {
     color: #009970;
     transition: 0.3s color;
     &:hover {
       color: #000;
-    }
-  }
-  .login-button {
-    background-color: #009970;
-    transition: 0.3s background-color;
-    &:hover {
-      background-color: #00b383;
     }
   }
   .navbar-toggler:focus,

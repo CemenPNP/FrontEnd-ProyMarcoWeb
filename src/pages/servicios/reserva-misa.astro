@@ -2,10 +2,12 @@
 import FlipCard from "@/components/FlipCard.astro"
 import Separacion from "@/components/Separacion.astro"
 import Layout from "@/layouts/Layout.astro"
-const authCookie = Astro.cookies.get("auth_token")?.value
+import ReservarMisa from "@/components/ReservarMisa"
+const authToken = Astro.cookies.get("auth_token")?.value
 ---
 
 <Layout title="Reserva de misas">
+  <span id="top"></span>
   <div class="bg-success uwu text-light">
     <div class="container xd">
       <div class="waza">
@@ -16,7 +18,10 @@ const authCookie = Astro.cookies.get("auth_token")?.value
         <h1>Reserva de misa</h1>
         <p>
           Reserve una misa en honor a sus seres queridos en un ambiente solemne
-          y respetuoso, con opciones adaptadas a sus necesidades.
+          y respetuoso. Todas las misas tienen una duración de 1 hora y se
+          llevan a cabo en nuestra iglesia con capacidad para 200 personas.
+          Nuestro horario disponible es de 6:00 a.m. a 8:00 p.m., con opciones
+          adaptadas a sus necesidades y preferencias.
         </p>
         <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">
           Reservar
@@ -47,95 +52,7 @@ const authCookie = Astro.cookies.get("auth_token")?.value
             data-bs-dismiss="modal"
             aria-label="Close"></button>
         </div>
-        <form>
-          <div class="modal-body">
-            {authCookie ? (
-              <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="floatingIntencion"
-                  placeholder="Intención"
-                />
-                <label for="floatingIntencion">Intención</label>
-              </div>
-
-              <div class="form-floating mb-3">
-                <select
-                  class="form-select"
-                  aria-label="selector de tipo de misa"
-                  id="floatingTipoMisa"
-                >
-                  <option value="requiem" selected>Misa de Réquiem (S/ 350 por hora)</option>
-                  <option value="aniversario">Misa de Aniversario (S/ 300 por hora)</option>
-                  <option value="cuerpo-presente">Misa de Cuerpo Presente (S/ 500 por hora)</option>
-                  <option value="novenario">Misa de Novenario (S/ 2000 por novenario)</option>
-                  <option value="intenciones-especiales">
-                    Misa de Intenciones Especiales (S/ 250 por hora)
-                  </option>
-                </select>
-                <label for="floatingTipoMisa">Tipo de misa</label>
-              </div>
-
-              <div class="form-floating mb-3">
-                <select
-                  class="form-select"
-                  aria-label="duración de misa"
-                  id="floatingDuration"
-                >
-                  <option value="60" selected>1 hora</option>
-                  <option value="90">1.5 horas</option>
-                  <option value="120">2 horas</option>
-                  <option value="150">2.5 horas</option>
-                  <option value="180">3 horas</option>
-                </select>
-                <label for="floatingDuration">Duración de la misa</label>
-              </div>
-
-              <div class="form-floating mb-3">
-                <input
-                  type="date"
-                  class="form-control"
-                  id="floatingDate"
-                  placeholder="Fecha de reserva"
-                />
-                <label for="floatingDate">Fecha de reserva</label>
-              </div>
-
-              <div class="form-floating mb-3">
-                <input
-                  type="time"
-                  class="form-control"
-                  id="floatingTime"
-                  placeholder="Hora de reserva"
-                  min="06:00"
-                  max="20:00"
-                  step="1800"
-                />
-                <label for="floatingTime">Hora de reserva</label>
-              </div>
-
-              <div class="form-floating">
-                <textarea id="floatingComen" class="form-control"></textarea>
-                <label for="floatingComen">Comentario</label>
-              </div>
-            ) : (
-              <h5 class="text-center">Inicia sesion para hacer una reserva</h5>
-              <a
-                href="/login"
-                class="login-button text-decoration-none text-white rounded-4 px-3 py-2 m-t-5"
-              >
-                Iniciar sesión
-              </a>
-            )}
-          </div>
-          <div class="modal-footer">
-            <button class="btn" data-bs-dismiss="modal">Cerrar</button>
-            {authCookie && (
-              <button class="btn btn-success" type="submit">Solicitar</button>
-            )}
-          </div>
-        </form>
+        <ReservarMisa client:load token={authToken} />
       </div>
     </div>
   </div>
@@ -144,60 +61,48 @@ const authCookie = Astro.cookies.get("auth_token")?.value
     <section class="pedo">
       <FlipCard
         title="Misas de Réquiem"
-        description="Misa solemne ofrecida en memoria de un ser querido fallecido, rogando por su descanso eterno y la paz de su alma."
+        description="Misa solemne ofrecida en memoria de un ser querido fallecido, rogando por su descanso eterno."
         img="/servicios/misas/misa-requiem.jpg"
         icon="/cross.svg"
-        finalText="Ideal para conmemorar el fallecimiento de un ser querido, buscando consuelo espiritual y unión familiar a través de las oraciones."
-        features={[
-          "Duración mínima de 1 hora",
-          "Precio: S/ 350 por la primera hora, S/ 150 por cada 30 min adicionales",
-          "Incluye música litúrgica solemne y oraciones personalizadas",
-        ]}
+        finalText="Conmemora a tu ser querido con una misa solemne, uniendo a la familia en oración y consuelo espiritual."
+        features={["Precio: S/ 350", "Incluye música litúrgica solemne"]}
       />
       <FlipCard
         title="Misa de Aniversario"
-        description="Misa especial para conmemorar el aniversario del fallecimiento de un ser querido, pidiendo por su descanso eterno."
+        description="Misa especial para recordar el aniversario del fallecimiento de un ser querido y pedir por su descanso eterno."
         img="/servicios/misas/misa-aniversario.jpg"
         icon="/cross.svg"
-        finalText="Ideal para recordar a un ser querido en su aniversario, brindando consuelo y unión familiar en oración."
-        features={[
-          "Duración mínima de 1 hora",
-          "Precio: S/ 300 por la primera hora, S/ 120 por cada 30 min adicionales",
-          "Ceremonia íntima con opción de dedicatorias y lecturas personalizadas",
-        ]}
+        finalText="Recuerda a un ser querido en su aniversario, brindando unión familiar y consuelo a través de la fe."
+        features={["Precio: S/ 300", "Opción de lecturas personalizadas"]}
       />
       <FlipCard
         title="Misa de Cuerpo Presente"
-        description="Un servicio religioso que acompaña el velorio del difunto, brindando consuelo espiritual a los familiares y pidiendo por el eterno descanso de su alma."
+        description="Servicio religioso realizado durante el velorio, acompañando a los familiares y pidiendo por el eterno descanso del difunto."
         img="/servicios/misas/misa-cuerpo.jpg"
         icon="/cross.svg"
-        finalText="Para despedir un ser querido antes de su entierro, con un momento de oración y compañia espiritual. Es un espacio donde la fe y la unión familiar cobran importancia en el proceso de duelo."
-        features={[
-          "Duración mínima de 1.5 horas",
-          "Precio: S/ 500 por la primera hora, S/ 200 por cada 30 min adicionales",
-          "Servicio especial durante el velorio, con acompañamiento espiritual completo",
-        ]}
+        finalText="Despedida espiritual y momento de oración en compañía familiar antes del entierro."
+        features={["Precio: S/ 500", "Acompañamiento espiritual completo"]}
       />
       <FlipCard
-        title="Misa de Novenario"
-        description="Serie de misas celebradas durante nueve días consecutivos, en honor al alma del difunto, como parte del proceso de duelo y oración por su descanso eterno."
+        title="Misa de Acción de Gracias"
+        description="Ceremonia para agradecer por bendiciones recibidas, salud, o acontecimientos especiales en la vida."
         img="/servicios/misas/misa-novenario.jpg"
         icon="/cross.svg"
-        finalText="Tradición que permite a familiares y amigos orar por el descanso del alma del difunto en los nueve días posteriores a su fallecimiento. Tiempo de reflexión, oración y acompañamiento familiar."
+        finalText="Expresa gratitud en comunidad, fortaleciendo la fe y reconociendo las bendiciones recibidas."
         features={[
-          "Precio: S/ 2000 por el novenario completo, S/ 150 por cada 30 min adicionales(afecta a todas las misas)",
-          "Incluye guías y recursos para oraciones diarias durante los nueve días",
+          "Precio: S/ 200",
+          "Incluye música y oraciones personalizadas",
         ]}
       />
       <FlipCard
         title="Misa de Intenciones Especiales"
-        description="Un servicio religioso ofrecido para pedir por diversas intenciones personales o familiares, como salud, paz, agradecimiento, o por el descanso de un ser querido."
+        description="Servicio ofrecido para orar por intenciones personales o familiares, como salud, paz o descanso de un ser querido."
         img="/servicios/misas/misa-especial.jpg"
         icon="/cross.svg"
-        finalText="La misa de intenciones especiales permite a los fieles elevar oraciones específicas en comunidad, ya sea para pedir por la salud, bienestar, o por el eterno descanso de un ser querido. Un momento de conexión espiritual y reflexión."
+        finalText="Eleva oraciones específicas en comunidad, conectándote espiritualmente para pedir por tus intenciones."
         features={[
-          "Duración mínima de 1 hora",
-          "Precio: S/ 250 por la primera hora, S/ 100 por cada 30 min adicionales",
+          "Precio: S/ 250",
+          "Incluye lecturas adaptadas a las intenciones",
         ]}
       />
     </section>
@@ -205,15 +110,11 @@ const authCookie = Astro.cookies.get("auth_token")?.value
 </Layout>
 
 <style>
-  .login-button {
-    display: flex;
-    width: fit-content;
-    margin: 0 auto;
+  #top {
+    position: absolute;
+    top: 0;
+    left: 0;
     background-color: #009970;
-    transition: 0.3s background-color;
-    &:hover {
-      background-color: #00b383;
-    }
   }
   .pedo {
     display: flex;

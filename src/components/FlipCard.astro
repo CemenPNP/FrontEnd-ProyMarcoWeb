@@ -29,8 +29,17 @@ const { title, description, img, icon, finalText, features } = Astro.props
       <hr />
     </div>
     <p>{finalText}</p>
+    <button class="ir-reserva btn btn-primary text-white">Reservar</button>
   </article>
 </section>
+
+<script>
+  document.querySelectorAll(".ir-reserva").forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })
+    })
+  })
+</script>
 
 <style>
   .flip-card {
@@ -85,7 +94,7 @@ const { title, description, img, icon, finalText, features } = Astro.props
           border-radius: 2rem;
         }
         & h3 {
-          margin: 0.5rem 0 0 0;
+          margin: 0.5rem 0;
           font-size: x-large;
           text-transform: uppercase;
         }
@@ -96,6 +105,10 @@ const { title, description, img, icon, finalText, features } = Astro.props
           font-size: 0.9rem;
           text-align: start;
         }
+      }
+      & button {
+        margin: 0 3rem 1.5rem 3rem;
+        border: solid white 2px;
       }
       & p {
         margin: 0;

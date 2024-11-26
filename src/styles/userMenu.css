@@ -1,0 +1,7 @@
+.login-button {
+  background-color: #009970;
+  transition: 0.3s background-color;
+  &:hover {
+    background-color: #00b383;
+  }
+}

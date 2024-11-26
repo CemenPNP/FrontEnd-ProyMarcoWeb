@@ -1,21 +1,17 @@
 ---
 import Hero from "@/components/Hero.astro"
 import Layout from "@/layouts/Layout.astro"
-import { SignIn } from "auth-astro/components"
+import useAuthStore from "@/stores/authStore"
 import { getSession } from "auth-astro/server"
+import { SignIn } from "auth-astro/components"
 
 const session = await getSession(Astro.request)
-const authCookie = Astro.cookies.get("auth_token")?.value
-console.log(authCookie)
+const authStore = useAuthStore.getState()
 
-if (session && !authCookie) {
+if (session && authStore.isAuthenticated === false) {
+  // @ts-ignore
   const jwt = session.jwt
-  // Astro.cookies.set("auth_token", "token.prueba", {
-  //   path: "/",
-  //   httpOnly: true,
-  //   secure: true,
-  //   sameSite: "strict",
-  // })
+
   try {
     const response = await fetch("http://localhost:8080/auth/google", {
       method: "POST",
@@ -26,12 +22,19 @@ if (session && !authCookie) {
     })
     if (response.ok) {
       const data = await response.json()
-      Astro.cookies.set("auth_token", data.token, {
+      Astro.cookies.set("auth_token", data.token.token, {
         path: "/",
         httpOnly: true,
         secure: true,
         sameSite: "strict",
       })
+      authStore.setAuthenticated(true)
+      authStore.setUser({
+        nombre: data.usuario.nombre,
+        apellido: data.usuario.apellido,
+        correo: data.usuario.correo,
+      })
+      return Astro.redirect("/")
     } else {
       console.error("Error al enviar el JWT al backend:", response.statusText)
     }
@@ -40,7 +43,7 @@ if (session && !authCookie) {
   }
 }
 
-if (authCookie) {
+if (authStore.isAuthenticated === true) {
   return Astro.redirect("/")
 }
 ---
@@ -48,7 +51,7 @@ if (authCookie) {
 <Layout title="Inicio de sesion">
   <Hero image="/hero.webp">
     {
-      !authCookie && (
+      authStore.isAuthenticated === false && (
         <section class="flip-card">
           <article class="face front">
             <form
@@ -85,11 +88,11 @@ if (authCookie) {
               </div>
               <div class="d-flex gap-2 justify-content-center">
                 <SignIn
+                  type={"button"}
+                  provider="google"
                   class={
                     "p-1 d-flex align-items-center gap-2 btn btn-primary text-white fw-bold"
                   }
-                  provider="google"
-                  type="button"
                 >
                   Con Google
                   <svg
@@ -216,7 +219,10 @@ if (authCookie) {
     }
   </Hero>
   <script>
+    import useAuthStore from "@/stores/authStore"
     const loginForm = document.getElementById("login-form")
+    const authStore = useAuthStore.getState()
+
     if (loginForm) {
       loginForm.addEventListener("submit", async (event: any) => {
         event.preventDefault()
@@ -228,8 +234,9 @@ if (authCookie) {
             body: JSON.stringify(data),
           })
           if (response.ok) {
+            authStore.setAuthenticated(true)
             alert("Sesión iniciada correctamente.")
-            location.reload()
+            window.location.href = "/"
           } else {
             console.error("Error al iniciar sesión")
             alert("Credenciales inválidas")
@@ -241,8 +248,11 @@ if (authCookie) {
     }
   </script>
   <script>
-    const registerForm = document.getElementById("register-form")
+    const registerForm = document.getElementById(
+      "register-form"
+    ) as HTMLFormElement
     if (registerForm) {
+      const flipCard = document.querySelector(".flip-card")
       registerForm.addEventListener("submit", async (event: any) => {
         event.preventDefault()
         const data = Object.fromEntries(new FormData(event.target))
@@ -253,8 +263,11 @@ if (authCookie) {
             body: JSON.stringify(data),
           })
           if (response.ok) {
-            console.log("Registro exitoso")
-            alert(response.json)
+            alert("Registro exitoso")
+            if (flipCard) {
+              flipCard.classList.remove("flipped")
+            }
+            registerForm.reset()
           } else {
             const errorMessage = await response.text()
             console.error("Error al registrar:", errorMessage)
