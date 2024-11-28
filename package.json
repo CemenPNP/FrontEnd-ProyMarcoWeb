@@ -13,6 +13,8 @@
     "@astrojs/react": "3.6.3",
     "@astrojs/vercel": "7.8.2",
     "@auth/core": "0.37.4",
+    "@react-email/components": "^0.0.28",
+    "@react-email/render": "^1.0.2",
     "@splidejs/splide": "4.1.4",
     "@splidejs/splide-extension-auto-scroll": "0.5.3",
     "astro": "4.16.16",
@@ -23,6 +25,8 @@
     "lightgallery": "2.8.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-email": "^3.0.2",
+    "resend": "^4.0.1",
     "zustand": "5.0.1"
   },
   "devDependencies": {

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
-import {showCustomAlert} from "@/utils/alerts"
+import { showCustomAlert } from "@/utils/alerts"
 import useAuthStore from "@/stores/authStore"
+import { render } from "@react-email/components"
+import SampleEmail from "@/components/SampleEmail"
 
 const ReservarMisa = ({ token }) => {
   const { isAuthenticated, checkAuth, user } = useAuthStore()
@@ -117,10 +119,34 @@ const ReservarMisa = ({ token }) => {
     }
   }
 
+  const generateEmailContent = async (
+    nombre,
+    correo,
+    servicio,
+    fallecido,
+    intencion,
+    horaInicio,
+    horaFin,
+    format
+  ) => {
+    return await render(
+      <SampleEmail
+        nombre={nombre}
+        correo={correo}
+        servicio={servicio}
+        fallecido={fallecido}
+        intencion={intencion}
+        horaInicio={horaInicio}
+        horaFin={horaFin}
+      />,
+      format === "html" ? { pretty: true } : { plainText: true }
+    )
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (!horaInicio || !/^\d{2}:\d{2}$/.test(horaInicio)) {
-      showCustomAlert("warning", "Por favor, selecciona una hora válida.");
+      showCustomAlert("warning", "Por favor, selecciona una hora válida.")
       return
     }
     const horaFin = calcularHoraFin(horaInicio)
@@ -145,7 +171,40 @@ const ReservarMisa = ({ token }) => {
       })
 
       if (response.ok) {
-        showCustomAlert("success", "Reserva realizada con éxito, se le enviara un correo con los datos de su reserva.");
+        const [finalHtml, finalTxt] = await Promise.all([
+          generateEmailContent(
+            user.nombre,
+            user.correo,
+            nombreServicio,
+            comentario,
+            "html"
+          ),
+          generateEmailContent(
+            nombre,
+            correo,
+            telefono,
+            comentario,
+            "text"
+          ),
+        ])
+
+        await fetch("/api/sendEmail.json", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: `${nombre}<noreply@lcglassysoluciones.com>`,
+            to: "lcglassysoluciones@gmail.com",
+            subject: asunto,
+            html: finalHtml,
+            text: finalTxt,
+          }),
+        })
+        showCustomAlert(
+          "success",
+          "Reserva realizada con éxito, se le enviara un correo con los datos de su reserva."
+        )
         window.location.reload()
       } else {
         const errorData = await response.json()
