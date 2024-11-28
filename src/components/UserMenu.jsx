@@ -36,12 +36,25 @@ const UserMenu = ({ userImage }) => {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         />
-        <ul className="dropdown-menu dropdown-menu-end">
+        <ul
+          className="dropdown-menu dropdown-menu-end"
+          style={{
+            minWidth: "max-content",
+            padding: "10px",
+            marginTop: "10px",
+          }}
+        >
           <li>
-            <span>nombre: {user.nombre}</span>
+            <span>
+              <strong className="text-primary">USUARIO: </strong> {user.nombre}{" "}
+              {user.apellido}
+            </span>
           </li>
           <li>
-            <span>correo: {user.correo}</span>
+            <span>
+              <strong className="text-primary">CORREO : </strong>
+              {user.correo}
+            </span>
           </li>
           <li>
             <hr className="dropdown-divider" />
@@ -50,6 +63,15 @@ const UserMenu = ({ userImage }) => {
             <a className="dropdown-item" href="/usuario">
               Usuario
             </a>
+          </li>
+          <li>
+            <button
+              className="dropdown-item"
+              data-bs-toggle="modal"
+              data-bs-target="#contFallecidos"
+            >
+              Fallecidos
+            </button>
           </li>
           <li>
             <hr className="dropdown-divider" />

@@ -1,0 +1,27 @@
+---
+import RegistrarFallecido from "@/components/RegistrarFallecido"
+import useAuthStore from "@/stores/authStore"
+const authToken = Astro.cookies.get("auth_token")?.value
+const authStore = useAuthStore.getState()
+---
+<div
+  class="modal fade"
+  id="formRegistrarFallecido"
+  tabindex="-1"
+  aria-labelledby="formModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="formModalLabel">Registrar Difunto</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <RegistrarFallecido client:load correo={authStore.user?.correo} token={authToken} />
+    </div>
+  </div>
+</div>

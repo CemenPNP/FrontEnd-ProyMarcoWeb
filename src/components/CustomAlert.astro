@@ -1,0 +1,19 @@
+---
+interface Props {
+  type?: "success" | "warning" | "danger"
+}
+
+const { type = "success" }: Props = Astro.props
+
+const alertClasses: Record<"success" | "warning" | "danger", string> = {
+  success: "alert alert-success",
+  warning: "alert alert-warning",
+  danger: "alert alert-danger",
+}
+
+const alertClass = alertClasses[type]
+---
+
+<div class={alertClass} role="alert">
+  <slot />
+</div>

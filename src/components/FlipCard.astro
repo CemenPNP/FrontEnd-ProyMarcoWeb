@@ -1,4 +1,6 @@
 ---
+import ButtonModal from './ButtonModal.astro'
+
 interface Props {
   title: string
   description: string
@@ -29,17 +31,11 @@ const { title, description, img, icon, finalText, features } = Astro.props
       <hr />
     </div>
     <p>{finalText}</p>
-    <button class="ir-reserva btn btn-primary text-white">Reservar</button>
+    <div class="cont-btn-reserva">
+      <ButtonModal texto="Reservar"/>
+    </div>
   </article>
 </section>
-
-<script>
-  document.querySelectorAll(".ir-reserva").forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" })
-    })
-  })
-</script>
 
 <style>
   .flip-card {
@@ -106,9 +102,8 @@ const { title, description, img, icon, finalText, features } = Astro.props
           text-align: start;
         }
       }
-      & button {
-        margin: 0 3rem 1.5rem 3rem;
-        border: solid white 2px;
+      & .cont-btn-reserva {
+        margin: 0 auto 20px auto;
       }
       & p {
         margin: 0;

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
+import {showCustomAlert} from "@/utils/alerts"
 import useAuthStore from "@/stores/authStore"
 
-const ReservarMisaFormulario = ({ token }) => {
+const ReservarMisa = ({ token }) => {
   const { isAuthenticated, checkAuth, user } = useAuthStore()
-  const [fallecidos, setFallecidos] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [fallecidos, setFallecidos] = useState([])
+  const [loading, setLoading] = useState(false)
   const [fecha, setFecha] = useState("")
   const [horaInicio, setHoraInicio] = useState("")
   const [tipoMisa, setTipoMisa] = useState("Misas de Réquiem")
@@ -19,6 +20,7 @@ const ReservarMisaFormulario = ({ token }) => {
 
   useEffect(() => {
     const fetchFallecidos = async () => {
+      setLoading(true)
       if (!user || !user.correo) {
         console.warn("El correo del usuario no está disponible.")
         return
@@ -101,7 +103,6 @@ const ReservarMisaFormulario = ({ token }) => {
 
       if (response.ok) {
         const data = await response.json()
-        console.log(data)
         const horasOcupadas = data.map((horario) => horario.horaInicio)
         setHorasDisponibles(getHorasDisponibles(horasOcupadas))
       } else {
@@ -119,7 +120,7 @@ const ReservarMisaFormulario = ({ token }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (!horaInicio || !/^\d{2}:\d{2}$/.test(horaInicio)) {
-      alert("Por favor, selecciona una hora válida.")
+      showCustomAlert("warning", "Por favor, selecciona una hora válida.");
       return
     }
     const horaFin = calcularHoraFin(horaInicio)
@@ -133,9 +134,6 @@ const ReservarMisaFormulario = ({ token }) => {
       correoUsuario: user.correo,
     }
 
-    console.log(JSON.stringify(payload))
-    console.log(token)
-
     try {
       const response = await fetch("http://localhost:8080/servicio", {
         method: "POST",
@@ -147,17 +145,15 @@ const ReservarMisaFormulario = ({ token }) => {
       })
 
       if (response.ok) {
-        alert(
-          "Reserva realizada con éxito, se le enviara un correo con los datos de su reserva"
-        )
+        showCustomAlert("success", "Reserva realizada con éxito, se le enviara un correo con los datos de su reserva.");
         window.location.reload()
       } else {
         const errorData = await response.json()
-        alert(`Error: ${errorData.message}`)
+        showCustomAlert("danger", `Error: ${errorData.message}`)
       }
     } catch (error) {
       console.error("Error al enviar la reserva:", error)
-      alert("Hubo un error al enviar la reserva")
+      showCustomAlert("danger", "Hubo un error al enviar la reserva")
     }
   }
 
@@ -215,6 +211,7 @@ const ReservarMisaFormulario = ({ token }) => {
                   className="form-control"
                   value={intencion}
                   onChange={(e) => setIntencion(e.target.value)}
+                  required
                 ></textarea>
                 <label htmlFor="floatingIntencion">Intención</label>
               </div>
@@ -225,6 +222,7 @@ const ReservarMisaFormulario = ({ token }) => {
                   id="floatingTipoMisa"
                   value={tipoMisa}
                   onChange={(e) => setTipoMisa(e.target.value)}
+                  required
                 >
                   <option value="Misas de Réquiem">
                     Misa de Réquiem (S/ 350)
@@ -253,6 +251,7 @@ const ReservarMisaFormulario = ({ token }) => {
                   value={fecha}
                   onChange={handleFechaChange}
                   min={getFechaMinima()}
+                  required
                 />
                 <label htmlFor="floatingDate">Fecha de reserva</label>
               </div>
@@ -265,11 +264,9 @@ const ReservarMisaFormulario = ({ token }) => {
                     className="form-select"
                     id="floatingTime"
                     value={horaInicio}
-                    onChange={(e) => {
-                      console.log(e.target.value)
-                      setHoraInicio(e.target.value)
-                    }}
+                    onChange={(e) => setHoraInicio(e.target.value)}
                     disabled={!fecha || horasDisponibles.length === 0}
+                    required
                   >
                     {horasDisponibles.length > 0 ? (
                       horasDisponibles.map((hora) => (
@@ -290,10 +287,8 @@ const ReservarMisaFormulario = ({ token }) => {
                   className="form-select"
                   id="floatingFallecido"
                   value={idFallecido}
-                  onChange={(e) => {
-                    console.log("Valor seleccionado:", e.target.value)
-                    setIdFallecido(e.target.value)
-                  }}
+                  onChange={(e) => setIdFallecido(e.target.value)}
+                  required
                 >
                   {fallecidos.map((fallecido) => (
                     <option
@@ -306,18 +301,52 @@ const ReservarMisaFormulario = ({ token }) => {
                 </select>
                 <label htmlFor="floatingFallecido">Fallecido</label>
               </div>
+              <button
+                className="form-text mt-0 btn p-0 text-center d-block mx-auto"
+                data-bs-toggle="modal"
+                data-bs-target="#formRegistrarFallecido"
+                type="button"
+              >
+                ¿Quiere registrar un nuevo difunto?
+              </button>
             </>
           ) : (
-            <h5 className="text-center">
-              Registra un fallecido para hacer una reserva
-            </h5>
+            <>
+              <h5 className="text-center">
+                Registra un fallecido para hacer una reserva
+              </h5>
+              <button
+                className="btn btn-primary text-white d-block mx-auto"
+                style={{ width: "fit-content" }}
+                data-bs-toggle="modal"
+                data-bs-target="#formRegistrarFallecido"
+                type="button"
+              >
+                Registrar nuevo difunto
+              </button>
+            </>
           )
         ) : (
-          <h5 className="text-center">Inicia sesión para hacer una reserva</h5>
+          <>
+            <h5 className="text-center">
+              Inicia sesión para hacer una reserva
+            </h5>
+            <a
+              href="/login"
+              className="btn btn-primary text-white d-block mx-auto"
+              style={{ width: "fit-content" }}
+            >
+              Iniciar sesión
+            </a>
+          </>
         )}
       </div>
       <div className="modal-footer">
-        <button className="btn" data-bs-dismiss="modal">
+        <button
+          className="btn btn-danger"
+          data-bs-dismiss="modal"
+          type="button"
+        >
           Cerrar
         </button>
         {isAuthenticated && fallecidos.length > 0 && (
@@ -330,4 +359,4 @@ const ReservarMisaFormulario = ({ token }) => {
   )
 }
 
-export default ReservarMisaFormulario
+export default ReservarMisa

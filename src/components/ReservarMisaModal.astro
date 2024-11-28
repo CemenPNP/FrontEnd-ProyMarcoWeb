@@ -1,0 +1,33 @@
+---
+import ReservarMisa from "@/components/ReservarMisa"
+import useAuthStore from "@/stores/authStore"
+
+const authToken = Astro.cookies.get("auth_token")?.value
+const authStore = useAuthStore.getState()
+---
+<div
+  class="modal fade"
+  id="formReservaMisa"
+  tabindex="-1"
+  aria-labelledby="formModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      {
+        authStore.isAuthenticated === true && (
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="formModalLabel">Solicitud de misa</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close">
+            </button>
+          </div>
+          <ReservarMisa client:load token={authToken} />
+        )
+      }
+    </div>
+  </div>
+</div>

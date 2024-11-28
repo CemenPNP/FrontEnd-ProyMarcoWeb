@@ -2,8 +2,8 @@
 import FlipCard from "@/components/FlipCard.astro"
 import Separacion from "@/components/Separacion.astro"
 import Layout from "@/layouts/Layout.astro"
-import ReservarMisa from "@/components/ReservarMisa"
-const authToken = Astro.cookies.get("auth_token")?.value
+import ReservarMisaModal from "@/components/ReservarMisaModal.astro"
+import ButtonModal from "@/components/ButtonModal.astro"
 ---
 
 <Layout title="Reserva de misas">
@@ -23,9 +23,7 @@ const authToken = Astro.cookies.get("auth_token")?.value
           Nuestro horario disponible es de 6:00 a.m. a 8:00 p.m., con opciones
           adaptadas a sus necesidades y preferencias.
         </p>
-        <button id="reserva" data-bs-toggle="modal" data-bs-target="#formModal">
-          Reservar
-        </button>
+        <ButtonModal texto="Reservar"/>
       </div>
       <div class="ppp">
         <img src="/servicios/misa.png" alt="" />
@@ -33,29 +31,7 @@ const authToken = Astro.cookies.get("auth_token")?.value
     </div>
     <i class="bi bi-arrow-down-circle-fill"></i>
   </div>
-  <div
-    class="modal fade"
-    id="formModal"
-    tabindex="-1"
-    aria-labelledby="formModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="formModalLabel">
-            Solicitud de misa
-          </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"></button>
-        </div>
-        <ReservarMisa client:load token={authToken} />
-      </div>
-    </div>
-  </div>
+  <ReservarMisaModal/>
   <main class="container mb-3">
     <Separacion texto="Tipos de misa" />
     <section class="pedo">
@@ -183,38 +159,6 @@ const authToken = Astro.cookies.get("auth_token")?.value
       font-weight: 600;
     }
   }
-  #reserva {
-    color: white;
-    width: 10rem;
-    padding: 0.5rem 1rem;
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 1px solid white;
-    border-radius: 8px;
-    overflow: hidden;
-    transition:
-      transform 200ms ease,
-      background-color 200ms ease;
-    position: relative;
-    z-index: 0;
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      transition: left 300ms ease;
-      z-index: -1;
-      background-color: rgba(255, 255, 255, 0.4);
-      left: -85%;
-      width: 100%;
-      height: 150%;
-      transform: rotate(45deg);
-    }
-    &:hover {
-      transform: translateY(0.3rem);
-      &::before {
-        left: 100%;
-      }
-    }
-  }
   @media (max-width: 991.98px) {
     .xd {
       flex-direction: column;
@@ -226,9 +170,6 @@ const authToken = Astro.cookies.get("auth_token")?.value
         }
         & h1 {
           margin: 1.5rem 0 0 0;
-        }
-        & #reserva {
-          margin: 0 auto 1rem auto;
         }
       }
       & .ppp {

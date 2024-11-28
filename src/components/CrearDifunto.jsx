@@ -33,8 +33,6 @@ const AgregarDifunto = ({ correo, token }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log(token)
-
     if (!validarTexto(nombre)) {
       alert("El nombre solo debe contener letras y espacios.")
       return
@@ -57,7 +55,6 @@ const AgregarDifunto = ({ correo, token }) => {
     }
 
     try {
-      console.log(JSON.stringify(datos))
       const response = await fetch("http://localhost:8080/fallecidos/crear", {
         method: "POST",
         headers: {
@@ -77,6 +74,7 @@ const AgregarDifunto = ({ correo, token }) => {
       setApellidos("")
       setFechaNacimiento("")
       setFechaFallecimiento("")
+      window.location.reload()
     } catch (error) {
       console.error("Error:", error.message)
       alert("No se pudo agregar el difunto: " + error.message)

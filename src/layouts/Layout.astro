@@ -8,6 +8,8 @@ const { title } = Astro.props
 import Footer from "@/components/Footer.astro"
 import { ViewTransitions } from "astro:transitions"
 import Navbar from "@/components/Navbar.astro"
+import RegistrarFallecidoModal from "@/components/RegistrarFallecidoModal.astro"
+import ModalFallecidos from "@/components/ModalFallecidos.astro"
 const page = Astro.url.pathname
 
 const serviciosRegex = /^\/servicios\/.+$/
@@ -35,7 +37,6 @@ const isAdmin = page === "/administrador"
     <script
       type="module"
       src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
     <link
       rel="stylesheet"
       href="/node_modules/@splidejs/splide/dist/css/splide.min.css"
@@ -53,11 +54,41 @@ const isAdmin = page === "/administrador"
   </head>
 
   <body>
+    <div
+      id="alert-container"
+      class="position-fixed top-0 start-50 translate-middle-x p-3"
+      style="z-index: 1050; max-width: 500px; width: 100%;"
+    >
+    </div>
+
+    <ModalFallecidos />
+    <RegistrarFallecidoModal />
     <Navbar page={page} />
     <main class={noMargin ? "" : isAdmin ? "d-flex" : "container mt-6"}>
       <slot />
     </main>
     <Footer page={page} />
+    <script>
+      function showAlert(message: string, type = "info") {
+        const alertContainer = document.getElementById("alert-container")
+        if (!alertContainer) {
+          console.error("No se encontró el contenedor de alertas.")
+          return
+        }
+        const alertDiv = document.createElement("div")
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show`
+        alertDiv.role = "alert"
+        alertDiv.innerHTML = `
+          ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `
+        alertContainer.appendChild(alertDiv)
+        setTimeout(() => {
+          alertDiv.classList.remove("show")
+          setTimeout(() => alertDiv.remove(), 150)
+        }, 5000)
+      }
+    </script>
   </body>
 </html>
 
