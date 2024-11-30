@@ -1,0 +1,63 @@
+---
+interface Props {
+  id: number
+  nombre: string
+  apellidos: string
+  fechaNacimiento: string
+  fechaFallecimiento: string
+}
+
+const { id, nombre, apellidos, fechaNacimiento, fechaFallecimiento } =
+  Astro.params
+
+import EditarFallecido from "@/components/EditarFallecido"
+import useAuthStore from "@/stores/authStore"
+const authToken = Astro.cookies.get("auth_token")?.value
+const authStore = useAuthStore.getState()
+---
+
+<>
+  <button
+    class="btn btn-warning btn-sm me-2"
+    data-bs-toggle="modal"
+    data-bs-target="#formEditarFallecido"
+  >
+    Editar
+  </button>
+  <div
+    class="modal fade"
+    id="formEditarFallecido"
+    tabindex="-1"
+    aria-labelledby="formModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="formModalLabel">Editar Difunto</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
+        </div>
+        <div class="modal-body">wazaaaa</div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" data-bs-dismiss="modal" type="button">
+            Cerrar
+          </button>
+          <button class="btn btn-success" type="submit"> Actualizar </button>
+        </div>
+        <EditarFallecido
+        token={authToken}
+        id={id}
+        nombre={nombre}
+        apellidos={apellidos}
+        fechaNacimiento={fechaNacimiento}
+        fechaFallecimiento={fechaFallecimiento}
+        client:load
+      />
+      </div>
+    </div>
+  </div>
+</>

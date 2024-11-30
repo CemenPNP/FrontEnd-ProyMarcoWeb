@@ -11,6 +11,7 @@ const authStore = useAuthStore.getState()
 if (session && authStore.isAuthenticated === false) {
   // @ts-ignore
   const jwt = session.jwt
+  console.log(jwt)
 
   try {
     const response = await fetch("http://localhost:8080/auth/google", {
@@ -203,7 +204,7 @@ if (authStore.isAuthenticated === true) {
                   Registrarse
                 </button>
               </div>
-              <hr class="border border-primary mx-3 mb-0 mt-1" />
+              <hr class="border border-primary mx-3 mb-1 mt-1" />
               <p class="form-text m-0">¿Ya tienes una cuenta?</p>
               <button
                 type="button"

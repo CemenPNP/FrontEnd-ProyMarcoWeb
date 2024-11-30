@@ -59,11 +59,11 @@ const UserMenu = ({ userImage }) => {
           <li>
             <hr className="dropdown-divider" />
           </li>
-          <li>
+          {/* <li>
             <a className="dropdown-item" href="/usuario">
               Usuario
             </a>
-          </li>
+          </li> */}
           <li>
             <button
               className="dropdown-item"
@@ -89,12 +89,21 @@ const UserMenu = ({ userImage }) => {
       </div>
     </div>
   ) : (
-    <a
-      href="/login"
-      className="login-button text-decoration-none text-white rounded-4 px-3 py-2 d-lg-block d-none"
-    >
-      Iniciar sesión
-    </a>
+    <>
+      {/* <button
+        type="button"
+        className="btn btn-outline-danger btn-sm mx-auto d-block"
+        onClick={handleLogout}
+      >
+        Cerrar sesión
+      </button> */}
+      <a
+        href="/login"
+        className="login-button text-decoration-none text-white rounded-4 px-3 py-2 d-lg-block d-none"
+      >
+        Iniciar sesión
+      </a>
+    </>
   )
 }
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { showCustomAlert } from "@/utils/alerts"
-import useAuthStore from "@/stores/authStore"
 import { render } from "@react-email/components"
+import useAuthStore from "@/stores/authStore"
 import SampleEmail from "@/components/SampleEmail"
 
 const ReservarMisa = ({ token }) => {
@@ -76,7 +76,7 @@ const ReservarMisa = ({ token }) => {
 
     const fechaRegex = /^\d{4}-\d{2}-\d{2}$/
     if (!fechaRegex.test(selectedFecha)) {
-      console.warn("Fecha incompleta o inválida:", selectedFecha)
+      // console.warn("Fecha incompleta o inválida:", selectedFecha)
       return
     }
 
@@ -84,7 +84,7 @@ const ReservarMisa = ({ token }) => {
     const fechaActual = new Date()
     if (fechaSeleccionada <= fechaActual) {
       setHorasDisponibles([])
-      console.warn("La fecha seleccionada debe ser mayor a la fecha actual.")
+      // console.warn("La fecha seleccionada debe ser mayor a la fecha actual.")
       return
     }
 
@@ -119,30 +119,6 @@ const ReservarMisa = ({ token }) => {
     }
   }
 
-  const generateEmailContent = async (
-    nombre,
-    correo,
-    servicio,
-    fallecido,
-    intencion,
-    horaInicio,
-    horaFin,
-    format
-  ) => {
-    return await render(
-      <SampleEmail
-        nombre={nombre}
-        correo={correo}
-        servicio={servicio}
-        fallecido={fallecido}
-        intencion={intencion}
-        horaInicio={horaInicio}
-        horaFin={horaFin}
-      />,
-      format === "html" ? { pretty: true } : { plainText: true }
-    )
-  }
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (!horaInicio || !/^\d{2}:\d{2}$/.test(horaInicio)) {
@@ -150,6 +126,9 @@ const ReservarMisa = ({ token }) => {
       return
     }
     const horaFin = calcularHoraFin(horaInicio)
+    const fallecidoSeleccionado = fallecidos.find(
+      (fallecido) => fallecido.idFallecido.toString() === idFallecido
+    )
     const payload = {
       fechaReserva: fecha,
       horaInicio,
@@ -171,41 +150,64 @@ const ReservarMisa = ({ token }) => {
       })
 
       if (response.ok) {
-        const [finalHtml, finalTxt] = await Promise.all([
-          generateEmailContent(
-            user.nombre,
-            user.correo,
-            nombreServicio,
-            comentario,
-            "html"
-          ),
-          generateEmailContent(
-            nombre,
-            correo,
-            telefono,
-            comentario,
-            "text"
-          ),
-        ])
+        const finalHtml = await render(
+          <SampleEmail
+            nombre={`${user.nombre} ${user.apellido}`}
+            correo={user.correo}
+            servicio={tipoMisa}
+            fallecido={`${fallecidoSeleccionado.nombre} ${fallecidoSeleccionado.apellidos}`}
+            intencion={intencion}
+            horaInicio={horaInicio}
+            horaFin={horaFin}
+          />,
+          {
+            pretty: true,
+          }
+        )
 
-        await fetch("/api/sendEmail.json", {
+        const finalText = await render(
+          <SampleEmail
+            nombre={`${user.nombre} ${user.apellido}`}
+            correo={user.correo}
+            servicio={tipoMisa}
+            fallecido={`${fallecidoSeleccionado.nombre} ${fallecidoSeleccionado.apellidos}`}
+            intencion={intencion}
+            horaInicio={horaInicio}
+            horaFin={horaFin}
+          />,
+          {
+            plainText: true,
+          }
+        )
+
+        const emailResponse = await fetch("/api/sendEmail.json", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: `${nombre}<noreply@lcglassysoluciones.com>`,
-            to: "lcglassysoluciones@gmail.com",
-            subject: asunto,
+            to: "manuel715pl@gmail.com", // to: user.correo,
+            from: "no-reply@resend.dev", // from: "composanto@santarosa.com"
+            subject: "Confirmación de reserva de misa",
             html: finalHtml,
-            text: finalTxt,
+            text: finalText,
           }),
         })
-        showCustomAlert(
-          "success",
-          "Reserva realizada con éxito, se le enviara un correo con los datos de su reserva."
-        )
-        window.location.reload()
+
+        if (emailResponse.ok) {
+          showCustomAlert(
+            "success",
+            `Reserva realizada con éxito. Se ha enviado un correo de confirmación a ${user.correo}.`
+          )
+          window.location.reload()
+        } else {
+          const emailError = await emailResponse.json()
+          console.error("Error al enviar el correo:", emailError)
+          showCustomAlert(
+            "warning",
+            "Reserva realizada, pero hubo un error al enviar el correo de confirmación."
+          )
+        }
       } else {
         const errorData = await response.json()
         showCustomAlert("danger", `Error: ${errorData.message}`)

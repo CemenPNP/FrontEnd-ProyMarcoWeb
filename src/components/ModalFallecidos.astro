@@ -1,5 +1,8 @@
 ---
 import useAuthStore from "@/stores/authStore"
+import BorrarFallecido from "@/components/BorrarFallecido"
+import EditarFallecido from "./EditarFallecido"
+import EditarFallecidoModal from "@/components/EditarFallecidoModal.astro"
 
 const token = Astro.cookies.get("auth_token")?.value
 let fallecidos = []
@@ -54,13 +57,12 @@ if (token) {
         </div>
         <div class="table-responsive">
           <table class="table table-striped table-hover">
-            <thead class="table-success">
+            <thead class="table-success text-center">
               <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Fecha Nacimiento</th>
                 <th>Fecha Fallecimiento</th>
-                <th>Tumba</th>
                 <th>Opciones</th>
               </tr>
             </thead>
@@ -81,18 +83,18 @@ if (token) {
                           fallecido.fechaFallecimiento
                         ).toLocaleDateString()}
                       </td>
-                      <td>{fallecido.tumba || "N/A"}</td>
-                      <td>
-                        <button class="btn btn-warning btn-sm me-2">
-                          Editar
-                        </button>
-                        <button class="btn btn-danger btn-sm">Borrar</button>
+                      <td style="display: flex; justify-content: center;">
+                        <BorrarFallecido
+                          token={token}
+                          idFallecido={fallecido.idFallecido}
+                          client:load
+                        />
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td class="text-center col-6">
+                    <td class="text-center" colspan="6">
                       No hay fallecidos registrados.
                     </td>
                   </tr>

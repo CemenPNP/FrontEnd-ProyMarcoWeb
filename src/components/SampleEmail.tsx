@@ -1,12 +1,14 @@
 import {
   Body,
-  Container,
+  Button,
+  Column,
   Head,
   Heading,
   Hr,
   Html,
   Img,
   Preview,
+  Row,
   Section,
   Text,
 } from "@react-email/components"
@@ -16,15 +18,12 @@ interface SampleEmailProps {
   correo: string
   servicio: string
   fallecido: string
-
   intencion: string
   horaInicio: string
   horaFin: string
 }
 
-const baseUrl = "http://localhost:4321"
-
-export default function SampleEmail({
+export function SampleEmail({
   nombre,
   correo,
   servicio,
@@ -37,111 +36,285 @@ export default function SampleEmail({
     <Html>
       <Head />
       <Preview>{`Campo Santo Santa Rosa de Lima | ${servicio}`}</Preview>
-      <Body style={main}>
-        <Container style={container}>
-          <Section style={coverSection}>
-            <Section style={imageSection}>
+      <Body>
+        <Section>
+          <Row>
+            <Column>
               <Img
-                src={`${baseUrl}/favicon.png`}
-                width="75"
-                height="75"
-                alt="Logo del Camposanto Santa Rosa"
+                src="http://localhost:4321/favicon.png"
+                width="60"
+                height="60"
+                alt="Logo Camposanto Santa Rosa de Lima"
               />
-            </Section>
-            <Section style={upperSection}>
-              <Heading style={h1}>{`Campo Santo Santa Rosa de Lima | ${servicio}`}</Heading>
-              <Text style={mainText}>{intencion}</Text>
-            </Section>
-            <Hr />
-            <Section style={lowerSection}>
-              <Text style={paragraph}>
-                <b>Nombre: </b>
-                {nombre}
-              </Text>
-              <Text style={{ ...paragraph, marginTop: -5 }}>
-                <b>Correo: </b>
-                {correo}
-              </Text>
-              <Text style={{ ...paragraph, marginTop: -5 }}>
-                <b>Servicio: </b>
-                {servicio}
-              </Text>
-              <Text style={{ ...paragraph, marginTop: -5 }}>
-                <b>Fallecido: </b>
-                {fallecido}
-              </Text>
-            </Section>
-            <Hr />
-            <Section style={lowerSection}>
-              <Text style={paragraph}>
-                <b>Hora de inicio: </b>
-                {horaInicio}
-              </Text>
-              <Text style={{ ...paragraph, marginTop: -5 }}>
-                <b>Hora de cierre: </b>
-                {horaFin}
-              </Text>
-            </Section>
+            </Column>
+            <Column align="left" style={{ display: "table-cell" }}>
+              <Heading
+                as="h1"
+                style={{
+                  textTransform: "uppercase",
+                  fontSize: 20,
+                  lineHeight: "36px",
+                  marginBottom: "0px",
+                  fontWeight: 600,
+                }}
+              >
+                Camposanto Santa Rosa de Lima
+              </Heading>
+            </Column>
+          </Row>
+        </Section>
+        <Hr style={{ borderColor: "#e6ebf1", margin: "20px 0" }} />
+        <Section
+          style={{ paddingTop: 16, paddingBottom: 16, textAlign: "center" }}
+        >
+          <Heading
+            as="h2"
+            style={{
+              fontSize: 20,
+              lineHeight: "36px",
+              marginBottom: "0px",
+              fontWeight: 600,
+            }}
+          >
+            {servicio}
+          </Heading>
+          <Section
+            style={{
+              padding: 16,
+              paddingTop: "0px",
+              marginTop: 16,
+              marginBottom: 16,
+              borderRadius: 8,
+              borderWidth: 1,
+              borderStyle: "solid",
+              borderColor: "rgb(229,231,235)",
+            }}
+          >
+            <table style={{ marginBottom: 16 }} width="100%">
+              <tr>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>Usuario</Text>
+                </td>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>{nombre}</Text>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>Correo</Text>
+                </td>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>{correo}</Text>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>Servicio</Text>
+                </td>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>{servicio}</Text>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>Difunto</Text>
+                </td>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>{fallecido}</Text>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>Intencion</Text>
+                </td>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>{intencion}</Text>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>Hora de Inicio</Text>
+                </td>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>{horaInicio}</Text>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>Hora de cierre</Text>
+                </td>
+                <td
+                  align="center"
+                  style={{
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderWidth: "0px",
+                    borderBottomWidth: 1,
+                    borderStyle: "solid",
+                    borderColor: "rgb(229,231,235)",
+                  }}
+                >
+                  <Text>{horaFin}</Text>
+                </td>
+              </tr>
+            </table>
+            <Row>
+              <Column align="center">
+                <Button
+                  href="http://localhost:4321"
+                  style={{
+                    width: "100%",
+                    boxSizing: "border-box",
+                    paddingLeft: 12,
+                    paddingRight: 12,
+                    borderRadius: 8,
+                    textAlign: "center",
+                    backgroundColor: "#009970",
+                    paddingTop: 12,
+                    paddingBottom: 12,
+                    fontWeight: 600,
+                    color: "rgb(255,255,255)",
+                  }}
+                >
+                  Realiza mas reservas desde nuestra pagina web!
+                </Button>
+              </Column>
+            </Row>
           </Section>
-        </Container>
+        </Section>
       </Body>
     </Html>
   )
 }
 
-const main = {
-  backgroundColor: "#fff",
-  color: "#212121",
-}
-
-const container = {
-  padding: "20px",
-  margin: "0 auto",
-  backgroundColor: "#eee",
-}
-
-const h1 = {
-  color: "#333",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "20px",
-  fontWeight: "bold",
-  marginBottom: "15px",
-}
-
-const link = {
-  color: "#2754C5",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "14px",
-  textDecoration: "underline",
-}
-
-const text = {
-  color: "#333",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "14px",
-  margin: "24px 0",
-}
-
-const imageSection = {
-  backgroundColor: "#ffffff",
-  display: "flex",
-  padding: "20px 0",
-  alignItems: "center",
-  justifyContent: "center",
-}
-
-const coverSection = { backgroundColor: "#fff" }
-
-const upperSection = { padding: "25px 35px" }
-
-const lowerSection = { padding: "25px 35px" }
-
-const mainText = { ...text, marginBottom: "14px" }
-const paragraph = {
-  fontSize: 16,
-}
-
-const cautionText = { ...text, margin: "0px" }
+export default SampleEmail
