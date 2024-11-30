@@ -11,6 +11,7 @@ import Navbar from "@/components/Navbar.astro"
 import RegistrarFallecidoModal from "@/components/RegistrarFallecidoModal.astro"
 import ModalFallecidos from "@/components/ModalFallecidos.astro"
 import EditarFallecidoModal from "@/components/EditarFallecidoModal.astro"
+import ModalReservas from "@/components/ModalReservas.astro"
 const page = Astro.url.pathname
 
 const serviciosRegex = /^\/servicios\/.+$/
@@ -61,7 +62,7 @@ const isAdmin = page === "/administrador"
       style="z-index: 999999; max-width: 500px; width: 100%;"
     >
     </div>
-
+<ModalReservas/>
     <ModalFallecidos />
     <RegistrarFallecidoModal />
     <!-- <EditarFallecidoModal /> -->

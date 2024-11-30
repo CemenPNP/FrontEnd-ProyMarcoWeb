@@ -74,6 +74,15 @@ const UserMenu = ({ userImage }) => {
             </button>
           </li>
           <li>
+            <button
+              className="dropdown-item"
+              data-bs-toggle="modal"
+              data-bs-target="#contReservas"
+            >
+              Reservas
+            </button>
+          </li>
+          <li>
             <hr className="dropdown-divider" />
           </li>
           <li>
